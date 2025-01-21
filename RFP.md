@@ -1,5 +1,7 @@
 # Request for Proposal (RFP)
 
+**Date**: 01-21-2025
+
 ## 1. Client Organization Information
 **Organization Name**: Eventify.
   
@@ -26,20 +28,21 @@ This project aims to achieve the following measurable outcomes:
 ## 4. Required Features
 The Eventify Solutions portal must include the following key features:
 
+### User Features:
 1. **Event Creation and Management**:
-   - Tools for setting event details (title, description, date, time, location, and participant capacity).
-   - RSVP tracking and waitlist management.
+   - Users can create, edit, and delete events.
+   - Tools for setting event details such as title, description, date, time, location, and participant capacity.
 2. **Event Discovery and Recommendations**:
    - Search and filter functionality based on categories, keywords, and location.
-3. **Communication Tools**:
-   - Real-time chat and announcement functionality.
-   - Automated notifications and schedule reminders.
-4. **Payment and Ticketing System**:
-   - Support for free and paid events with secure payment processing.
-   - QR code-based attendee check-in.
-5. **Analytics and Reporting**:
-   - Dashboards for tracking attendance, feedback, and budget.
-   - Post-event surveys for collecting user feedback.
-6. **User Profiles and Management**:
-   - Creation of personal profiles with participation history and preferences.
-   - Customized recommendations based on user interests.
+3. **Engagement Tools**:
+   - Users can comment on events to foster community interaction.
+   - Users can like events by clicking a heart button.
+   - Users can save events to revisit later.
+4. **User Registration and Profile Management**:
+   - Account creation and management, including tracking event history and preferences.
+
+### Admin Features:
+1. **User Account Management**:
+   - Admins can edit or delete user accounts.
+2. **Event and Comment Management**:
+   - Admins can review, edit, and delete events and comments.
