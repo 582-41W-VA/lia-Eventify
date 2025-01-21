@@ -52,3 +52,13 @@ This proposal outlines the development plan for Eventify, leveraging Django's si
 - **Review Flagged Events**: Review inappropriate or erroneous events flagged by users.
 
 ---
+
+## Technologies Used
+
+Eventify will be developed using the following technologies:
+
+- **Django (Python)**: Django will serve as the primary framework for both the front-end and back-end, providing server-side functionality and HTML templating. All interactivity, including search, filter, and user management, will be handled through Django forms, views, and server-side logic.
+- **SQLite**: The application will use SQLite, which is Django’s default database option, for simplicity and ease of development.
+- **HTML/CSS**: Custom styles will be used for the responsive and attractive design, avoiding front-end frameworks like Bootstrap or Bulma.
+
+---
