@@ -25,3 +25,11 @@ This proposal outlines the development plan for Eventify, leveraging Django's si
   Manages the GitHub repository, tracks issues, ensures adherence to version control, and ensures code reviews and continuous integration guidelines.
 
 ---
+
+## Primary Users
+
+- **Event Organizers**: Individuals or businesses looking to create and share events.
+- **Event Attendees**: Users looking to browse, search for, and save local events of interest.
+- **Admin Users**: Individuals managing users, events, and content within the system.
+
+---
