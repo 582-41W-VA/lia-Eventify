@@ -32,6 +32,10 @@ The Eventify Solutions portal must include the following key features:
 1. **Event Creation and Management**:
    - Users can create, edit, and delete events.
    - Tools for setting event details such as title, description, date, time, location, and participant capacity.
+   - Option to select event categories (e.g., concert, seminar, networking).
+   - Ability to upload event images during creation.
+   - Users can edit existing event details such as title, description, and image.
+   - Integrate maps (e.g., Google Maps API) for precise location input.
 2. **Event Discovery and Recommendations**:
    - Search and filter functionality based on categories, keywords, and location.
 3. **Engagement Tools**:
@@ -46,3 +50,16 @@ The Eventify Solutions portal must include the following key features:
    - Admins can edit or delete user accounts.
 2. **Event and Comment Management**:
    - Admins can review, edit, and delete events and comments.
+3. **Flagged Content Review**:
+- Admins can review and manage inappropriate or erroneous events flagged by users.
+
+Interested service providers are required to submit a proposal including the following:
+
+1. **Company Overview**: A summary of the company's experience, capabilities, and relevant project history.
+2. **Project Approach**: A detailed plan outlining how the requirements will be addressed.
+3. **Project Timeline**: A timeline with key milestones and expected completion dates.
+
+### Proposal Submission Deadline
+**Due Date**: End of Week 1 (2025-01-21)
+
+Eventify looks forward to collaborating with a capable service provider to build a successful platform that delivers an exceptional experience to its users.
