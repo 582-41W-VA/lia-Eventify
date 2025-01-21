@@ -92,3 +92,10 @@ Eventify will be developed using the following technologies:
 - Design and implement the "Save Event" feature.
 - Test features for usability and correctness.
 - Complete styling for all pages based on visual guidelines
+
+### Week 5:
+
+- Conduct internal testing to ensure functionality and responsiveness.
+- Refine the user interface for better usability.
+- Write detailed documentation for installation and usage.
+- Prepare and practice the final presentation.
