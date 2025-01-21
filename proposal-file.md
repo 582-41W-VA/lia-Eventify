@@ -100,6 +100,8 @@ Eventify will be developed using the following technologies:
 - Write detailed documentation for installation and usage.
 - Prepare and practice the final presentation.
 
+---
+
 ## Expected Deliverables
 
 - **Request for Proposal (RFP)**: Markdown document outlining project requirements (Week 1).
