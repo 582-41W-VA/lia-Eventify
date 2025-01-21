@@ -86,3 +86,9 @@ Eventify will be developed using the following technologies:
 - Implement basic CRUD (Create, Read, Update, Delete) functionality for events.
 - Submit database model (Entity-Relationship diagram).
 - Add search, sorting, and filtering capabilities for browsing events.
+
+### Week 4:
+
+- Design and implement the "Save Event" feature.
+- Test features for usability and correctness.
+- Complete styling for all pages based on visual guidelines
