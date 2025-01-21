@@ -33,3 +33,22 @@ This proposal outlines the development plan for Eventify, leveraging Django's si
 - **Admin Users**: Individuals managing users, events, and content within the system.
 
 ---
+
+## Features
+
+### As a user, I can:
+
+- **Create, Edit, and Delete Events**: Manage events by adding, editing, and deleting event details.
+- **Search, Sort, and Filter Events**: Browse events based on different criteria (e.g., event type, date, location).
+- **Comment on Events**: Leave feedback on events via comments to foster community engagement.
+- **Like Events**: Click the heart button to like events.
+- **Save Events**: Save events of interest for future reference.
+- **User Registration and Profile**: Create and manage accounts to track event history and preferences.
+
+### As an admin, I can:
+
+- **Manage User Accounts**: Edit or delete user accounts.
+- **Manage Events and Comments**: Moderate, edit, and delete events and comments.
+- **Review Flagged Events**: Review inappropriate or erroneous events flagged by users.
+
+---
