@@ -80,3 +80,9 @@ Eventify will be developed using the following technologies:
 - Create installation steps with a Markdown file.
 - Create models for events, users, and saved events.
 - Implement user authentication and account management.
+
+### Week 3:
+
+- Implement basic CRUD (Create, Read, Update, Delete) functionality for events.
+- Submit database model (Entity-Relationship diagram).
+- Add search, sorting, and filtering capabilities for browsing events.
