@@ -62,3 +62,11 @@ Eventify will be developed using the following technologies:
 - **HTML/CSS**: Custom styles will be used for the responsive and attractive design, avoiding front-end frameworks like Bootstrap or Bulma.
 
 ---
+
+## Project Milestones
+
+### Week 1:
+
+- Set up GitHub repository and branch protection rules.
+- Create and submit the Request for Proposal (RFP).
+- Create and submit the Proposal document including the application features and architecture, define the milestones and project timeline.
