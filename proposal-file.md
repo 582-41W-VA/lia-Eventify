@@ -99,3 +99,14 @@ Eventify will be developed using the following technologies:
 - Refine the user interface for better usability.
 - Write detailed documentation for installation and usage.
 - Prepare and practice the final presentation.
+
+## Expected Deliverables
+
+- **Request for Proposal (RFP)**: Markdown document outlining project requirements (Week 1).
+- **Proposal**: This document (Week 1).
+- **Visual Guidelines**: Figma design file for the website's visual identity (Week 2).
+- **Database Model**: Entity-Relationship diagram describing the SQLite database structure (Week 2).
+- **Wireframes**: Figma or FigJam file for page layouts (Every Week).
+- **Mockups**: High-fidelity page designs in Figma (Every Week).
+- **Installation Steps**: Markdown file with detailed instructions for running the project (Week 2).
+- **Source Code**: Daily commits to the GitHub repository.
