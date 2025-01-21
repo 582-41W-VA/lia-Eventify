@@ -1,7 +1,8 @@
 # Request for Proposal (RFP)
 
 ## 1. Client Organization Information
-**Organization Name**: Eventify. 
+**Organization Name**: Eventify.
+  
 **Description**: Eventify is a newly established organization aiming to create a platform that connects people and fosters community building. Our goal is to provide innovative solutions that simplify the process of event creation, participation, and management, enhancing user experience and engagement.
 
 
