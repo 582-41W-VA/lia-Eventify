@@ -70,3 +70,13 @@ Eventify will be developed using the following technologies:
 - Set up GitHub repository and branch protection rules.
 - Create and submit the Request for Proposal (RFP).
 - Create and submit the Proposal document including the application features and architecture, define the milestones and project timeline.
+
+### Week 2:
+
+- Draft Visual Guidelines.
+- Wireframes and Mockups: Design key pages (home, event listing, event details, login) in Figma (Figma design file or FigJam file).
+- Data Model: JPEG or PNG image.
+- Define project structure.
+- Create installation steps with a Markdown file.
+- Create models for events, users, and saved events.
+- Implement user authentication and account management.
