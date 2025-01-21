@@ -5,4 +5,7 @@
 
 ## Project Overview:
 
-The Eventify platform will allow users to easily create, manage, and discover events. Admins will have control over content and users, while regular users will be able to engage with the platform by adding events to their private collections, commenting on events, and exploring events through filtering, sorting, and search options. The site will be designed and built using Django and Python, with minimal use of JavaScript.
+Eventify is a Django-based web application that simplifies event planning and management for users. The portal offers an intuitive way to create, manage, and search for events while allowing users to save their favorite events for future reference.  
+This proposal outlines the development plan for Eventify, leveraging Django's simplicity and efficiency and using the default SQLite database for seamless integration and management.
+
+---
