@@ -12,17 +12,17 @@
 Eventify seeks to address the following challenges:
 
 1. **Lack of an efficient event management system**: Tasks such as event creation, scheduling, and participant management are currently cumbersome and reduce user satisfaction.
-2. **Ineffective communication tools**: There is a need for seamless real-time communication between organizers and participants to prevent confusion and improve event coordination.
-3. **Limited personalized experiences**: Users struggle to find events that match their interests, location, and schedule due to inadequate search and recommendation features.
-4. **Insufficient data-driven tools**: Organizers lack access to analytics and feedback tools to evaluate event performance and identify areas for improvement.
+2. **Limited personalized experiences**: Users struggle to find events that match their interests, location, and schedule due to inadequate search and recommendation features.
+3. **Lack of engagement tools**: Users need features to interact with events and foster community connections, such as commenting, liking, and saving events.
+4. **Inadequate user account and profile management**: Users require seamless registration processes and the ability to track their event history and preferences.
 
 ## 3. Project Goals
 This project aims to achieve the following measurable outcomes:
 
 1. **Simplify event management**: Provide a unified platform for creating, managing, and tracking events efficiently.
-2. **Enhance communication**: Implement real-time messaging and notification features to improve communication between organizers and participants.
-3. **Deliver personalized experiences**: Offer tailored event search and recommendations based on user interests, location, and schedule.
-4. **Enable performance tracking and feedback**: Provide data visualization tools for event metrics, feedback, and performance improvement.
+2. **Deliver personalized experiences**: Offer tailored event search and recommendations based on user interests, location, and schedule.
+3. **Enhance engagement and interaction**: : Foster community interaction through tools such as commenting, liking, and saving events.
+4. **Improve user account and profile management**: : Enable users to register, manage their profiles, and access their event history and preferences seamlessly.
 
 
 ## 4. Required Features
@@ -51,7 +51,7 @@ The Eventify Solutions portal must include the following key features:
 2. **Event and Comment Management**:
    - Admins can review, edit, and delete events and comments.
 3. **Flagged Content Review**:
-- Admins can review and manage inappropriate or erroneous events flagged by users.
+   - Admins can review and manage inappropriate or erroneous events flagged by users.
 
 Interested service providers are required to submit a proposal including the following:
 
