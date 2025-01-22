@@ -3,10 +3,9 @@
 **Date**: 01-21-2025
 
 ## 1. Client Organization Information
-**Organization Name**: Eventify.
+**Organization Name**: Connectify.
   
-**Description**: Eventify is a newly established organization aiming to create a platform that connects people and fosters community building. Our goal is to provide innovative solutions that simplify the process of event creation, participation, and management, enhancing user experience and engagement.
-
+**Description**: Connectify is a new client seeking to create a platform that connects people and fosters community building. Their goal is to simplify event creation, participation, and management while enhancing user experience and engagement.
 
 ## 2. Problem Statement
 Eventify seeks to address the following challenges:
@@ -52,6 +51,15 @@ The Eventify Solutions portal must include the following key features:
    - Admins can review, edit, and delete events and comments.
 3. **Flagged Content Review**:
    - Admins can review and manage inappropriate or erroneous events flagged by users.
+4. **Analytics and Reporting**:
+   - Generate statistics such as:
+      - Total number of users.
+      - Total number of articles.
+      - Total number of new articles in a given time frame.
+      - Total number of new users in a given time frame.
+      - Most commented articles.
+      - Users with the most comments.
+
 
 Interested service providers are required to submit a proposal including the following:
 
