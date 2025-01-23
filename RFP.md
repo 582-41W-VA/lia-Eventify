@@ -3,7 +3,7 @@
 **Date**: 01-21-2025
 
 ## 1. Client Organization Information
-**Organization Name**: Connectify.
+**Organization Name**: Connectify
   
 **Description**: Connectify is a new client seeking to create a platform that connects people and fosters community building. Their goal is to simplify event creation, participation, and management while enhancing user experience and engagement.
 
