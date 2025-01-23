@@ -93,9 +93,8 @@ The Eventify Solutions portal must include the following key features:
 
 Interested service providers are required to submit a proposal including the following:
 
-1. **Company Overview**: A summary of the company's experience, capabilities, and relevant project history.
-2. **Project Approach**: A detailed plan outlining how the requirements will be addressed.
-3. **Project Timeline**: A timeline with key milestones and expected completion dates.
+1. **Project Approach**: A detailed plan outlining how the requirements will be addressed.
+2. **Project Timeline**: A timeline with key milestones and expected completion dates.
 
 ### Proposal Submission Deadline
 **Due Date**: End of Week 1 (2025-01-21)
