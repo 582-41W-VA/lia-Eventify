@@ -5,24 +5,29 @@
 
 ## Project Overview:
 
-Eventify is a Django-based web application that simplifies event planning and management for users. The portal offers an intuitive way to create, manage, and search for events while allowing users to save their favorite events for future reference.  
-This proposal outlines the development plan for Eventify, leveraging Django's simplicity and efficiency and using the default SQLite database for seamless integration and management.
+Eventify is a web-based event planning portal designed to simplify the organization, management, and discovery of events. It caters to individual users, event planners, and administrators by providing a seamless interface for creating, managing, and discovering events. The project emphasizes simplicity, leveraging Django and Python for all core functionalities, and uses the default SQLite database for straightforward implementation.
+
+---
+
+## Benefits of Eventify
+
+- Simplifies event creation and management.
+- Empowers users with personalized features like history tracking and private collections.
+- Provides admins with robust tools for moderation and analytics.
+- Built with a lightweight, efficient technology stack for ease of maintenance.
 
 ---
 
 ## Team Members and Roles
 
-- **Aaron**: Design (Figma, HTML/CSS)  
+- **Aaron James Asuncion**: Design Lead (Figma, HTML/CSS)  
   Responsible for creating the visual identity, wireframes, and mockups using Figma.
-
-- **Oh**: Front-End Developer (Django Templates, HTML/CSS)  
+- **Changheon Oh**: Front-End Developer (Django Templates, HTML/CSS)  
   Focuses on implementing the user interface and ensuring responsiveness.
-
-- **Fangfang**: Back-End Developer  
-  Manages the Django backend, including models and views. (Django, Python, SQL)
-
-- **Kim**: Repository Manager  
-  Manages the GitHub repository, tracks issues, ensures adherence to version control, and ensures code reviews and continuous integration guidelines.
+- **Fangfang Chen**: Back-End Developer (Django, Python, SQL)  
+  Manages the Django backend, including models and views.
+- **Byeonggil Kim**: Repository Manager  
+  Manages the GitHub repository, tracks issues, ensures adherence to version control, and oversees code reviews and CI/CD guidelines.
 
 ---
 
@@ -38,18 +43,55 @@ This proposal outlines the development plan for Eventify, leveraging Django's si
 
 ### As a user, I can:
 
-- **Create, Edit, and Delete Events**: Manage events by adding, editing, and deleting event details.
-- **Search, Sort, and Filter Events**: Browse events based on different criteria (e.g., event type, date, location).
-- **Comment on Events**: Leave feedback on events via comments to foster community engagement.
-- **Like Events**: Click the heart button to like events.
-- **Save Events**: Save events of interest for future reference.
-- **User Registration and Profile**: Create and manage accounts to track event history and preferences.
+- **Create, Edit, and Delete Articles (Events)**  
+  Description: Users can create, update, and remove events. When creating events, users can input essential details such as the name, description, date, time, and location of the event. They also have the option to upload images, add tags, and categorize events.
+
+- **Browse, Sort, Filter, and Search Events**  
+  Description: The platform offers robust browsing functionality, allowing users to sort events by categories like location, date, or popularity. Filters can be applied to narrow down searches to specific interests or types of events (e.g., concerts, conferences, parties).
+
+- **Like and Unlike Events**  
+  Description: Users can mark events they like, which are then stored in their profile. If they change their mind, they can, unlike the event, and it will be removed from their linked list.
+
+- **Flag Inappropriate or Erroneous Events**  
+  Description: If a user finds an event that is inappropriate or contains incorrect information, they can flag it for review by an administrator. Flagged events are logged and visible in the admin panel for further action.
+
+- **Add Comments on Events**  
+  Description: Users can interact with events by leaving comments, asking questions, or providing feedback. These comments are shown publicly and attributed to the user.
+
+- **Save Events to a Private Collection**  
+  Description: Users can save events that interest them to a private collection, giving them easy access later. This collection can be managed, with events being added or removed at any time.
+
+- **Browse, Sort, Filter, and Search a Private Collection**  
+  Description: Saved events in a user's private collection can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their private collection.
+
+- **View User Profile/dashboard**  
+  Description: A user’s Profile/dashboard will display their event activity, including past events they’ve attended, events they’ve liked or flagged, and their overall preferences (based on event types and categories).
+
+- **Create and Manage Accounts**  
+  Description: Users can create an account to track their activities, log in to access saved collections, liked events, and other personalized features. Password management and account settings, including notifications and preferences, are also included.
 
 ### As an admin, I can:
 
-- **Manage User Accounts**: Edit or delete user accounts.
-- **Manage Events and Comments**: Moderate, edit, and delete events and comments.
-- **Review Flagged Events**: Review inappropriate or erroneous events flagged by users.
+- **Edit and Delete User Accounts**  
+  Description: Admin users have full control over user accounts. They can view, modify, or delete accounts if necessary, ensuring the platform remains free from spam or inappropriate activity.
+
+- **Edit and Delete Events**  
+  Description: Admins can edit or remove any event listed on the platform. This includes correcting event details, removing erroneous content, and ensuring that all listed events comply with platform guidelines.
+
+- **Edit and Delete Comments**  
+  Description: Admins have the ability to moderate comments, removing offensive or irrelevant feedback and ensuring a positive user experience.
+
+- **Review Flagged Events**  
+  Description: Admins can review flagged events for possible violations of platform rules. They can take appropriate action, such as removing the event or contacting the event creator for clarification.
+
+- **Import Content from a Third-Party API**  
+  Description: Admins can integrate external event data from trusted sources to enrich the event listings, providing more variety and broader coverage of local and global events.
+
+- **Generate Statistics**  
+  Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more. These analytics are crucial for monitoring platform health and user engagement.
+
+- **Manage Admin Panel**
+  Description: The admin panel provides a comprehensive interface for managing users, events, comments, flagged content, and generating statistics. It features customizations to Django’s default admin interface, offering a more user-friendly layout. Admins can view detailed logs and analytics, review flagged content, and perform moderation actions with a few clicks.
 
 ---
 
@@ -57,9 +99,37 @@ This proposal outlines the development plan for Eventify, leveraging Django's si
 
 Eventify will be developed using the following technologies:
 
-- **Django (Python)**: Django will serve as the primary framework for both the front-end and back-end, providing server-side functionality and HTML templating. All interactivity, including search, filter, and user management, will be handled through Django forms, views, and server-side logic.
-- **SQLite**: The application will use SQLite, which is Django’s default database option, for simplicity and ease of development.
-- **HTML/CSS**: Custom styles will be used for the responsive and attractive design, avoiding front-end frameworks like Bootstrap or Bulma.
+- **Django (Python)**: The backbone of the backend functionality, Django allows for efficient handling of requests, views, models, and templates. Its built-in features, such as the authentication system, make it ideal for this project.
+- **SQLite**: Chosen for its lightweight nature, SQLite provides a simple yet powerful database solution that requires minimal setup and is easy to manage, making it a suitable choice for Eventify.
+- **Django Authentication System**: Handles all user authentication processes, ensuring that users can securely log in, register, and manage their profiles.
+- **Django Admin Panel**: Customized to suit the needs of Eventify, the admin panel provides a user-friendly interface for managing users, events, and comments, along with essential moderation and reporting tools.
+- **Django Templates**: Used to render HTML for user-facing pages, templates ensure that the site's look and feel are consistent and can be easily updated when necessary.
+- **Third-Party API Integration**: Used to fetch and import event data from trusted sources, ensuring Eventify is always up to date with a diverse array of events.
+
+---
+
+## Page Summaries
+
+- **Homepage**  
+  The homepage will serve as the entry point for users to explore various events. It will include a search bar, event categories, and quick links to popular events. Featured events will be displayed, allowing users to easily browse upcoming events.
+
+- **Event Listing Page**  
+  This page will display a list of events. Users can sort, filter, and search for events by date, location, and type. Each event listing will include a brief summary with a link to the event details page.
+
+- **Event Details Page**  
+  The event details page will provide comprehensive information about a specific event, including date, time, location, and a detailed description. Users can like, comment on, and save the event to their collection from this page.
+
+- **Sign Up Page**  
+  The Sign up page is showing a form for the user to sign up an account, including user name, email, password (Ffchen234456, at least 8 characters).
+
+- **Login Page**  
+  The login page will allow users to securely access their accounts. Users can log in with their email and password, or reset their password if necessary.
+
+- **User Dashboard**  
+  The user dashboard will display all of a user’s saved events, liked events, and a history of events they’ve attended or interacted with. It provides an overview of the user’s preferences and event history.
+
+- **Admin Panel**  
+  The admin panel will allow administrators to manage users, events, comments, and flagged content. It will also provide statistical insights into event activity and user engagement.
 
 ---
 
@@ -73,42 +143,47 @@ Eventify will be developed using the following technologies:
 
 ### Week 2:
 
-- Draft Visual Guidelines.
-- Wireframes and Mockups: Design key pages (home, event listing, event details, login) in Figma (Figma design file or FigJam file).
-- Data Model: JPEG or PNG image.
-- Define project structure.
-- Create installation steps with a Markdown file.
+- Draft Visual guidelines.
+- Wireframes and Mockups for key pages (home, event listing, Event Details, event details, login) in Figma (Figma design file or FigJam file).
+- Data model: Entity-Relationship diagram. JPEG or PNG image.
+- Initialize the Django project and configure SQLite as the database.
+- Installation Steps with Markdown file.
 - Create models for events, users, and saved events.
-- Implement user authentication and account management.
+- Set up user authentication, registration, and account management.
 
 ### Week 3:
 
-- Implement basic CRUD (Create, Read, Update, Delete) functionality for events.
-- Submit database model (Entity-Relationship diagram).
-- Add search, sorting, and filtering capabilities for browsing events.
+- Develop CRUD operations for events.
+- Implement event browsing, sorting, and filtering.
+- Add liking/unliking functionality.
+- Enable saving events to a private collection.
+- Create user dashboards to display history and preferences.
 
 ### Week 4:
 
-- Design and implement the "Save Event" feature.
-- Test features for usability and correctness.
-- Complete styling for all pages based on visual guidelines
+- Customize the Django admin panel to manage users, events, comments, and flags.
+- Build tools for generating statistics and importing third-party content.
+- Complete styling for all pages based on visual guidelines.
+- Integrate search functionality using Django QuerySets.
+- Enhance user dashboards with recommendations.
 
 ### Week 5:
 
 - Conduct internal testing to ensure functionality and responsiveness.
-- Refine the user interface for better usability.
-- Write detailed documentation for installation and usage.
-- Prepare and practice the final presentation.
+- Create a user manual and API documentation.
+- Final review of the project, making sure all features are integrated and functional.
+- Submit the final project for evaluation.
 
 ---
 
 ## Expected Deliverables
 
-- **Request for Proposal (RFP)**: Markdown document outlining project requirements (Week 1).
-- **Proposal**: This document (Week 1).
-- **Visual Guidelines**: Figma design file for the website's visual identity (Week 2).
-- **Database Model**: Entity-Relationship diagram describing the SQLite database structure (Week 2).
-- **Wireframes**: Figma or FigJam file for page layouts (Every Week).
-- **Mockups**: High-fidelity page designs in Figma (Every Week).
-- **Installation Steps**: Markdown file with detailed instructions for running the project (Week 2).
-- **Source Code**: Daily commits to the GitHub repository.
+- Request for Proposal (RFP): Due: end of week 1 (Format: Markdown file)
+- Proposal Document: Due: end of week 1 (Format: Markdown file)
+- Visual Guidelines: Due: end of week 2 (Format: Figma design file)
+- Figma Wireframes: Due: end of every week (Format: Figma design file or FigJam file)
+- Mockups: Due: end of every week (Format: Figma design document)
+- Installation steps:Due: end of week 2(Format: Markdown file)
+- Data model: Entity-Relationship Diagram.Due: end of week 2 (Format: JPEG or PNG image)
+- Source code:Due: end of every week
+- Final presentation:Due: last class(Format: slide deck)
