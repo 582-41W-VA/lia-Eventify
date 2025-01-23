@@ -99,4 +99,4 @@ Interested service providers are required to submit a proposal including the fol
 ### Proposal Submission Deadline
 **Due Date**: End of Week 1 (2025-01-21)
 
-Eventify looks forward to collaborating with a capable service provider to build a successful platform that delivers an exceptional experience to its users. 
+Eventify eagerly anticipates working with a skilled service provider to create a robust platform that offers an outstanding user experience. 
