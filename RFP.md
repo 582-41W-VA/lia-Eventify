@@ -28,37 +28,51 @@ This project aims to achieve the following measurable outcomes:
 The Eventify Solutions portal must include the following key features:
 
 ### User Features:
-1. **Event Creation and Management**:
-   - Users can create, edit, and delete events.
-   - Tools for setting event details such as title, description, date, time, location, and participant capacity.
-   - Option to select event categories (e.g., concert, seminar, networking).
-   - Ability to upload event images during creation.
-   - Users can edit existing event details such as title, description, and image.
-   - Integrate maps (e.g., Google Maps API) for precise location input.
-2. **Event Discovery and Recommendations**:
-   - Search and filter functionality based on categories, keywords, and location.
-3. **Engagement Tools**:
-   - Users can comment on events to foster community interaction.
-   - Users can like events by clicking a heart button.
-   - Users can save events to revisit later.
-4. **User Registration and Profile Management**:
-   - Account creation and management, including tracking event history and preferences.
+1. **Create, Edit, and Delete Events**:
+   - Users can manage events by adding, updating, or removing them with essential details like name, date, location, and tags.
+
+2. **Browse, Sort, Filter, and Search Events**:
+   - Robust tools allow users to explore and filter events by categories, location, or date.
+
+3. **Like and Unlike Events**:
+   - Users can mark events they like and manage their liked events easily.
+
+4. **Flag Inappropriate or Erroneous Events**:
+   - Users can report problematic events for admin review.
+
+5. **Add Comments on Events**:
+   - Users can leave comments to interact with event organizers and other attendees.
+
+6. **Save Events to a Private Collection**:
+   - Users can save and manage events in their private collection for later access.
+
+7. **Browse, Sort, Filter, and Search a Private Collection**:
+   - Saved events can be organized with sorting and filtering options.
+
+8. **Track Event History and Preferences**:
+   - Dashboards display user activity, including past events and personalized recommendations.
+
+9. **Create and Manage Accounts**:
+   - Users can register, manage their accounts, and customize preferences.
 
 ### Admin Features:
-1. **User Account Management**:
-   - Admins can edit or delete user accounts.
-2. **Event and Comment Management**:
-   - Admins can review, edit, and delete events and comments.
-3. **Flagged Content Review**:
-   - Admins can review and manage inappropriate or erroneous events flagged by users.
-4. **Analytics and Reporting**:
-   - Generate statistics such as:
-      - Total number of users.
-      - Total number of articles.
-      - Total number of new articles in a given time frame.
-      - Total number of new users in a given time frame.
-      - Most commented articles.
-      - Users with the most comments.
+1. **Edit and Delete User Accounts**:
+   - Admins can manage user accounts to ensure a safe platform environment.
+
+2. **Edit and Delete Events**:
+   - Admins can review and manage event details for quality assurance.
+
+3. **Edit and Delete Comments**:
+   - Admins moderate comments to maintain a respectful community.
+
+4. **Review Flagged Events**:
+   - Admins review and address flagged events for guideline compliance.
+
+5. **Import Content from a Third-Party API**:
+   - Admins can enrich event listings by integrating trusted external data.
+
+6. **Generate Statistics**:
+   - Admins can monitor platform performance and user engagement with analytics.
 
 
 Interested service providers are required to submit a proposal including the following:
