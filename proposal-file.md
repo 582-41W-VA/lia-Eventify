@@ -44,7 +44,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 ### As a user, I can:
 
 - **Create, Edit, and Delete Articles (Events)**  
-  Description: Users can create, update, and remove events. When creating events, users can input essential details such as the name, description, date, time, and location of the event. They also have the option to upload images, add tags, and categorize events.
+  Description: Users can create, update, and remove events. When creating events, users can input essential details such as the name, description, date, time, amout of people and location of the event. They also have the option to upload images, add tags, and categorize events.
 
 - **Browse, Sort, Filter, and Search Events**  
   Description: The platform offers robust browsing functionality, allowing users to sort events by categories like location, date, or popularity. Filters can be applied to narrow down searches to specific interests or types of events (e.g., concerts, conferences, parties).
@@ -84,8 +84,8 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 - **Review Flagged Events**  
   Description: Admins can review flagged events for possible violations of platform rules. They can take appropriate action, such as removing the event or contacting the event creator for clarification.
 
-- **Import Content from a Third-Party API**  
-  Description: Admins can integrate external event data from trusted sources to enrich the event listings, providing more variety and broader coverage of local and global events.
+- **Integrate Maps API**
+  Description: Admins can integrate Maps into the platform to enhance event location features. This will allow users to view event locations on an interactive map, improving accessibility and clarity for attendees.
 
 - **Generate Statistics**  
   Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more. These analytics are crucial for monitoring platform health and user engagement.
@@ -126,7 +126,7 @@ Eventify will be developed using the following technologies:
   The login page will allow users to securely access their accounts. Users can log in with their email and password, or reset their password if necessary.
 
 - **User Dashboard**  
-  The user dashboard will display all of a user’s saved events, liked events, and a history of events they’ve attended or interacted with. It provides an overview of the user’s preferences and event history.
+  The user dashboard will create new event and display all of a user’s saved events, liked events, and a history of events they’ve attended or interacted with. It provides an overview of the user’s preferences and event history.
 
 - **Admin Panel**  
   The admin panel will allow administrators to manage users, events, comments, and flagged content. It will also provide statistical insights into event activity and user engagement.
