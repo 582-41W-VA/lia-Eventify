@@ -6,11 +6,13 @@ These are the links for the Wireframe for our Web Project Two:
 
 - **WireFrames file**: [https://www.figma.com/design/UKcEjYfC8OLVjfdX7dMvVm/WireFrames?node-id=51-918&t=qhPKbKCmjiZGB4cm-0](https://www.figma.com/design/UKcEjYfC8OLVjfdX7dMvVm/WireFrames?node-id=51-918&t=qhPKbKCmjiZGB4cm-0)
 
+
+
 # Wireframes file:
 
 1. Frontpage/Homepage
-2. Event listings page
-3. Event details page
+2. Event listings page...
+3. Event details page...
 4. Login Page
 5. Signup Page
 6. User Dashboard
