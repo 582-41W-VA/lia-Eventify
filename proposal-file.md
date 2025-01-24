@@ -62,7 +62,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: Users can save events that interest them to a Favorate list, giving them easy access later.
 
 - **Browse, Sort, Filter, and Search Favorates events**  
-  Description: Saved events in a user's Favorate can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their Favorate list.
+  Description: Saved events in a user's Favorate list can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their Favorate list.
 
 - **View User Profile/dashboard**  
   Description: A user’s Profile/dashboard can create event and will display their event activity, including past events they’ve attended, events they’ve liked or flagged, and their overall preferences (based on event types and categories).
