@@ -11,8 +11,8 @@ These are the links for the Wireframe for our Web Project Two:
 # Wireframes file:
 
 1. Frontpage/Homepage
-2. Event listings page...
-3. Event details page...
+2. Event listings page
+3. Event details page
 4. Login Page
 5. Signup Page
 6. User Dashboard
