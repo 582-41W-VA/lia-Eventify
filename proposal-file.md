@@ -58,17 +58,17 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 - **Add Comments on Events**  
   Description: Users can interact with events by leaving comments, asking questions, or providing feedback. These comments are shown publicly and attributed to the user.
 
-- **Save Events to a Private Collection**  
-  Description: Users can save events that interest them to a private collection, giving them easy access later. This collection can be managed, with events being added or removed at any time.
+- **Save Events to Favorate**  
+  Description: Users can save events that interest them to a Favorate list, giving them easy access later.
 
-- **Browse, Sort, Filter, and Search a Private Collection**  
-  Description: Saved events in a user's private collection can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their private collection.
+- **Browse, Sort, Filter, and Search Favorates events**  
+  Description: Saved events in a user's Favorate list can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their Favorate list.
 
 - **View User Profile/dashboard**  
-  Description: A user’s Profile/dashboard will display their event activity, including past events they’ve attended, events they’ve liked or flagged, and their overall preferences (based on event types and categories).
+  Description: A user’s Profile/dashboard can create event and will display events they’ve liked or flagged (based on event types and categories).
 
 - **Create and Manage Accounts**  
-  Description: Users can create an account to track their activities, log in to access saved collections, liked events, and other personalized features. Password management and account settings, including notifications and preferences, are also included.
+  Description: Users can create an account to track their activities, log in to access saved Favorate list, liked events, and other personalized features. Password management and account settings, including notifications and preferences, are also included.
 
 ### As an admin, I can:
 
@@ -84,8 +84,8 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 - **Review Flagged Events**  
   Description: Admins can review flagged events for possible violations of platform rules. They can take appropriate action, such as removing the event or contacting the event creator for clarification.
 
-- **Import Content from a Third-Party API**  
-  Description: Admins can integrate external event data from trusted sources to enrich the event listings, providing more variety and broader coverage of local and global events.
+- **Integrate Maps API**
+  Description: Admins can integrate Maps into the platform to enhance event location features. This will allow users to view event locations on an interactive map, improving accessibility and clarity for attendees.
 
 - **Generate Statistics**  
   Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more. These analytics are crucial for monitoring platform health and user engagement.
@@ -126,7 +126,7 @@ Eventify will be developed using the following technologies:
   The login page will allow users to securely access their accounts. Users can log in with their email and password, or reset their password if necessary.
 
 - **User Dashboard**  
-  The user dashboard can create event will display all of a user’s saved events, liked events, and a history of events they’ve attended or interacted with. It provides an overview of the user’s preferences and event history.
+  The user dashboard will create new event and display all of a user’s Favorate events, liked events, and a history of events they’ve attended or interacted with. It provides an overview of the user’s preferences and event history.
 
 - **Admin Panel**  
   The admin panel will allow administrators to manage users, events, comments, and flagged content. It will also provide statistical insights into event activity and user engagement.
