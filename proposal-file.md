@@ -44,7 +44,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 ### As a user, I can:
 
 - **Create, Edit, and Delete Articles (Events)**  
-  Description: Users can create, update, and remove events. When creating events, users can input essential details such as the name, description, date, time, amout of people and location of the event. They also have the option to upload images, add tags, and categorize events.
+  Description: Users can create, update, and remove events. When creating events, users can input essential details such as the name, description, date, time, amout of people and location of the event. They also have the option to upload images, categorize events.
 
 - **Browse, Sort, Filter, and Search Events**  
   Description: The platform offers robust browsing functionality, allowing users to sort events by categories like location, date, or popularity. Filters can be applied to narrow down searches to specific interests or types of events (e.g., concerts, conferences, parties).
