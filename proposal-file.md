@@ -88,7 +88,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: Admins can integrate Maps into the platform to enhance event location features. This will allow users to view event locations on an interactive map, improving accessibility and clarity for attendees.
 
 - **Generate Statistics**  
-  Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more. These analytics are crucial for monitoring platform health and user engagement.
+  Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more(if nessesary).
 
 - **Manage Admin Panel**
   Description: The admin panel provides a comprehensive interface for managing users, events, comments, flagged content, and generating statistics. It features customizations to Django’s default admin interface, offering a more user-friendly layout. Admins can view detailed logs and analytics, review flagged content, and perform moderation actions with a few clicks.
