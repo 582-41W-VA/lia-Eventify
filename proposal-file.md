@@ -31,11 +31,11 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 
 ---
 
-## Primary Users
+## Users
 
-- **Event Organizers**: Individuals or businesses looking to create and share events.
-- **Event Attendees**: Users looking to browse, search for, and save local events of interest.
-- **Admin Users**: Individuals managing users, events, and content within the system.
+- **Primary Users**: Individuals or businesses looking to create and share events. Users looking to browse, search for, and save local events of interest. Both Event Organizers and Event Attendees have the same access.
+
+- **Admin Users**: Managing users, events, and content within the system.
 
 ---
 
