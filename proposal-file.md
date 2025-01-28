@@ -56,7 +56,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: If a user finds an event that is inappropriate or contains incorrect information, they can flag it for review by an administrator. Flagged events are logged and visible in the admin panel for further action.
 
 - **Add Comments on Events**  
-  Description: Users can interact with events by leaving comments, asking questions, or providing feedback. These comments are shown publicly and attributed to the user.
+  Description: Users can interact with events by leaving comments. These comments are shown publicly.
 
 - **Save Events to Favorate**  
   Description: Users can save events that interest them to a Favorate list, giving them easy access later.
