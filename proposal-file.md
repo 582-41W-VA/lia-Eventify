@@ -79,7 +79,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: Admins can edit or remove any event listed on the platform. This includes correcting event details, removing erroneous content, and ensuring that all listed events comply with platform guidelines.
 
 - **Edit and Delete Comments**  
-  Description: Admins have the ability to moderate comments, removing offensive or irrelevant feedback and ensuring a positive user experience.
+  Description: Admins have the ability to moderate comments, removing comments and events.
 
 - **Review Flagged Events**  
   Description: Admins can review flagged events for possible violations of platform rules. They can take appropriate action, such as removing the event or contacting the event creator for clarification.
