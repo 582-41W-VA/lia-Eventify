@@ -147,9 +147,10 @@ Eventify will be developed using the following technologies:
 - Wireframes and Mockups for key pages (home, event listing, Event Details, event details, login) in Figma (Figma design file or FigJam file).
 - Data model: Entity-Relationship diagram. JPEG or PNG image.
 - Initialize the Django project and configure SQLite as the database.
-- Installation Steps with Markdown file.
-- Create models for events, users, and saved events.
+- Set Up URLs for Routing
+- Create models for events, users, events ......
 - Set up user authentication, registration, and account management.
+- Installation Steps with Markdown file.
 
 ### Week 3:
 
