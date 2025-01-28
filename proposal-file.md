@@ -108,10 +108,10 @@ Eventify will be developed using the following technologies:
 
 ---
 
-## Page Summaries
+## Page Summaries (A simplified section for designers to reference to support them in getting started)
 
 - **Homepage**  
-  The homepage will serve as the entry point for users to explore various events. It will include a search bar, event categories, and quick links to popular events. Featured events will be displayed, allowing users to easily browse upcoming events.
+  The homepage will serve as the entry point for users to explore various events. It will include a search bar, event categories, and quick links to popular events. Featured events will be displayed, allowing users to easily browse events.
 
 - **Event Listing Page**  
   This page will display a list of events. Users can sort, filter, and search for events by date, location, and type. Each event listing will include a brief summary with a link to the event details page.
