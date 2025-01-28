@@ -68,7 +68,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: A user’s Profile/dashboard can create event and will display events they’ve liked and attended or flagged.
 
 - **Create and Manage Accounts**  
-  Description: Users can create an account to track their activities, log in to access saved Favorate list, liked events, and other personalized features. Password management and account settings, including notifications and preferences, are also included.
+  Description:Users can create an account, they have login to access saved Favorite list, liked events, and other personalized features. They can change their password and profile picture, username and bio.
 
 ### As an admin, I can:
 
