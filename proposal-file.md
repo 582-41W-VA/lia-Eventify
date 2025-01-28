@@ -157,8 +157,8 @@ Eventify will be developed using the following technologies:
 - Develop CRUD operations for events.
 - Implement event browsing, sorting, and filtering.
 - Add liking/unliking functionality.
-- Enable saving events to a private collection.
-- Create user dashboards to display history and preferences.
+- Enable saving events to a favorit .
+- Create user dashboards to display history and other feaures.
 
 ### Week 4:
 
