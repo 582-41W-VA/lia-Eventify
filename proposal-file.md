@@ -82,7 +82,7 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: Admins have the ability to moderate comments, removing comments and events.
 
 - **Review Flagged Events**  
-  Description: Admins can review flagged events for possible violations of platform rules. They can take appropriate action, such as removing the event or contacting the event creator for clarification.
+  Description: Admins can review and remove flagged events.
 
 - **Integrate Maps API**
   Description: Admins can integrate Maps into the platform to enhance event location features. This will allow users to view event locations on an interactive map, improving accessibility and clarity for attendees.
