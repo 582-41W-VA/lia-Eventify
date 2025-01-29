@@ -1,11 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.db import models
-import uuid
 import re
 
 class User(AbstractUser):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True)
     username = models.CharField(unique=True, max_length=20)
     email = models.EmailField(unique=True)
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True)
@@ -22,6 +21,7 @@ class User(AbstractUser):
 
     @staticmethod
     def validate_email(email):
+        """Validate email using regex to ensure proper formatting."""
         email_regex = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
         if not re.match(email_regex, email):
             raise ValidationError("Invalid email: Please enter a valid email address.")

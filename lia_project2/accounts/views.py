@@ -28,17 +28,16 @@ def register(request):
             return render(request, "accounts/register.html", {"error": "Passwords do not match."})
 
         try:
-            # Create user (email and password validation handled in User model)
             user = User(
                 username=username,
                 email=email,
-                password=password1,  # Email and password validation occurs in save()
+                password=password1,
                 profile_picture=profile_picture,
                 bio=bio,
             )
             user.save()
 
-            login(request, user)  # Auto login after successful registration
+            login(request, user)
             return redirect("home")
 
         except ValidationError as e:
