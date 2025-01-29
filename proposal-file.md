@@ -135,7 +135,7 @@ Eventify will be developed using the following technologies:
 
 ## Project Milestones
 
-### Week 1:
+### Week 1:Project Kickoff
 
 - Set up GitHub repository and branch protection rules.
 - Create and submit the Request for Proposal (RFP).
