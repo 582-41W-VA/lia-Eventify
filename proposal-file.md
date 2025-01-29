@@ -104,7 +104,7 @@ Eventify will be developed using the following technologies:
 - **Django Authentication System**: Handles all user authentication processes, ensuring that users can securely log in, register, and manage their profiles.
 - **Django Admin Panel**: Customized to suit the needs of Eventify, the admin panel provides a user-friendly interface for managing users, events, and comments, along with essential moderation and reporting tools.
 - **Django Templates**: Used to render HTML for user-facing pages, templates ensure that the site's look and feel are consistent and can be easily updated when necessary.
-- **Third-Party API Integration**: Used to fetch and import event data from trusted sources, ensuring Eventify is always up to date with a diverse array of events.
+- **Third-Party API Integration**: The platform will integrate a third-party map API to enhance event location features. This integration will allow users to view event locations on an interactive map, improving accessibility and clarity for event attendees. The map will provide users with directions and help them easily find the event venue.
 
 ---
 
@@ -141,20 +141,19 @@ Eventify will be developed using the following technologies:
 - Create and submit the Request for Proposal (RFP).
 - Create and submit the Proposal document including the application features and architecture, define the milestones and project timeline.
 
-### Week 2:
+### Week 2: Initial Setup & Core Features & User Authentication
 
 - Draft Visual guidelines.
 - Wireframes and Mockups for key pages (home, event listing, Event Details, event details, login) in Figma (Figma design file or FigJam file).
 - Data model: Entity-Relationship diagram. JPEG or PNG image.
-- Initialize the Django project and configure SQLite as the database.
-- Set Up URLs for Routing
-- Create models for events, users, events ......
-- Set up user authentication, registration, and account management.
+- Django Setup: Set up the Django project, create initial models (User, Event, Comment, etc.).
+- Set Up URLs for Routing.
+- User Authentication: Set up user authentication, registration, and account management.
+- Event Management: Develop CRUD operations for events.
 - Installation Steps with Markdown file.
 
 ### Week 3:
 
-- Develop CRUD operations for events.
 - Implement event browsing, sorting, and filtering.
 - Add liking/unliking functionality.
 - Enable saving events to a favorit .
