@@ -160,18 +160,20 @@ Eventify will be developed using the following technologies:
 - Admin Panel Enhancements: Customize Django’s admin panel to better manage events, users, and flagged content.
 - Map API Finalization: Enhance the map functionality for the admin panel, allowing full event location features.
 
-### Week 4:
+### Week 4: User Interaction & Admin Features
 
-- Customize the Django admin panel to manage users, events, comments, and flags.
-- Build tools for generating statistics and importing third-party content.
-- Complete styling for all pages based on visual guidelines.
-- Integrate search functionality using Django QuerySets.
-- Enhance user dashboards with recommendations.
+- Commenting on Events: Allow users to comment on events, with moderation capabilities in the admin panel.
+- Admin Moderation: Implement admin functionality for editing and comments, deleting events, Editing and deleting user accounts, managing flagged content(approve or remove).
+- User Profile Enhancements: A list of events the user has created, liked, or saved. Profile customization options (profile picture, bio).
+- Testing & Debugging: Begin testing core features (event creation, user profile, search functionality).
+- Styling Pages: Complete styling for all pages based on visual guidelines.
+- Performance Optimization: Review and optimize the platform’s performance for user interaction and admin features.
 
-### Week 5:
+### Week 5:Final Testing & Documentation
 
-- Conduct internal testing to ensure functionality and responsiveness.
-- Create a user manual and API documentation.
+- Final Testing: Conduct extensive testing across all features (event management, user interactions, search and filtering ...).
+- Bug Fixing: Address any issues identified during testing, and finalize debugging.
+- Documentation:Create a user manual and API documentation.
 - Final review of the project, making sure all features are integrated and functional.
 - Submit the final project for evaluation.
 
