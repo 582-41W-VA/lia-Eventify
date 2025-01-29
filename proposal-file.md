@@ -152,12 +152,13 @@ Eventify will be developed using the following technologies:
 - Event Management: Develop CRUD operations for events.
 - Installation Steps with Markdown file.
 
-### Week 3:
+### Week 3:Search, Sorting, and Filtering
 
-- Implement event browsing, sorting, and filtering.
-- Add liking/unliking functionality.
-- Enable saving events to a favorit .
-- Create user dashboards to display history and other feaures.
+- Search Functionality: Implement search functionality for users to search for events based on keywords.
+- Sort and Filter: Add event sorting (by date, popularity, etc.) and filtering options (e.g., event type, location) for users.
+- Event Interaction: Implement the Like/Unlike, Save to Favorites, and Flag inappropriate content features.
+- Admin Panel Enhancements: Customize Django’s admin panel to better manage events, users, and flagged content.
+- Map API Finalization: Enhance the map functionality for the admin panel, allowing full event location features.
 
 ### Week 4:
 
