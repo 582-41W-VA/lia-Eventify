@@ -31,11 +31,11 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 
 ---
 
-## Primary Users
+## Users
 
-- **Event Organizers**: Individuals or businesses looking to create and share events.
-- **Event Attendees**: Users looking to browse, search for, and save local events of interest.
-- **Admin Users**: Individuals managing users, events, and content within the system.
+- **Primary Users**: Individuals or businesses looking to create and share events. Users looking to browse, search for, and save local events of interest. Both Event Organizers and Event Attendees have the same access.
+
+- **Admin Users**: Managing users, events, and content within the system.
 
 ---
 
@@ -43,8 +43,8 @@ Eventify is a web-based event planning portal designed to simplify the organizat
 
 ### As a user, I can:
 
-- **Create, Edit, and Delete Articles (Events)**  
-  Description: Users can create, update, and remove events. When creating events, users can input essential details such as the name, description, date, time, amout of people and location of the event. They also have the option to upload images, categorize events.
+- **Create, Edit, and Delete Events**  
+  Description: Users can create, update, and remove the events that they have created. When creating events, users can input essential details such as the event title, description, start, end date and time, max attendees, location of the event. They also have the option to upload image for events, categorize events.
 
 - **Browse, Sort, Filter, and Search Events**  
   Description: The platform offers robust browsing functionality, allowing users to sort events by categories like location, date, or popularity. Filters can be applied to narrow down searches to specific interests or types of events (e.g., concerts, conferences, parties).
@@ -56,19 +56,19 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: If a user finds an event that is inappropriate or contains incorrect information, they can flag it for review by an administrator. Flagged events are logged and visible in the admin panel for further action.
 
 - **Add Comments on Events**  
-  Description: Users can interact with events by leaving comments, asking questions, or providing feedback. These comments are shown publicly and attributed to the user.
+  Description: Users can interact with events by leaving comments. These comments are shown publicly.
 
-- **Save Events to Favorate**  
-  Description: Users can save events that interest them to a Favorate list, giving them easy access later.
+- **Save Events to Favorite**  
+  Description: Users can save events that interest them to a Favorite list, giving them easy access later.
 
-- **Browse, Sort, Filter, and Search Favorates events**  
-  Description: Saved events in a user's Favorate list can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their Favorate list.
+- **Browse, Sort, Filter, and Search Favorites events**  
+  Description: Saved events in a user's Favorite list can be organized with similar sorting and filtering options as the broader event listings. Users can look up events by name, type, or date in their Favorate list.
 
 - **View User Profile/dashboard**  
-  Description: A user’s Profile/dashboard can create event and will display events they’ve liked or flagged (based on event types and categories).
+  Description: A user’s Profile/dashboard can create event and will display events they’ve liked and attended or flagged.
 
 - **Create and Manage Accounts**  
-  Description: Users can create an account to track their activities, log in to access saved Favorate list, liked events, and other personalized features. Password management and account settings, including notifications and preferences, are also included.
+  Description:Users can create an account, they have login to access saved Favorite list, liked events, and other personalized features. They can change their password and profile picture, username and bio.
 
 ### As an admin, I can:
 
@@ -79,16 +79,16 @@ Eventify is a web-based event planning portal designed to simplify the organizat
   Description: Admins can edit or remove any event listed on the platform. This includes correcting event details, removing erroneous content, and ensuring that all listed events comply with platform guidelines.
 
 - **Edit and Delete Comments**  
-  Description: Admins have the ability to moderate comments, removing offensive or irrelevant feedback and ensuring a positive user experience.
+  Description: Admins have the ability to moderate comments, removing comments and events.
 
 - **Review Flagged Events**  
-  Description: Admins can review flagged events for possible violations of platform rules. They can take appropriate action, such as removing the event or contacting the event creator for clarification.
+  Description: Admins can review and remove flagged events.
 
 - **Integrate Maps API**
   Description: Admins can integrate Maps into the platform to enhance event location features. This will allow users to view event locations on an interactive map, improving accessibility and clarity for attendees.
 
 - **Generate Statistics**  
-  Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more. These analytics are crucial for monitoring platform health and user engagement.
+  Description: Admins can access real-time statistics on platform activity, including the number of active users, events, flagged content, and more(if nessesary).
 
 - **Manage Admin Panel**
   Description: The admin panel provides a comprehensive interface for managing users, events, comments, flagged content, and generating statistics. It features customizations to Django’s default admin interface, offering a more user-friendly layout. Admins can view detailed logs and analytics, review flagged content, and perform moderation actions with a few clicks.
@@ -104,14 +104,14 @@ Eventify will be developed using the following technologies:
 - **Django Authentication System**: Handles all user authentication processes, ensuring that users can securely log in, register, and manage their profiles.
 - **Django Admin Panel**: Customized to suit the needs of Eventify, the admin panel provides a user-friendly interface for managing users, events, and comments, along with essential moderation and reporting tools.
 - **Django Templates**: Used to render HTML for user-facing pages, templates ensure that the site's look and feel are consistent and can be easily updated when necessary.
-- **Third-Party API Integration**: Used to fetch and import event data from trusted sources, ensuring Eventify is always up to date with a diverse array of events.
+- **Third-Party API Integration**: The platform will integrate a third-party map API to enhance event location features. This integration will allow users to view event locations on an interactive map, improving accessibility and clarity for event attendees. The map will provide users with directions and help them easily find the event venue.
 
 ---
 
-## Page Summaries
+## Page Summaries (A simplified section for designers to reference to support them in getting started)
 
 - **Homepage**  
-  The homepage will serve as the entry point for users to explore various events. It will include a search bar, event categories, and quick links to popular events. Featured events will be displayed, allowing users to easily browse upcoming events.
+  The homepage will serve as the entry point for users to explore various events. It will include a search bar, event categories, and quick links to popular events. Featured events will be displayed, allowing users to easily browse events.
 
 - **Event Listing Page**  
   This page will display a list of events. Users can sort, filter, and search for events by date, location, and type. Each event listing will include a brief summary with a link to the event details page.
@@ -126,7 +126,7 @@ Eventify will be developed using the following technologies:
   The login page will allow users to securely access their accounts. Users can log in with their email and password, or reset their password if necessary.
 
 - **User Dashboard**  
-  The user dashboard will create new event and display all of a user’s Favorate events, liked events, and a history of events they’ve attended or interacted with. It provides an overview of the user’s preferences and event history.
+  The user dashboard will create new event and display all of a user’s Favorate events, liked events, and a history of events they’ve attended.
 
 - **Admin Panel**  
   The admin panel will allow administrators to manage users, events, comments, and flagged content. It will also provide statistical insights into event activity and user engagement.
@@ -135,42 +135,45 @@ Eventify will be developed using the following technologies:
 
 ## Project Milestones
 
-### Week 1:
+### Week 1:Project Kickoff
 
 - Set up GitHub repository and branch protection rules.
 - Create and submit the Request for Proposal (RFP).
 - Create and submit the Proposal document including the application features and architecture, define the milestones and project timeline.
 
-### Week 2:
+### Week 2: Initial Setup & Core Features & User Authentication
 
 - Draft Visual guidelines.
 - Wireframes and Mockups for key pages (home, event listing, Event Details, event details, login) in Figma (Figma design file or FigJam file).
 - Data model: Entity-Relationship diagram. JPEG or PNG image.
-- Initialize the Django project and configure SQLite as the database.
+- Django Setup: Set up the Django project, create initial models (User, Event, Comment, etc.).
+- Set Up URLs for Routing.
+- User Authentication: Set up user authentication, registration, and account management.
+- Event Management: Develop CRUD operations for events.
 - Installation Steps with Markdown file.
-- Create models for events, users, and saved events.
-- Set up user authentication, registration, and account management.
 
-### Week 3:
+### Week 3:Search, Sorting, and Filtering
 
-- Develop CRUD operations for events.
-- Implement event browsing, sorting, and filtering.
-- Add liking/unliking functionality.
-- Enable saving events to a private collection.
-- Create user dashboards to display history and preferences.
+- Search Functionality: Implement search functionality for users to search for events based on keywords.
+- Sort and Filter: Add event sorting (by date, popularity, etc.) and filtering options (e.g., event type, location) for users.
+- Event Interaction: Implement the Like/Unlike, Save to Favorites, and Flag inappropriate content features.
+- Admin Panel Enhancements: Customize Django’s admin panel to better manage events, users, and flagged content.
+- Map API Finalization: Enhance the map functionality for the admin panel, allowing full event location features.
 
-### Week 4:
+### Week 4: User Interaction & Admin Features
 
-- Customize the Django admin panel to manage users, events, comments, and flags.
-- Build tools for generating statistics and importing third-party content.
-- Complete styling for all pages based on visual guidelines.
-- Integrate search functionality using Django QuerySets.
-- Enhance user dashboards with recommendations.
+- Commenting on Events: Allow users to comment on events, with moderation capabilities in the admin panel.
+- Admin Moderation: Implement admin functionality for editing and comments, deleting events, Editing and deleting user accounts, managing flagged content(approve or remove).
+- User Profile Enhancements: A list of events the user has created, liked, or saved. Profile customization options (profile picture, bio).
+- Testing & Debugging: Begin testing core features (event creation, user profile, search functionality).
+- Styling Pages: Complete styling for all pages based on visual guidelines.
+- Performance Optimization: Review and optimize the platform’s performance for user interaction and admin features.
 
-### Week 5:
+### Week 5:Final Testing & Documentation
 
-- Conduct internal testing to ensure functionality and responsiveness.
-- Create a user manual and API documentation.
+- Final Testing: Conduct extensive testing across all features (event management, user interactions, search and filtering ...).
+- Bug Fixing: Address any issues identified during testing, and finalize debugging.
+- Documentation:Create a user manual and API documentation.
 - Final review of the project, making sure all features are integrated and functional.
 - Submit the final project for evaluation.
 
