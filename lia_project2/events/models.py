@@ -9,11 +9,21 @@ class Event(models.Model):
     end_datetime = models.DateTimeField()
     max_attendees = models.PositiveIntegerField()
     location = models.CharField(max_length=250)
-    latitude = models.FloatField(null=True, blank=True)  # Store latitude
-    longitude = models.FloatField(null=True, blank=True)  # Store longitude
+    latitude = models.FloatField(null=True, blank=True)  
+    longitude = models.FloatField(null=True, blank=True) 
     image = models.ImageField(upload_to='events/', blank=True, null=True)
     category = models.CharField(max_length=100)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+    
+  
+class Comment(models.Model):
+    event = models.ForeignKey(Event, related_name='comments', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.event.title}"
