@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout, authenticate
 from accounts.models import User
 
-def register(request):
+def user_signup(request):
     if request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
@@ -14,18 +14,18 @@ def register(request):
 
         # Check required fields
         if not username or not email or not password1 or not password2:
-            return render(request, "accounts/register.html", {"error": "All fields are required."})
+            return render(request, "accounts/signup.html", {"error": "All fields are required."})
 
         # Check if username or email is already taken
         if User.objects.filter(username=username).exists():
-            return render(request, "accounts/register.html", {"error": "Username already in use."})
+            return render(request, "accounts/signup.html", {"error": "Username already in use."})
 
         if User.objects.filter(email=email).exists():
-            return render(request, "accounts/register.html", {"error": "Email already registered."})
+            return render(request, "accounts/signup.html", {"error": "Email already registered."})
 
         # Check if passwords match
         if password1 != password2:
-            return render(request, "accounts/register.html", {"error": "Passwords do not match."})
+            return render(request, "accounts/signup.html", {"error": "Passwords do not match."})
 
         try:
             user = User(
@@ -42,9 +42,9 @@ def register(request):
             return redirect("home")
 
         except ValidationError as e:
-            return render(request, "accounts/register.html", {"error": e.messages[0]})
+            return render(request, "accounts/signup.html", {"error": e.messages[0]})
 
-    return render(request, "accounts/register.html")
+    return render(request, "accounts/signup.html")
 
 def user_login(request):
     if request.method == "POST":
