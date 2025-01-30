@@ -9,13 +9,13 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ("username", "email")
     ordering = ("username",)
     
-    readonly_fields = ("date_joined", "last_login")
+    readonly_fields = ("date_joined",)
 
     fieldsets = (
         (None, {'fields': ('username', 'email', 'password')}),
         ('Profile Info', {'fields': ('bio', 'profile_picture')}),
         ('Permissions', {'fields': ('is_admin',)}),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+        ('Important dates', {'fields': ('date_joined',)}),
     )
 
     filter_horizontal = ()
