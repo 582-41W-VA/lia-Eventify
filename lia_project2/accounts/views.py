@@ -35,13 +35,14 @@ def register(request):
                 profile_picture=profile_picture,
                 bio=bio,
             )
+            user.set_password(password1)
             user.save()
 
             login(request, user)
             return redirect("home")
 
         except ValidationError as e:
-            return render(request, "accounts/register.html", {"error": e.message})
+            return render(request, "accounts/register.html", {"error": e.messages[0]})
 
     return render(request, "accounts/register.html")
 

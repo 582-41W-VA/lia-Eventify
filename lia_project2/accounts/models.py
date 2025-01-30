@@ -4,7 +4,6 @@ from django.db import models
 import re
 
 class User(AbstractUser):
-    id = models.AutoField(primary_key=True)
     username = models.CharField(unique=True, max_length=20)
     email = models.EmailField(unique=True)
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True)
