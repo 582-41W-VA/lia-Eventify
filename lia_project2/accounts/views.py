@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
-from django.contrib.auth import login
+from django.contrib.auth import login, logout, authenticate
 from accounts.models import User
 
 def register(request):
@@ -35,12 +35,32 @@ def register(request):
                 profile_picture=profile_picture,
                 bio=bio,
             )
+            user.set_password(password1)
             user.save()
 
             login(request, user)
             return redirect("home")
 
         except ValidationError as e:
-            return render(request, "accounts/register.html", {"error": e.message})
+            return render(request, "accounts/register.html", {"error": e.messages[0]})
 
     return render(request, "accounts/register.html")
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect("home")
+        else:
+            return render(request, "accounts/login.html", {"error": "Invalid username or password."})
+
+    return render(request, "accounts/login.html")
+
+
+def user_logout(request):
+    logout(request)
+    return redirect("login")
