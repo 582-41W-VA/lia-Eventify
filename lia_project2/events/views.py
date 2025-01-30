@@ -3,8 +3,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Event, Category
 
 def homepage(request):
+    return render(request, "events/homepage.html")
+
+def event_list(request):
     events = Event.objects.all().order_by("-start_datetime")
-    return render(request, "events/homepage.html", {"events": events})
+    return render(request, "events/event_list.html", {"events": events})
 
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
@@ -26,7 +29,7 @@ def event_create(request):
 
         category = Category.objects.filter(name=category_name).first()
         if not category:
-            return render(request, "events/event_form.html", {"error": "Invalid category."})
+            return render(request, "events/event_create.html", {"error": "Invalid category."})
 
         event = Event.objects.create(
             title=title,
@@ -44,4 +47,4 @@ def event_create(request):
         return redirect("event_list")
 
     categories = Category.objects.all()
-    return render(request, "events/event_form.html", {"categories": categories})
+    return render(request, "events/event_create.html", {"categories": categories})
