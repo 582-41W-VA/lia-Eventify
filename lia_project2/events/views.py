@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Event, Category
 
-def event_list(request):
+def homepage(request):
     events = Event.objects.all().order_by("-start_datetime")
-    return render(request, "events/event_list.html", {"events": events})
+    return render(request, "events/homepage.html", {"events": events})
 
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
