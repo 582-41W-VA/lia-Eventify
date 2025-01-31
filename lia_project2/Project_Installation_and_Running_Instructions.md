@@ -9,6 +9,15 @@ Ensure you have the following installed:
 - Python (version 3.11+)
 - [uv](https://github.com/lyz-code/uv) (for running the Django project easily)
 
+### 1. Clone the Project Repository
+
+If you haven't already, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/your-repository-link.git
+cd lia_project2
+```
+
 ### 1. Install `uv` if Not Installed
 
 If `uv` is not installed, you can install it using `pip`:
