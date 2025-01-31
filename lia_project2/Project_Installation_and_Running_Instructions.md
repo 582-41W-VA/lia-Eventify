@@ -36,3 +36,13 @@ uv run manage.py createsuperuser
 ```
 
 Follow the prompts to set the superuser's username, email, and password.
+
+### 4. Accessing the Admin Panel
+
+Once the server is running, you can access the Django admin panel at:
+
+```bash
+http://127.0.0.1:8000/admin/
+```
+
+Use the superuser credentials you created in the previous step to log in.
