@@ -46,3 +46,12 @@ http://127.0.0.1:8000/admin/
 ```
 
 Use the superuser credentials you created in the previous step to log in.
+
+### 5. (Optional) Managing Database Migrations
+
+If you've made changes to the models and need to apply database migrations, run the following commands:
+
+```bash
+uv run manage.py makemigrations
+uv run manage.py migrate
+```
