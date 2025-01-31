@@ -64,10 +64,16 @@ cd your-project-directory
 
 ### 2. Install `uv` if Not Installed
 
-If `uv` is not installed, you can install it using `pip`:
+If `uv` is not installed:
+
+#### 1. For Windows Users
+
+To install uv on Windows, use Scoop:
+First, install Scoop (if it's not already installed): Open PowerShell as Administrator and run the following command:
 
 ```bash
-pip install uv
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+iex ((New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh'))
 ```
 
 ### 3. Running the Project
