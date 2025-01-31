@@ -20,7 +20,7 @@ git clone https://github.com/your-repository-link.git
 cd lia_project2
 ```
 
-### 1. Install `uv` if Not Installed
+### 2. Install `uv` if Not Installed
 
 If `uv` is not installed, you can install it using `pip`:
 
@@ -28,7 +28,7 @@ If `uv` is not installed, you can install it using `pip`:
 pip install uv
 ```
 
-### 2. Running the Project
+### 3. Running the Project
 
 To run the Django development server using uv run, execute the following command in the project directory:
 
@@ -38,7 +38,7 @@ uv run manage.py runserver
 
 - This will start the Django development server, and the project should be accessible at http://127.0.0.1:8000/ in your browser.
 
-### 3. Creating a Superuser (Optional)
+### 4. Creating a Superuser (Optional)
 
 If you need to create a superuser to access the Django admin panel, run the following command:
 
@@ -48,7 +48,7 @@ uv run manage.py createsuperuser
 
 Follow the prompts to set the superuser's username, email, and password.
 
-### 4. Accessing the Admin Panel
+### 5. Accessing the Admin Panel
 
 Once the server is running, you can access the Django admin panel at:
 
@@ -58,7 +58,7 @@ http://127.0.0.1:8000/admin/
 
 Use the superuser credentials you created in the previous step to log in.
 
-### 5. (Optional) Managing Database Migrations
+### 6. (Optional) Managing Database Migrations
 
 If you've made changes to the models and need to apply database migrations, run the following commands:
 
