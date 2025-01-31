@@ -9,6 +9,8 @@ Ensure you have the following installed:
 - Python (version 3.11+)
 - [uv](https://github.com/lyz-code/uv) (for running the Django project easily)
 
+## Steps to Run the Project
+
 ### 1. Clone the Project Repository
 
 If you haven't already, clone the repository to your local machine:
