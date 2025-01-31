@@ -28,13 +28,12 @@
                 <a href="">Home</a>
                 <a href="">Listings</a>
             </nav>
-            <div class="search-bar">
-                <input type="text" placeholder="Search events">
-                <select>
+            <form class="search-bar" action="#" method="GET">
+                <input type="text" name="search" placeholder="Search events" aria-label="Search events" required>
+                <select name="location" aria-label="Location">
                     <option>Canada, QC</option>
                 </select>
-                <button>Search</button>
-            </div>
+            </form>
         </div>
     </header>
 
@@ -57,9 +56,6 @@
 
     <section class="filters">
         <a href="" class="active">All</a>
-        <a href="">Today</a>
-        <a href="">This Weekend</a>
-        <a href="">Free</a>
     </section>
 
     <section class="event-cards">
@@ -125,9 +121,8 @@
         </div>
     </section>
 
-    <section class="more">
-        <h2>More Events</h2>
-        <a href="" class="show-more">Show more...</a>
+    <section class="most">
+        <h2>Most Favorite</h2>
     </section>
 
     <section class="event-cards">
@@ -190,41 +185,6 @@
                 <p>Price: Free</p>
                 <span class="favorite"><i class="fa-regular fa-heart"></i></span>
             </div>
-        </div>
-    </section>
-
-    <section class="city">
-        <h2>Popular Cities in Canada</h2>
-        <a href="" class="show-more">Show more...</a>
-    </section>
-
-    <section class="cities-container">
-        <div class="city-card">
-            <div class="city-image">
-                <img src="https://149990825.v2.pressablecdn.com/wp-content/uploads/2023/09/Toronto2-752x630.jpg" alt="Toronto cityscape">
-            </div>
-            <a href=""><h2 class="city-name">Toronto</h2></a>
-        </div>
-
-        <div class="city-card">
-            <div class="city-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vancouver_west_end.jpg/640px-Vancouver_west_end.jpg" alt="Vancouver cityscape">
-            </div>
-            <a href=""><h2 class="city-name">Vancouver</h2></a>
-        </div>
-
-        <div class="city-card">
-            <div class="city-image">
-                <img src="https://travel.usnews.com/dims4/USNEWS/babebae/2147483647/resize/600x400%5E%3E/crop/600x400/quality/85/?url=https%3A%2F%2Ftravel.usnews.com%2Fimages%2FLa_grande_roue_3-Stephan_Poulin__Tourisme_Montreal_copy.jpg" alt="Montreal cityscape">
-            </div>
-            <a href=""><h2 class="city-name">Montreal</h2></a>
-        </div>
-
-        <div class="city-card">
-            <div class="city-image">
-                <img src="https://www.worldatlas.com/upload/8b/1e/95/shutterstock-631376156.jpg" alt="Calgary cityscape">
-            </div>
-            <a href=""><h2 class="city-name">Calgary</h2></a>
         </div>
     </section>
 
