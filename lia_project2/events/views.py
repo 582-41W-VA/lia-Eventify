@@ -48,3 +48,42 @@ def event_create(request):
 
     categories = Category.objects.all()
     return render(request, "events/event_create.html", {"categories": categories})
+
+@login_required
+def event_edit(request, event_id):
+    event = get_object_or_404(Event, id=event_id, created_by=request.user)
+
+    if request.method == "POST":
+        event.title = request.POST.get("title")
+        event.description = request.POST.get("description")
+        event.start_datetime = request.POST.get("start_datetime")
+        event.end_datetime = request.POST.get("end_datetime")
+        event.max_attendees = request.POST.get("max_attendees")
+        event.location = request.POST.get("location")
+        event.latitude = request.POST.get("latitude") or None
+        event.longitude = request.POST.get("longitude") or None
+        category_name = request.POST.get("category")
+
+        category = Category.objects.filter(name=category_name).first()
+        if not category:
+            return render(request, "events/event_form.html", {"error": "Invalid category.", "event": event})
+
+        event.category = category.name
+        if "image" in request.FILES:
+            event.image = request.FILES["image"]
+
+        event.save()
+        return redirect("event_detail", event_id=event.id)
+
+    categories = Category.objects.all()
+    return render(request, "events/event_form.html", {"event": event, "categories": categories})
+
+@login_required
+def event_delete(request, event_id):
+    event = get_object_or_404(Event, id=event_id, created_by=request.user)
+
+    if request.method == "POST":
+        event.delete()
+        return redirect("event_list")
+
+    return render(request, "events/event_confirm_delete.html", {"event": event})
