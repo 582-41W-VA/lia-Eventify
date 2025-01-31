@@ -76,6 +76,12 @@ Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 iex ((New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh'))
 ```
 
+#### 2. Once Scoop is installed, install uv:
+
+```bash
+scoop install uv
+```
+
 ### 3. Running the Project
 
 To run the Django development server using uv run, execute the following command in the project directory:
