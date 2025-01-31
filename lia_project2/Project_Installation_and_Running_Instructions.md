@@ -16,3 +16,11 @@ If `uv` is not installed, you can install it using `pip`:
 ```bash
 pip install uv
 ```
+
+### 2. Running the Project
+
+To run the Django development server using uv run, execute the following command in the project directory:
+
+```bash
+uv run manage.py runserver
+```
