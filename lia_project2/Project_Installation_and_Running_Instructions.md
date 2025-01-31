@@ -55,3 +55,5 @@ If you've made changes to the models and need to apply database migrations, run 
 uv run manage.py makemigrations
 uv run manage.py migrate
 ```
+
+This ensures that any database schema changes are reflected in the database.
