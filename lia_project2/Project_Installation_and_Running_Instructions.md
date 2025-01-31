@@ -10,6 +10,47 @@ Ensure you have the following installed:
 - [uv](https://github.com/lyz-code/uv) (for running the Django project easily)
   To install uv, follow the steps below.
 
+### 1. For Windows Users
+
+#### 1. Install Scoop (if you don't have it already): Open PowerShell as Administrator and run:
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+iex ((New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh'))
+```
+
+#### 2. Install uv globally using Scoop:
+
+```bash
+scoop install uv
+```
+
+### 2. For macOS and Linux Users
+
+#### 1. Install Homebrew (macOS) or Linuxbrew (Linux) if you don't have it already: For macOS:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+For Linux (installing Linuxbrew):
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+#### 2. Install uv using Homebrew/Linuxbrew:
+
+```bash
+brew install uv
+```
+
+Alternatively, if you're using Linux or prefer another method, you can install uv via pip (but avoid using it if possible for simplicity):
+
+```bash
+pip install uv
+```
+
 ## Steps to Run the Project
 
 ### 1. Clone the Project Repository
