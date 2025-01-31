@@ -24,3 +24,5 @@ To run the Django development server using uv run, execute the following command
 ```bash
 uv run manage.py runserver
 ```
+
+- This will start the Django development server, and the project should be accessible at http://127.0.0.1:8000/ in your browser.
