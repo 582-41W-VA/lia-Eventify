@@ -6,8 +6,9 @@ Follow these steps to run the project.
 
 Ensure you have the following installed:
 
-- Python (version 3.11+)
+- Python (version 3.11+) (Check by running python --version in your terminal)
 - [uv](https://github.com/lyz-code/uv) (for running the Django project easily)
+  To install uv, follow the steps below.
 
 ## Steps to Run the Project
 
