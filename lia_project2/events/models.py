@@ -55,4 +55,5 @@ class Flag(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     reason = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
+    def __str__(self):
+        return f"Flagged: {self.event.title}"
