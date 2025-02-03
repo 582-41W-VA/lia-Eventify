@@ -31,6 +31,10 @@ AUTH_USER_MODEL = 'accounts.User'
 
 SITE_ID = 1
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,7 +57,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "accounts.middleware.BlockNonAdminMiddleware",
 ]
+
+
 
 ROOT_URLCONF = 'eventify.urls'
 
