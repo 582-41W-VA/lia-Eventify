@@ -20,7 +20,7 @@ class Event(models.Model):
     latitude = models.FloatField(null=True, blank=True)  
     longitude = models.FloatField(null=True, blank=True) 
     image = models.ImageField(upload_to='events/', blank=True, null=True)
-    category = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -55,3 +55,4 @@ class Flag(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     reason = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
