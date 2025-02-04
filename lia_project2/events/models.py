@@ -61,5 +61,9 @@ class Flag(models.Model):
     reason = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+    class Meta:
+            unique_together = ("user", "event")
+
     def __str__(self):
-        return f"Flagged: {self.event.title}"
+        return f"{self.user.username} flagged {self.event.title} for {self.reason}"
