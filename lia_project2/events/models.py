@@ -26,7 +26,6 @@ class Event(models.Model):
     Favorited_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="favorite_events", blank=True)
     flagged_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="flagged_events", blank=True)
 
-
     def __str__(self):
         return self.title
     
@@ -68,7 +67,6 @@ class Flag(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     reason = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
 
     class Meta:
             unique_together = ("user", "event")
