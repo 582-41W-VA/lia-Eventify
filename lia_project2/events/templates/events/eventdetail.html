@@ -6,6 +6,13 @@
 <section class="event-detail">
     <div class="event-container">
 
+       {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-image">
+        {% else %}
+            <p>No image available for this event.</p>
+        {% endif %}
+
+
 
 
     </div>
