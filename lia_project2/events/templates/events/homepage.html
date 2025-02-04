@@ -59,31 +59,27 @@
     <section class="filters">
         <h2 class="active">featured Events</h2>
     </section>
-
     <section class="event-cards">
         <ul>
-           
             {% for event in featured_events %}
                 <li>
-                     <div class="event-card">
-                    {% if event.image %}
-                        <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
-                    {% else %}
-                        <p>No image available for this event.</p>
-                    {% endif %}
-                    <h3>{{ event.title }}</h3>
-                    <p>{{ event.description }}</p>
-                    <p>Date: {{ event.start_datetime }}</p>
-                    <p>Location: {{ event.location }}</p>
-                         </div>
+                    <div class="event-card">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
+                        {% else %}
+                            <p>No image available for this event.</p>
+                        {% endif %}
+                        <h3>{{ event.title }}</h3>
+                        <p>{{ event.description }}</p>
+                        <p>Date: {{ event.start_datetime }}</p>
+                        <p>Location: {{ event.location }}</p>
+                   </div>
                 </li>
-         
                 {% empty %}
                     <p>No featured events available.</p>
                 {% endfor %}
         </ul>
     </section>
-
 
 
 {% endblock %}
