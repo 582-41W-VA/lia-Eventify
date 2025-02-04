@@ -45,6 +45,8 @@ class FavoriteEvent(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    class Meta:
+            unique_together = ("user", "event")
 
     def __str__(self):
         return f"{self.user.username} favorite {self.event.title}"
