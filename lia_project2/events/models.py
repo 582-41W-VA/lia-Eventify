@@ -64,13 +64,20 @@ class Like(models.Model):
     
 
 class Flag(models.Model):
+    REASON_CHOICES = [
+        ('spam', 'Spam or Misleading'),
+        ('abuse', 'Harassment or Abuse'),
+        ('inappropriate', 'Inappropriate Content'),
+        ('other', 'Other'),
+    ]
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    reason = models.TextField()
+    reason = models.CharField(max_length=50, choices=REASON_CHOICES, default='other')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-            unique_together = ("user", "event")
+        unique_together = ("user", "event")
 
     def __str__(self):
-        return f"{self.user.username} flagged {self.event.title} for {self.reason}"
+        return f"{self.user.username} flagged {self.event.title} for {self.get_reason_display()}"
