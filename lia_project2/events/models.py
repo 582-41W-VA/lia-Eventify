@@ -26,6 +26,7 @@ class Event(models.Model):
     Favorited_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="favorite_events", blank=True)
     flagged_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="flagged_events", blank=True)
 
+
     def __str__(self):
         return self.title
     
