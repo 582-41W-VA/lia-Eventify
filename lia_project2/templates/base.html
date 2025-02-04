@@ -18,3 +18,39 @@
     <link rel="stylesheet" href="static/events/homepage.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+
+
+<body>
+  
+  <header>
+    <div class="top-bar">
+        <div class="logo">Eventify</div>
+        <div class="auth-buttons">
+            <a href="" class="login">Log in</a>
+            <a href="" class="signup">Sign up</a>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <nav>
+            <a href="">Home</a>
+            <a href="">Listings</a>
+        </nav>
+        <form class="search-bar" action="#" method="GET">
+            <input type="text" name="search" placeholder="Search events" aria-label="Search events" required>
+            <select name="location" aria-label="Location">
+                <option>Canada, QC</option>
+            </select>
+        </form>
+    </div>
+  </header>
+  
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+
+  
+
+</body>
