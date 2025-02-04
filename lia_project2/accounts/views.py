@@ -39,7 +39,7 @@ def user_signup(request):
             user.save()
 
             login(request, user)
-            return redirect("home")
+            return redirect("homepage")
 
         except ValidationError as e:
             return render(request, "accounts/signup.html", {"error": e.messages[0]})
@@ -51,11 +51,20 @@ def user_login(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
 
+        print(f"🔍 DEBUG: Trying to authenticate user '{username}' with password '{password}'")
+
+        if not User.objects.filter(username=username).exists():
+            print(f"❌ DEBUG: User '{username}' does not exist in the database.")
+            return render(request, "accounts/login.html", {"error": "Invalid username or password."})
+
         user = authenticate(request, username=username, password=password)
+
         if user:
+            print(f"✅ DEBUG: Authentication successful for user '{username}'")
             login(request, user)
-            return redirect("home")
+            return redirect("homepage")
         else:
+            print(f"❌ DEBUG: Authentication failed for user '{username}'. Password may be incorrect.")
             return render(request, "accounts/login.html", {"error": "Invalid username or password."})
 
     return render(request, "accounts/login.html")
