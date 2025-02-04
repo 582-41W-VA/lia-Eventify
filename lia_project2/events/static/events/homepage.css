@@ -31,7 +31,7 @@ header {
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 35px;
     font-family: "Playfair Display", serif;
     font-weight: bold;
     color: #FF5A5F;
@@ -47,6 +47,7 @@ nav a {
     color: #1a1313;
     font-weight: 500;
     margin-right: 15px;
+    font-size: 18px;
 }
 
 .auth-buttons {
@@ -59,6 +60,7 @@ nav a {
     padding: 8px 16px;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .auth-buttons .login {
@@ -173,12 +175,12 @@ nav a {
 .event-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 20px;
     padding: 35px;
 }
 
 .event-card {
-    background-color: #F5F5F5;
+    background-color: #E5E5E5;
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -196,12 +198,11 @@ nav a {
 }
 
 .event-card-content {
-    padding: 50px;
-    background-color: #E5E5E5;
+    padding: 15px;
 }
 
 .event-card-content h3 {
-    font-size: 32px;
+    font-size: 35px;
     margin-bottom: 8px;
 }
 
@@ -222,8 +223,8 @@ nav a {
     padding: 15px 35px;
 }
 
-.most h2 {
-    font-size: 23px;
+.most h3 {
+    font-size: 35px;
     color: #1a1313;
 }
 
@@ -242,7 +243,7 @@ footer {
     color: #F5F5F5;
     text-decoration: none;
     margin: 0 15px;
-    font-size: 16px;
+    font-size: 21px;
 }
 
 .social-links {
@@ -253,17 +254,12 @@ footer {
     color: #F5F5F5;
     text-decoration: none;
     margin: 0 15px;
-    font-size: 24px;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #F5F5F5;
+    font-size: 23px;
 }
 
 .copyright {
     color: #F5F5F5;
-    font-size: 14px;
+    font-size: 21px;
 }
 
 @media only screen and (max-width: 876px) {
