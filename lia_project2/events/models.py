@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 
 
-
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
@@ -20,8 +19,13 @@ class Event(models.Model):
     latitude = models.FloatField(null=True, blank=True)  
     longitude = models.FloatField(null=True, blank=True) 
     image = models.ImageField(upload_to='events/', blank=True, null=True)
-    category = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="liked_events", blank=True)
+    Favorited_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="favorite_events", blank=True)
+    flagged_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="flagged_events", blank=True)
+
 
     def __str__(self):
         return self.title
@@ -41,6 +45,9 @@ class FavoriteEvent(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    class Meta:
+            unique_together = ("user", "event")
+
     def __str__(self):
         return f"{self.user.username} favorite {self.event.title}"
     
@@ -49,9 +56,21 @@ class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
+    class Meta:
+            unique_together = ("user", "event")
+
+    def __str__(self):
+        return f"{self.user.username} liked {self.event.title}"
+    
 
 class Flag(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     reason = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+            unique_together = ("user", "event")
+
+    def __str__(self):
+        return f"{self.user.username} flagged {self.event.title} for {self.reason}"

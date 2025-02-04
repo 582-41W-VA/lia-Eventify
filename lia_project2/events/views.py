@@ -1,9 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .models import Event, Category
 
 def homepage(request):
-    return render(request, "events/homepage.html")
+    query = request.GET.get("q", "").strip()
+    events = Event.objects.all().order_by("-start_datetime")
+
+    if query:
+        events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
+
+    return render(request, "events/homepage.html", {
+        "all_events": events,
+        "query": query
+    })
 
 def event_list(request):
     events = Event.objects.all().order_by("-start_datetime")
