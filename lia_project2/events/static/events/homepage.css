@@ -76,10 +76,6 @@ nav a {
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #FFCB47;
-    padding: 8px 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); 
 }
 
 .search-bar input[type="text"] {
@@ -98,6 +94,10 @@ nav a {
     border-radius: 4px;
     outline: none;
     background-color: #fff;
+}
+
+.search {
+
 }
 
 .hero {
@@ -229,7 +229,7 @@ nav a {
 }
 
 footer {
-    background-color: #FF6B6B;
+    background-color: #FF5A5F;
     padding: 40px 0;
     text-align: center;
     margin-top: 60px;
