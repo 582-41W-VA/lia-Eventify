@@ -16,6 +16,7 @@ class Event(models.Model):
     end_datetime = models.DateTimeField()
     max_attendees = models.PositiveIntegerField()
     location = models.CharField(max_length=250)
+    province = models.CharField(max_length=100, blank=True, null=True) 
     latitude = models.FloatField(null=True, blank=True)  
     longitude = models.FloatField(null=True, blank=True) 
     image = models.ImageField(upload_to='events/', blank=True, null=True)
