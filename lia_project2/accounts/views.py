@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout, authenticate
 from accounts.models import User
+from django.db.models import Q
 
 def user_signup(request):
     if request.method == "POST":
@@ -48,23 +49,25 @@ def user_signup(request):
 
 def user_login(request):
     if request.method == "POST":
-        username = request.POST.get("username")
+        login_input = request.POST.get("username")
         password = request.POST.get("password")
 
-        print(f"🔍 DEBUG: Trying to authenticate user '{username}' with password '{password}'")
+        print(f"🔍 DEBUG: Trying to authenticate user '{login_input}' with password '{password}'")
 
-        if not User.objects.filter(username=username).exists():
-            print(f"❌ DEBUG: User '{username}' does not exist in the database.")
-            return render(request, "accounts/login.html", {"error": "Invalid username or password."})
-
-        user = authenticate(request, username=username, password=password)
+        user = User.objects.filter(Q(username=login_input) | Q(email=login_input)).first()
 
         if user:
-            print(f"✅ DEBUG: Authentication successful for user '{username}'")
-            login(request, user)
-            return redirect("homepage")
+            authenticated_user = authenticate(request, username=user.username, password=password)
+
+            if authenticated_user:
+                print(f"✅ DEBUG: Authentication successful for user '{user.username}'")
+                login(request, authenticated_user)
+                return redirect("homepage")
+            else:
+                print(f"❌ DEBUG: Authentication failed for user '{login_input}'. Password may be incorrect.")
+                return render(request, "accounts/login.html", {"error": "Invalid username or password."})
         else:
-            print(f"❌ DEBUG: Authentication failed for user '{username}'. Password may be incorrect.")
+            print(f"❌ DEBUG: No user found with username/email '{login_input}'")
             return render(request, "accounts/login.html", {"error": "Invalid username or password."})
 
     return render(request, "accounts/login.html")
