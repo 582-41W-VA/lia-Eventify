@@ -50,7 +50,7 @@ def event_create(request):
             location=location,
             latitude=latitude,
             longitude=longitude,
-            category=category.name,
+            category=category,
             image=image,
             created_by=request.user,
         )
