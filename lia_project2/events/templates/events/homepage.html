@@ -61,26 +61,29 @@
     </section>
 
     <section class="event-cards">
-        <div class="event-card">
-            <ul>
+        <ul>
+           
             {% for event in featured_events %}
-                    <li>
-                        {% if event.image %}
-                            <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
-                        {% else %}
-                            <p>No image available for this event.</p>
-                        {% endif %}
-                        <h3>{{ event.title }}</h3>
-                        <p>{{ event.description }}</p>
-                        <p>Date: {{ event.start_datetime }}</p>
-                        <p>Location: {{ event.location }}</p>
-                    </li>
+                <li>
+                     <div class="event-card">
+                    {% if event.image %}
+                        <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
+                    {% else %}
+                        <p>No image available for this event.</p>
+                    {% endif %}
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.description }}</p>
+                    <p>Date: {{ event.start_datetime }}</p>
+                    <p>Location: {{ event.location }}</p>
+                         </div>
+                </li>
+         
                 {% empty %}
                     <p>No featured events available.</p>
                 {% endfor %}
-            </ul>
-        </div>
+        </ul>
     </section>
+
 
 
 {% endblock %}
