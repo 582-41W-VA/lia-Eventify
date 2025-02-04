@@ -32,7 +32,7 @@
             </div>
         {% endif %}
     
-        {% if events.exists %}
+        {% if all_events.exists %}
             {% for event in all_events %}
                 <div class="event-card">
                     <a href="{% url 'event_detail' event.id %}">
