@@ -19,9 +19,10 @@ class Event(models.Model):
     latitude = models.FloatField(null=True, blank=True)  
     longitude = models.FloatField(null=True, blank=True) 
     image = models.ImageField(upload_to='events/', blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+   
     def __str__(self):
         return self.title
     
@@ -40,6 +41,7 @@ class FavoriteEvent(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+
     def __str__(self):
         return f"{self.user.username} favorite {self.event.title}"
     
@@ -54,5 +56,6 @@ class Flag(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     reason = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"Flagged: {self.event.title}"
