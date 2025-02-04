@@ -19,6 +19,11 @@
         <p class="event-description">{{ event.description }}</p>
 
 
+        {% if event.website %}
+            <p><a href="{{ event.website }}" target="_blank">Visit Event Website</a></p>
+        {% endif %}
+
+       
     </div>
 </section>
 
