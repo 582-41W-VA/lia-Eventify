@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models import Count
+from django.utils import timezone
 from .models import Event, Category
 
 
@@ -16,8 +17,8 @@ def homepage(request):
 
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
-        "all_events": all_events,
-        "query": query,
+        'latest_events':all_events,
+        "query": query
     })
 
 
