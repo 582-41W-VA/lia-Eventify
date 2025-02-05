@@ -12,7 +12,7 @@ def homepage(request):
 
     if query:
         all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
-
+    
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
 
     return render(request, "events/homepage.html", {
