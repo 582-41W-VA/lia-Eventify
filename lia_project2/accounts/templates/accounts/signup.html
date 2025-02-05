@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventify</title>
+    <title>Eventify | Sign Up</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,33 +12,38 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="static/accounts/signup.css">
+    <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
   </head>
   <body>
     <div class="container">
-      <form>
+      <form method="POST" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
         <div class="logo">Eventify</div>
-        
-        <label for="user" class="visually-hidden">User Name</label>
-        <input type="text" id="user" placeholder="User Name" />
+
+        {% if error %}
+          <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        <label for="username" class="visually-hidden">User Name</label>
+        <input type="text" id="username" name="username" placeholder="User Name" required />
 
         <label for="email" class="visually-hidden">Email address</label>
-        <input type="text" id="email" placeholder="Email Address" />
+        <input type="email" id="email" name="email" placeholder="Email Address" required />
 
-        <label for="password" class="visually-hidden">Password</label>
-        <input type="password" id="password" placeholder="Password" />
+        <label for="password1" class="visually-hidden">Password</label>
+        <input type="password" id="password1" name="password1" placeholder="Password" required />
 
-        <label for="password" class="visually-hidden">Password</label>
-        <input type="password" id="password" placeholder="Confirm Password" />
+        <label for="password2" class="visually-hidden">Confirm Password</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirm Password" required />
+
         <button type="submit">Sign up</button>
       </form>
     </div>
 
     <footer>
       <div class="footer-nav">
-        <a href="">Home</a>
-        <a href="">Services</a>
-        <a href="">Blog</a>
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'event_list' %}">Listings</a>
       </div>
 
       <div class="social-links">

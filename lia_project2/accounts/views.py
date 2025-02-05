@@ -11,7 +11,7 @@ def user_signup(request):
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
         profile_picture = request.FILES.get("profile_picture")
-        bio = request.POST.get("bio")
+        bio = request.POST.get("bio", "")
 
         # Check required fields
         if not username or not email or not password1 or not password2:
@@ -57,6 +57,8 @@ def user_login(request):
         user = User.objects.filter(Q(username=login_input) | Q(email=login_input)).first()
 
         if user:
+            print(f"🔍 DEBUG: Found user '{user.username}', checking password...")
+
             authenticated_user = authenticate(request, username=user.username, password=password)
 
             if authenticated_user:
@@ -75,4 +77,4 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect("login")
+    return redirect("homepage")
