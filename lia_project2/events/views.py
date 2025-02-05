@@ -8,16 +8,16 @@ from .models import Event, Category
 
 def homepage(request):
     query = request.GET.get("q", "").strip()
-    events = Event.objects.all().order_by("-start_datetime")
+    all_events = Event.objects.all().order_by("-start_datetime")
 
     if query:
-        events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
-    latest_events = events.filter(start_datetime__gte=timezone.now())
-    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+        all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
+    
+    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
 
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
-        'latest_events':latest_events,
+        'latest_events':all_events,
         "query": query
     })
 
