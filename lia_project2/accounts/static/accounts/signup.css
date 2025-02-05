@@ -53,6 +53,17 @@ form input {
   color: #565151;
 }
 
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+  color: #565151;
+}
+
 form button {
   width: 100%;
   padding: 10px;
