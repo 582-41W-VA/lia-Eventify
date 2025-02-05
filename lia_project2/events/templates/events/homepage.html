@@ -22,62 +22,64 @@
     </section>
 
     <section class="filters">
-            <a href="" class="active">All</a>
-        </section>
+        <a href="" class="active">All</a>
+    </section>
+
+    <section class="event-cards">
+        {% if query %}
+            <div>
+                <h2>Search Results for "{{ query }}"</h2>
+            </div>
+        {% endif %}
     
-        <section class="event-cards">
-            {% if query %}
-                <div>
-                    <h2>Search Results for "{{ query }}"</h2>
-                </div>
-            {% endif %}
-        
-            {% if all_events.exists %}
-                {% for event in all_events %}
-                    <div class="event-card">
-                        <a href="{% url 'event_detail' event.id %}">
-                            <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                        </a>
-                        <div class="event-card-content">
-                            <h3>{{ event.title }}</h3>
-                            <p>{{ event.start_datetime|date:"D, M j, g:i A" }}</p>
-                            <p>Location: {{ event.location }}</p>
-                            <span class="favorite"><i class="fa-regular fa-heart"></i></span>
-                        </div>
+        {% if all_events.exists %}
+            {% for event in all_events %}
+                <div class="event-card">
+                    <a href="{% url 'event_detail' event.id %}">
+                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                    </a>
+                    <div class="event-card-content">
+                        <h3>{{ event.title }}</h3>
+                        <p>{{ event.start_datetime|date:"D, M j, g:i A" }}</p>
+                        <p>Location: {{ event.location }}</p>
+                        <span class="favorite"><i class="fa-regular fa-heart"></i></span>
                     </div>
-                {% endfor %}
+                </div>
+            {% endfor %}
+        {% else %}
+            {% if query %}
+                <p>No events found matching your search.</p>
             {% else %}
-                {% if query %}
-                    <p>No events found matching your search.</p>
-                {% else %}
-                    <p>No events available at the moment.</p>
-                {% endif %}
+                <p>No events available at the moment.</p>
             {% endif %}
-        </section>
+        {% endif %}
+    </section>
 
 
-  <section class="event-cards">
-    <div class="event-card">
-        <h2>Featured Events</h2>
+    <section class="filters">
+        <h2 class="active">featured Events</h2>
+    </section>
+    <section class="event-cards">
         <ul>
             {% for event in featured_events %}
                 <li>
-                    {% if event.image %}
-                    <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
-                    {% else %}
-                        <p>No image available for this event.</p>
-                    {% endif %}
-                    <h3>{{ event.title }}</h3>
-                    <p>{{ event.description }}</p>
-                    <p>Date: {{ event.start_datetime }}</p>
-                    <p>Location: {{ event.location }}</p>
+                    <div class="event-card">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
+                        {% else %}
+                            <p>No image available for this event.</p>
+                        {% endif %}
+                        <h3>{{ event.title }}</h3>
+                        <p>{{ event.description }}</p>
+                        <p>Date: {{ event.start_datetime }}</p>
+                        <p>Location: {{ event.location }}</p>
+                   </div>
                 </li>
-            {% empty %}
-                <p>No featured events available.</p>
-            {% endfor %}
+                {% empty %}
+                    <p>No featured events available.</p>
+                {% endfor %}
         </ul>
-    </div>
-  </section>
+    </section>
 
 
 {% endblock %}
