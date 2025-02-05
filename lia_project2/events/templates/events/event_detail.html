@@ -1,28 +1,59 @@
 {% extends "base.html" %}
 
+{% load static %} 
+
+{% block extra_stylesheets %}
+    <link rel="stylesheet" href="{% static 'events/eventdetail.css' %}">
+{% endblock %}
+
+
 {% block content %}
 
-<section class="event-detail">
-    <div class="event-container">
-       {% if event.image %}
-            <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-image">
-        {% else %}
-            <p>No image available for this event.</p>
-        {% endif %}
-
-        <h1>{{ event.title }}</h1>
-        <p class="event-date"><strong>Date:</strong> {{ event.start_datetime }}</p>
-        <p class="event-location"><strong>Location:</strong> {{ event.location }}</p>
-        <p class="event-description">{{ event.description }}</p>
-
-        {% if event.website %}
-            <p><a href="{{ event.website }}" target="_blank">Visit Event Website</a></p>
-        {% endif %}
-    
-        <div class="event-actions">
-            <a href="{% url 'event_list' %}" class="btn">Back to Events</a>
-        </div>
+<section>
+    {% if event.image %}
+    <div class="image-container">
+        <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-image">
     </div>
+    {% else %}
+        <p>No image available for this event.</p>
+    {% endif %}
 </section>
+
+<main>
+    <section class="first">
+        <h1>{{ event.title }}</h1>
+    </section>
+
+    <section class="event-details">
+        <div class="details">
+            <h2>Event Details:</h2>
+            <p><strong>Start Date:</strong> {{ event.start_datetime }}</p>
+            <p><strong>End Date:</strong> {{ event.end_datetime }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+        </div>
+        <div class="map-info">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.233701179471!2d-73.5673!3d45.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91b98bb10a0df%3A0x704cb42c9db1745f!2sMaison%20Symphonique%20de%20Montr%C3%A9al!5e0!3m2!1sen!2sca!4v1648623527104!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <p><strong>Address:</strong> 100 Rue de Bleury, Montréal, QC H2X 0B3</p>
+        </div>
+    </section>
+
+    <section class="event-information">
+        <h2>Event Information:</h2>
+        <p>{{ event.description }}</p>
+    </section>
+
+    <section class="category">
+        <h3>Category: <span>{{ event.category }}</span></h3>
+    </section>
+
+    {% if event.website %}
+        <p><a href="{{ event.website }}" target="_blank">Visit Event Website</a></p>
+    {% endif %}
+
+    <div class="event-actions">
+        <a href="{% url 'event_list' %}" class="btn">Back to Events</a>
+    </div>
+</main>
+
 
 {% endblock %}
