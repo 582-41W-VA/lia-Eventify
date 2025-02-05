@@ -161,24 +161,23 @@ nav a {
     color: #FF5A5F;
 }
 
-.filters {
+.subtitle {
     text-align: left;
     padding: 0px 20px;
 }
 
-.filters a {
-    margin: 0 16px;
-    text-decoration: none;
-    color: #1a1313;
+.subtitle h2 {
+    margin: 0 15px;
     font-weight: bold;
     font-size: 21px;
-}
-
-.filters a.active {
     color: #FFCB47;
 }
 
-.feature {
+.subtitle .feature {
+    color: #1a1313;
+}
+
+.event-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -225,15 +224,6 @@ nav a {
     font-size: 30px;
 }
 
-.most {
-    padding: 15px 35px;
-}
-
-.most h3 {
-    font-size: 35px;
-    color: #1a1313;
-}
-
 footer {
     background-color: #FF5A5F;
     padding: 40px 0;
@@ -266,6 +256,23 @@ footer {
 .copyright {
     color: #F5F5F5;
     font-size: 21px;
+}
+
+
+@media only screen and (max-width: 1976px) {
+    .event-cards {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        padding: 35px;
+    }
+}
+
+@media only screen and (max-width: 1576px) {
+    .event-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        padding: 35px;
+    }
 }
 
 @media only screen and (max-width: 876px) {
