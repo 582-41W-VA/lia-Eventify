@@ -2,45 +2,7 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-    <link rel="stylesheet" href="static/events/homepage.css">
-</head>
-<body>
-    <header>
-        <div class="top-bar">
-            <div class="logo">Eventify</div>
-            <div class="auth-buttons">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'accounts:logout' %}" class="logout">Logout</a>
-                {% else %}
-                    <a href="{% url 'accounts:login' %}" class="login">Log in</a>
-                    <a href="{% url 'accounts:signup' %}" class="signup">Sign Up</a>
-                {% endif %}
-            </div>
-        </div>
-   
-        <div class="bottom-bar">
-            <nav>
-                <a href="{% url 'homepage' %}">Home</a>
-                <a href="{% url 'event_list' %}">Listings</a>
-            </nav>
-            <form class="search-bar" method="GET" action="{% url 'homepage' %}">
-                <input type="text" name="q" placeholder="Search events..." value="{{ query }}">
-                <select name="location" aria-label="Location">
-                    <option>Quebec</option>
-                </select>
-                <select name="location" aria-label="Location">
-                    <option>Montreal</option>
-                </select>
-                <button class="search">Search</button>
-            </form>
-        </div>
-    </header>
-=======
-<h1>Welcome to Eventify!</h1>
->>>>>>> 72a66359dcd375748052948ba718b30245b500c4
-
-<section class="hero">
+    <section class="hero">
         <h1>Connecting people to create meaningful moments together.</h1>
 
         <div class="hero-buttons">
@@ -59,57 +21,57 @@
 
     <section class="filters">
             <a href="" class="active">All</a>
-        </section>
+    </section>
     
-        <section class="event-cards">
-            {% if query %}
-                <div>
-                    <h2>Search Results for "{{ query }}"</h2>
-                </div>
-            {% endif %}
-        
-            {% if all_events.exists %}
-                {% for event in all_events %}
-                    <div class="event-card">
-                        <a href="{% url 'event_detail' event.id %}">
-                            <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                        </a>
-                        <div class="event-card-content">
-                            <h3>{{ event.title }}</h3>
-                            <p>{{ event.start_datetime|date:"D, M j, g:i A" }}</p>
-                            <p>Location: {{ event.location }}</p>
-                            <span class="favorite"><i class="fa-regular fa-heart"></i></span>
-                        </div>
+    <section class="event-cards">
+        {% if query %}
+            <div>
+                <h2>Search Results for "{{ query }}"</h2>
+            </div>
+        {% endif %}
+    
+        {% if all_events.exists %}
+            {% for event in all_events %}
+                <div class="event-card">
+                    <a href="{% url 'event_detail' event.id %}">
+                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                    </a>
+                    <div class="event-card-content">
+                        <h3>{{ event.title }}</h3>
+                        <p>{{ event.start_datetime|date:"D, M j, g:i A" }}</p>
+                        <p>Location: {{ event.location }}</p>
+                        <span class="favorite"><i class="fa-regular fa-heart"></i></span>
                     </div>
-                {% endfor %}
-            {% else %}
-                {% if query %}
-                    <p>No events found matching your search.</p>
-                {% else %}
-                    <p>No events available at the moment.</p>
-                {% endif %}
-            {% endif %}
-        </section>
-
-        <h2>Featured Events</h2>
-        <ul>
-            {% for event in featured_events %}
-                <li>
-                    {% if event.image %}
-                    <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
-                    {% else %}
-                        <p>No image available for this event.</p>
-                    {% endif %}
-                    <h3>{{ event.title }}</h3>
-                    <p>{{ event.description }}</p>
-                    <p>Date: {{ event.start_datetime }}</p>
-                    <p>Location: {{ event.location }}</p>
-              
-                </li>
-            {% empty %}
-                <p>No featured events available.</p>
+                </div>
             {% endfor %}
-        </ul>
+        {% else %}
+            {% if query %}
+                <p>No events found matching your search.</p>
+            {% else %}
+                <p>No events available at the moment.</p>
+            {% endif %}
+        {% endif %}
+    </section>
+
+    <h2>Featured Events</h2>
+    <ul>
+        {% for event in featured_events %}
+            <li>
+                {% if event.image %}
+                <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
+                {% else %}
+                    <p>No image available for this event.</p>
+                {% endif %}
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.description }}</p>
+                <p>Date: {{ event.start_datetime }}</p>
+                <p>Location: {{ event.location }}</p>
+            
+            </li>
+        {% empty %}
+            <p>No featured events available.</p>
+        {% endfor %}
+    </ul>
 
 
 {% endblock %}

@@ -178,7 +178,7 @@ nav a {
     color: #FFCB47;
 }
 
-.event-cards {
+.feature {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
