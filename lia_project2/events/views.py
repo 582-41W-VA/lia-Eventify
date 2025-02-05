@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models import Count
+from django.utils import timezone
 from .models import Event, Category
 
 def homepage(request):
@@ -10,10 +11,11 @@ def homepage(request):
     if query:
         all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+    
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
-        "all_events": all_events,
-        "query": query,
+        'all_events':all_events,
+        "query": query
     })
 
 def event_list(request):
