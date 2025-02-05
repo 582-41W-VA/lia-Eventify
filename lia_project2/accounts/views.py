@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ValidationError
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import check_password
 from accounts.models import User
 from django.db.models import Q
 
@@ -148,3 +150,32 @@ def password_reset_confirm(request, username):
         return redirect("accounts:login")
 
     return render(request, "accounts/password_reset_confirm.html", {"username": username})
+
+@login_required
+def password_update(request):
+    """Allows a logged-in user to update their password."""
+    
+    user = request.user
+
+    if request.method == "POST":
+        current_password = request.POST.get("current_password", "").strip()
+        new_password = request.POST.get("new_password", "").strip()
+        confirm_password = request.POST.get("confirm_password", "").strip()
+
+        if not check_password(current_password, user.password):
+            return render(request, "accounts/password_update.html", {"error": "Current password is incorrect."})
+
+        if new_password != confirm_password:
+            return render(request, "accounts/password_update.html", {"error": "New passwords do not match."})
+
+        if len(new_password) < 8:
+            return render(request, "accounts/password_update.html", {"error": "Password must be at least 8 characters long."})
+
+        user.set_password(new_password)
+        user.save()
+
+        update_session_auth_hash(request, user)
+
+        return redirect("homepage")
+
+    return render(request, "accounts/password_update.html")
