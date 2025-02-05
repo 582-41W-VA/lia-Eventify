@@ -2,7 +2,43 @@
 
 {% block content %}
 
+<<<<<<< HEAD
+    <link rel="stylesheet" href="static/events/homepage.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">Eventify</div>
+            <div class="auth-buttons">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:logout' %}" class="logout">Logout</a>
+                {% else %}
+                    <a href="{% url 'accounts:login' %}" class="login">Log in</a>
+                    <a href="{% url 'accounts:signup' %}" class="signup">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+   
+        <div class="bottom-bar">
+            <nav>
+                <a href="{% url 'homepage' %}">Home</a>
+                <a href="{% url 'event_list' %}">Listings</a>
+            </nav>
+            <form class="search-bar" method="GET" action="{% url 'homepage' %}">
+                <input type="text" name="q" placeholder="Search events..." value="{{ query }}">
+                <select name="location" aria-label="Location">
+                    <option>Quebec</option>
+                </select>
+                <select name="location" aria-label="Location">
+                    <option>Montreal</option>
+                </select>
+                <button class="search">Search</button>
+            </form>
+        </div>
+    </header>
+=======
 <h1>Welcome to Eventify!</h1>
+>>>>>>> 72a66359dcd375748052948ba718b30245b500c4
 
 <section class="hero">
         <h1>Connecting people to create meaningful moments together.</h1>
