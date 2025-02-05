@@ -36,6 +36,17 @@
         <label for="password2" class="visually-hidden">Confirm Password</label>
         <input type="password" id="password2" name="password2" placeholder="Confirm Password" required />
 
+        <label class="visually-hidden">Security Question:</label>
+        <select name="security_question" required>
+            <option value="">Select a security question</option>
+            <option value="What is your pet's name?">Which animal do you like best?</option>
+            <option value="What is your mother's maiden name?">What is your mother's name?</option>
+            <option value="What city were you born in?">What city were you born in?</option>
+        </select>
+
+        <label class="visually-hidden">Security Answer:</label>
+        <input type="text" placeholder="Security Answer" name="security_answer" required>
+
         <button type="submit">Sign up</button>
       </form>
     </div>
