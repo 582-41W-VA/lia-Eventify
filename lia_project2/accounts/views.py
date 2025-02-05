@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.hashers import make_password
 from accounts.models import User
 from django.db.models import Q
 
@@ -12,6 +13,8 @@ def user_signup(request):
         password2 = request.POST.get("password2")
         profile_picture = request.FILES.get("profile_picture")
         bio = request.POST.get("bio", "")
+        security_question = request.POST.get("security_question", "").strip()
+        security_answer = request.POST.get("security_answer", "").strip().lower()
 
         # Check required fields
         if not username or not email or not password1 or not password2:
@@ -32,15 +35,20 @@ def user_signup(request):
             user = User(
                 username=username,
                 email=email,
-                password=password1,
                 profile_picture=profile_picture,
                 bio=bio,
+                security_question=security_question,
+                security_answer=security_answer,
             )
             user.set_password(password1)
             user.save()
 
-            login(request, user)
-            return redirect("homepage")
+            authenticated_user = authenticate(request, username=username, password=password1)
+            if authenticated_user:  
+                login(request, authenticated_user)  # ✅ Ensures session authentication
+                return redirect("homepage")
+            else:
+                return render(request, "accounts/login.html", {"error": "Authentication failed after signup. Try logging in."})
 
         except ValidationError as e:
             return render(request, "accounts/signup.html", {"error": e.messages[0]})
@@ -78,3 +86,65 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect("homepage")
+
+def password_reset_request(request):
+    if request.method == "POST":
+        login_input = request.POST.get("login_input").strip()
+
+        if not login_input:
+            return render(request, "accounts/password_reset_request.html", {"error": "Please enter a username or email."})
+
+        user = User.objects.filter(Q(username=login_input) | Q(email=login_input)).first()
+
+        if user:
+            if user.security_question:
+                return redirect("accounts:password_reset_verify", username=user.username)
+            else:
+                return render(
+                    request, "accounts/password_reset_request.html",
+                    {"error": "Security question is not set for this account."}
+                )
+        else:
+            return render(
+                request, "accounts/password_reset_request.html",
+                {"error": "User not found."}
+            )
+
+    return render(request, "accounts/password_reset_request.html")
+
+
+def password_reset_verify(request, username):
+    user = get_object_or_404(User, username=username)
+
+    if request.method == "POST":
+        security_answer = request.POST.get("security_answer", "").strip().lower()
+
+        if user.security_answer and user.security_answer.lower().strip() == security_answer:
+            return redirect("accounts:password_reset_confirm", username=user.username)
+        else:
+            return render(
+                request,
+                "accounts/password_reset_question.html",
+                {"user": user, "error": "Incorrect security answer."}
+            )
+
+    return render(request, "accounts/password_reset_question.html", {"user": user})
+
+
+
+def password_reset_confirm(request, username):
+    user = get_object_or_404(User, username=username)
+
+    if request.method == "POST":
+        new_password = request.POST.get("new_password").strip()
+        confirm_password = request.POST.get("confirm_password").strip()
+
+        if new_password != confirm_password:
+            return render(request, "accounts/password_reset_confirm.html", {"error": "Passwords do not match.", "username": username})
+
+        user.password = make_password(new_password)
+        user.save()
+
+        return redirect("accounts:login")
+
+    return render(request, "accounts/password_reset_confirm.html", {"username": username})
