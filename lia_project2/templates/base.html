@@ -40,31 +40,16 @@
             <a href="{% url 'homepage' %}">Home</a>
             <a href="{% url 'event_list' %}">Listings</a>
         </nav>
-        <!-- Search Form -->
         <form class="search-bar" method="GET" action="{% url 'homepage' %}">
             <input type="text" name="q" placeholder="Search events..." value="{{ query }}">
-            
-            <select name="province">
-                <option value="">Select Province</option>
-                {% for province in provinces %}
-                    <option value="{{ province }}" {% if selected_province == province %}selected{% endif %}>
-                        {{ province }}
-                    </option>
-                {% endfor %}
+            <select name="location" aria-label="Location">
+                <option>Quebec</option>
             </select>
-        
-            <select name="city">
-                <option value="">Select City</option>
-                {% for city in cities %}
-                    <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>
-                        {{ city }}
-                    </option>
-                {% endfor %}
+            <select name="location" aria-label="Location">
+                <option>Montreal</option>
             </select>
-        
-            <button type="submit">Search</button>
+            <button class="search">Search</button>
         </form>
-        
     </div>
   </header>
   
@@ -89,4 +74,9 @@
     </div>
   </footer>
   
+<<<<<<< HEAD
 </body>
+=======
+</body>
+</html>
+>>>>>>> 473bc745e4a7093a4b9475cc4054155c4840e510
