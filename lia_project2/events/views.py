@@ -4,22 +4,17 @@ from django.db.models import Q
 from django.db.models import Count
 from .models import Event, Category
 
-
 def homepage(request):
     query = request.GET.get("q", "").strip()
     all_events = Event.objects.all().order_by("-start_datetime")
-
     if query:
         all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
-
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
-
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
         "all_events": all_events,
         "query": query,
     })
-
 
 def event_list(request):
     events = Event.objects.all().order_by("-start_datetime")
