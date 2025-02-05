@@ -28,7 +28,7 @@ class User(AbstractUser):
     username = models.CharField(unique=True, max_length=20)
     email = models.EmailField(unique=True)
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True)
-    bio = models.TextField(blank=True, max_length=100)
+    bio = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
