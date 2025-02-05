@@ -65,6 +65,20 @@ form button {
   cursor: pointer;
 }
 
+.error-message {
+  display: block;
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: normal; 
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid #f5c6cb;
+  box-shadow: none;
+  opacity: 0.9;
+}
+
 footer {
   background-color: #FF6B6B;
   padding: 30px 0;
