@@ -43,11 +43,28 @@
         <!-- Search Form -->
         <form class="search-bar" method="GET" action="{% url 'homepage' %}">
             <input type="text" name="q" placeholder="Search events..." value="{{ query }}">
-            <select name="location" aria-label="Location">
-                <option>Canada, QC</option>
+            
+            <select name="province">
+                <option value="">Select Province</option>
+                {% for province in provinces %}
+                    <option value="{{ province }}" {% if selected_province == province %}selected{% endif %}>
+                        {{ province }}
+                    </option>
+                {% endfor %}
             </select>
+        
+            <select name="city">
+                <option value="">Select City</option>
+                {% for city in cities %}
+                    <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>
+                        {{ city }}
+                    </option>
+                {% endfor %}
+            </select>
+        
             <button type="submit">Search</button>
         </form>
+        
     </div>
   </header>
   
