@@ -33,8 +33,19 @@
             <p><strong>Max Attendees:</strong> {{ event.max_attendees }}</p>
         </div>
         <div class="map-info">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.233701179471!2d-73.5673!3d45.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91b98bb10a0df%3A0x704cb42c9db1745f!2sMaison%20Symphonique%20de%20Montr%C3%A9al!5e0!3m2!1sen!2sca!4v1648623527104!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            <p><strong>Address:</strong> 100 Rue de Bleury, Montréal, QC H2X 0B3</p>
+             {% if event.latitude and event.longitude %}
+              <iframe
+                src="https://www.google.com/maps/embed/v1/place?key={{ GOOGLE_MAPS_API_KEY }}&q={{ event.location }}"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+        {% else %}
+            <p>No location available for this event.</p>
+        {% endif %}
         </div>
     </section>
 
