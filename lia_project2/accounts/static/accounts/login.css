@@ -30,8 +30,6 @@ form {
     text-align: center;
 }
 
-
-
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -49,7 +47,7 @@ form input {
     margin-bottom: 15px;
     border: 1px solid #d1d5db;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     background-color: #F5F5F5;
     color: #565151;
 }
@@ -62,8 +60,12 @@ form button {
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
 }
 
 .error-message {
@@ -79,7 +81,6 @@ form button {
     box-shadow: none;
     opacity: 0.9;
 }
-
 
 footer {
     background-color: #FF6B6B;
@@ -113,4 +114,19 @@ footer {
 .copyright {
     color: #F5F5F5;
     font-size: 21px;
+}
+
+@media only screen and (max-width: 674px) {
+
+    .footer-nav a {
+        font-size: 18px ;
+    }
+
+    .social-links a {
+        font-size: 20px ;
+    }
+
+    .copyright {
+        font-size: 18px ;
+    }
 }

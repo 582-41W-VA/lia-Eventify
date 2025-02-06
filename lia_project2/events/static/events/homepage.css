@@ -263,16 +263,13 @@ footer {
 @media only screen and (max-width: 1976px) {
     .event-cards {
         grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        padding: 35px;
     }
 }
 
 @media only screen and (max-width: 1576px) {
     .event-cards {
         grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-        padding: 35px;
+        gap: 15px;
     }
 }
 
@@ -484,6 +481,7 @@ footer {
 }
 
 @media only screen and (max-width: 574px) {
+
     .categories {
         gap: 30px; 
     }

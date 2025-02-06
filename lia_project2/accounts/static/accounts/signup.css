@@ -48,7 +48,7 @@ form input {
   margin-bottom: 15px;
   border: 1px solid #d1d5db;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   background-color: #F5F5F5;
   color: #565151;
 }
@@ -59,7 +59,7 @@ form select {
   margin-bottom: 15px;
   border: 1px solid #d1d5db;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   background-color: #F5F5F5;
   color: #565151;
 }
@@ -72,7 +72,7 @@ form button {
   font-weight: bold;
   border: none;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -122,4 +122,19 @@ footer {
 .copyright {
   color: #F5F5F5;
   font-size: 21px;
+}
+
+@media only screen and (max-width: 674px) {
+
+  .footer-nav a {
+      font-size: 18px ;
+  }
+
+  .social-links a {
+      font-size: 20px ;
+  }
+
+  .copyright {
+      font-size: 18px ;
+  }
 }
