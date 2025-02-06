@@ -45,6 +45,12 @@ def homepage(request):
     })
 
 def toggle_like(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    user = request.user
+    if user in event.likes.all(): 
+        event.likes.remove(user) 
+    else:
+        event.likes.add(user) 
     return redirect(request.META.get("HTTP_REFERER", "/"))
 
 
