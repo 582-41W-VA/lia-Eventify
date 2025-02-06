@@ -15,19 +15,19 @@
             <a href="{% url 'event_list' %}?category={{ category.name }}">
                 <div>
                     {% if category.name == "Music" %}
-                        <i class="fas fa-music"></i>
+                        <span class="fas fa-music"></span>
                     {% elif category.name == "Game" %}
-                        <i class="fas fa-gamepad"></i>
+                        <span class="fas fa-gamepad"></span>
                     {% elif category.name == "Sports" %}
-                        <i class="fas fa-basketball-ball"></i>
+                        <span class="fas fa-basketball-ball"></span>
                     {% elif category.name == "Developer" %}
-                        <i class="fas fa-code"></i>
+                        <span class="fas fa-code"></span>
                     {% elif category.name == "Conference" %}
-                        <i class="fas fa-users"></i>
+                        <span class="fas fa-users"></span>
                     {% elif category.name == "Travel" %}
-                        <i class="fas fa-plane"></i>
+                        <span class="fas fa-plane"></span>
                     {% else %}
-                        <i class="fas fa-folder"></i>
+                        <span class="fas fa-folder"></span>
                     {% endif %}
                     <br>{{ category.name }}
                 </div>
@@ -52,7 +52,7 @@
                 {% endif %}
                 <div class="event-card-content">
                     <h3>{{ event.title }}</h3>
-                    <p><i class="fa-solid fa-calendar-days"></i> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
+                    <p><span class="fa-solid fa-calendar-days"></span> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                     <p>Location: {{ event.location }}</p>
                     <span class="favorite"><i class="fa-regular fa-heart"></i></span>
                 </div>
