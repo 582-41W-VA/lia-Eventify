@@ -1,26 +1,61 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
-from django.db.models import Count
-from django.utils import timezone
+from django.db.models import Q, Count
 from .models import Event, Category
 
 def homepage(request):
     query = request.GET.get("q", "").strip()
+    province = request.GET.get("province", "")
+    city = request.GET.get("city", "")
+
+    provinces = {
+        "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
+        "QC": ["Montreal", "Quebec City", "Laval", "Gatineau"]
+    }
+    
+    cities = provinces.get(province, []) if province else []
+
     all_events = Event.objects.all().order_by("-start_datetime")
+
     if query:
         all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
+
+    if province:
+        all_events = all_events.filter(province=province)
+
+    if city and city in cities:
+        all_events = all_events.filter(city=city)
+
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
-    
+
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
-        'all_events':all_events,
-        "query": query
+        "all_events": all_events,
+        "query": query,
+        "province": province,
+        "city": city,
+        "provinces": provinces,
+        "cities": cities
     })
 
+
 def event_list(request):
+    province = request.GET.get("province", "")
+    city = request.GET.get("city", "")
+
     events = Event.objects.all().order_by("-start_datetime")
-    return render(request, "events/event_list.html", {"events": events})
+
+    if province:
+        events = events.filter(province=province)
+
+    if city:
+        events = events.filter(city=city)
+
+    return render(request, "events/event_list.html", {
+        "events": events,
+        "province": province,
+        "city": city
+    })
 
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
@@ -35,6 +70,8 @@ def event_create(request):
         end_datetime = request.POST.get("end_datetime")
         max_attendees = request.POST.get("max_attendees")
         location = request.POST.get("location")
+        province = request.POST.get("province")
+        city = request.POST.get("city")
         latitude = request.POST.get("latitude") or None
         longitude = request.POST.get("longitude") or None
         category_name = request.POST.get("category")
@@ -51,6 +88,8 @@ def event_create(request):
             end_datetime=end_datetime,
             max_attendees=max_attendees,
             location=location,
+            province=province,
+            city=city,
             latitude=latitude,
             longitude=longitude,
             category=category,
