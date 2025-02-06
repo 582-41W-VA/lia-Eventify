@@ -58,9 +58,9 @@
                         {% csrf_token %}
                         <button type="submit" class="like-btn">
                             {% if user.is_authenticated and user in event.likes.all %}
-                                <span class="fa-heart liked"></span>
+                                <span class="favorite fas fa-heart"></span>
                             {% else %}
-                                <span class="fa-heart"></span>
+                                <span class="favorite fa-regular fa-heart"></span>
                             {% endif %}
                             <span class="like-count">{{ event.likes.count }}</span>
                         </button>
@@ -102,13 +102,13 @@
                             {% csrf_token %}
                             <button type="submit" class="like-btn">
                                 {% if user.is_authenticated and user in event.likes.all %}
-                                    <span class="fa-heart liked"></span>
+                                    <span class="favorite fas fa-heart"></span>
                                 {% else %}
-                                    <span class="fa-heart"></span>
+                                    <span class="favorite fa-regular fa-heart"></span>
                                 {% endif %}
                                 <span class="like-count">{{ event.likes.count }}</span>
                             </button>
-                        </form>
+                        </form>    
 
                     </div>
                 </div>

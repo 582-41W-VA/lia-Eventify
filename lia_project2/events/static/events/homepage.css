@@ -220,9 +220,21 @@ nav a {
 
 .event-card-content .favorite {
     color: #FF5A5F;
-    float: right;
-    cursor: pointer;
     font-size: 30px;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 footer {
@@ -263,16 +275,13 @@ footer {
 @media only screen and (max-width: 1976px) {
     .event-cards {
         grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        padding: 35px;
     }
 }
 
 @media only screen and (max-width: 1576px) {
     .event-cards {
         grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-        padding: 35px;
+        gap: 15px;
     }
 }
 
@@ -484,6 +493,7 @@ footer {
 }
 
 @media only screen and (max-width: 574px) {
+
     .categories {
         gap: 30px; 
     }
