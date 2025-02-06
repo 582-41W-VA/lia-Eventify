@@ -86,6 +86,19 @@
                         <h3>{{ event.title }}</h3>
                         <p><i class="fa-solid fa-calendar-days"></i> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                         <p>Location: {{ event.location }}</p>
+
+                        <form action="{% url 'toggle_like' event.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="like-btn">
+                                {% if user.is_authenticated and user in event.likes.all %}
+                                    <span class="fa-heart liked"></span>
+                                {% else %}
+                                    <span class="fa-heart"></span>
+                                {% endif %}
+                                <span class="like-count">{{ event.likes.count }}</span>
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             {% empty %}
