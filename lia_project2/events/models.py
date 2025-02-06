@@ -26,7 +26,9 @@ class Event(models.Model):
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="liked_events", blank=True)
     favorited_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="favorite_events", blank=True)
     flagged_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="flagged_events", blank=True)
-
+    
+    def total_likes(self):
+        return self.likes.count() 
 
     def __str__(self):
         return self.title
