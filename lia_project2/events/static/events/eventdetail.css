@@ -138,12 +138,6 @@ main {
     margin-top: 20px;
 }
 
-.category {
-    font-size: 16px;
-    color: #565151;
-    margin-top: -10px;
-}
-
 .event-details {
     display: flex;
     justify-content: space-between;
@@ -173,22 +167,10 @@ iframe {
     padding: 50px 0;
 }
 
-/* .event-information, .track-listing {
-    margin-top: 20px;
-}
-
-.track-listing ul {
-    list-style: none;
-    padding: 0;
-}
-
-.track-listing ul li {
-    margin: 5px 0;
-} */
-
 .category {
     padding: 50px 0;
-
+    font-size: 16px;
+    color: #1a1313;  
 }
 
 .category span {
@@ -196,7 +178,7 @@ iframe {
     margin: 5px;
     padding: 5px 10px;
     background: #FFCB47;
-    color: white;
+    color: #F5F5F5;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }

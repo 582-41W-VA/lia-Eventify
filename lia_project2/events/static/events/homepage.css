@@ -155,7 +155,12 @@ nav a {
     text-align: center;
 }
 
-.categories div i {
+.categories a {
+    text-decoration: none;
+    color: #1a1313;
+}
+
+.categories div span {
     font-size: 60px;
     margin-bottom: 10px;
     color: #FF5A5F;
