@@ -29,10 +29,12 @@ def get_filtered_events(request):
     return events
 
 def homepage(request):
-    all_events = get_filtered_events(request)
+    all_events = get_filtered_events(request).order_by("-start_datetime")
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
-    categories = Category.objects.all()
     
+    all_events = all_events[:6]
+    categories = Category.objects.all()
+
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
         "all_events": all_events,
@@ -43,6 +45,17 @@ def homepage(request):
         "provinces": PROVINCES,
         "cities": PROVINCES.get(request.GET.get("province", ""), [])
     })
+
+
+def toggle_like(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    user = request.user
+    if user in event.likes.all(): 
+        event.likes.remove(user) 
+    else:
+        event.likes.add(user) 
+    return redirect(request.META.get("HTTP_REFERER", "/"))
+
 
 def event_list(request):
     events = get_filtered_events(request)
