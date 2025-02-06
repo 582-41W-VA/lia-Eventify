@@ -19,7 +19,7 @@
     {% endif %}
 </section>
 
-<main>
+<main class="main">
     <section class="first">
         <h1>{{ event.title }}</h1>
     </section>
@@ -29,7 +29,6 @@
             <h2>Event Details:</h2>
             <p><strong>Start Date:</strong> {{ event.start_datetime }}</p>
             <p><strong>End Date:</strong> {{ event.end_datetime }}</p>
-            <p><strong>Location:</strong> {{ event.location }}</p>
             <p><strong>Max Attendees:</strong> {{ event.max_attendees }}</p>
         </div>
         <div class="map-info">
@@ -42,6 +41,7 @@
                 allowfullscreen=""
                 loading="lazy">
             </iframe>
+            <p>{{ event.location }}</p>
         </div>
         {% else %}
             <p>No location available for this event.</p>

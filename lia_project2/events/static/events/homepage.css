@@ -220,9 +220,21 @@ nav a {
 
 .event-card-content .favorite {
     color: #FF5A5F;
-    float: right;
-    cursor: pointer;
     font-size: 30px;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 footer {

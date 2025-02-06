@@ -145,12 +145,14 @@ main {
     margin-top: 20px;
 }
 
-.details h2 {
-    margin-bottom: 20px;
+.event-details p {
+    margin-bottom: 5px;
+    font-size: 20px;
 }
 
-.details p {
-    margin-bottom: 5px;
+.details h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .event-details .map-info {
@@ -164,12 +166,21 @@ iframe {
 }
 
 .event-information{
-    padding: 50px 0;
+    padding: 50px 0px;
+}
+
+.event-information h2{
+    font-size: 30px;
+}
+
+.event-information p{
+    margin-top: 20px;
+    font-size: 20px;
 }
 
 .category {
-    padding: 50px 0;
-    font-size: 16px;
+    padding: 50px 0px;
+    font-size: 18px;
     color: #1a1313;  
 }
 
@@ -256,13 +267,139 @@ footer {
     font-size: 21px;
 }
 
+@media only screen and (max-width: 876px) {
 
-@media (max-width: 768px) {
+    nav {
+        gap: 13px;
+    }
+    
+    nav a {
+        margin-right: 13px;
+    }
+    
+    .auth-buttons {
+        gap: 13px;
+    }
+    
+    .auth-buttons a {
+        padding: 5px 13px;
+    }
+
+    .search-bar input {
+        width: 100px;
+        padding: 6px 10px;
+    }
+    
+    .search-bar select {
+        padding: 6px 10px;
+    }
+    
+    .search {
+        padding: 6px 10px;
+    }
+
+    .first h1 {
+        font-size:45px;
+    }
+    
+}
+
+@media (max-width: 774px) {
+
+    .logo {
+        font-size: 25px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    .bottom-bar a {
+        font-size: 15px;
+    }
+
+    .search-bar input {
+        width: 80px;
+        font-size: 15px;
+    }
+    
+    .search-bar select {
+        font-size: 15px;
+    }
+    
+    .search {
+        font-size: 15px;
+    }
+
+    img {
+        height: 500px;
+    }
+
+    .main {
+        text-align: center;
+    }
+
+    .first h1 {
+        font-size:40px;
+    }
+    
     .event-details {
         flex-direction: column;
     }
-    .details, .ticket-info {
-        flex: 1;
-        margin-bottom: 20px;
+
+    .event-details p {
+        font-size: 18px;
+    }
+    
+    .details h2 {
+        font-size: 25px;
+    }
+
+    iframe {
+        height: 250px; 
+    }
+        
+    .event-information h2{
+        font-size: 25px;
+    }
+    
+    .event-information p{
+        font-size: 18px;
+    }
+    
+    .category {
+        font-size: 16px;
+    }
+}
+
+
+@media only screen and (max-width: 674px) {
+
+    nav {
+        gap: 1px;
+    }
+
+    .search-bar input {
+        width: 60px;
+    }
+
+    img {
+        height: 400px;
+    }
+
+    iframe {
+        height: 200px; 
+    }
+
+    .footer-nav a{
+        font-size: 18px;
+    }
+    
+    .social-links span{
+        font-size: 20px;
+    }
+    
+    .copyright {
+        font-size: 18px;
     }
 }
