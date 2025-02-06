@@ -29,7 +29,7 @@ def get_filtered_events(request):
 
 def homepage(request):
     all_events = get_filtered_events(request)
-    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
     categories = Category.objects.all()
     
     return render(request, "events/homepage.html", {
@@ -45,7 +45,7 @@ def homepage(request):
 
 def event_list(request):
     events = get_filtered_events(request)
-    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
     categories = Category.objects.all()
 
     return render(request, "events/event_list.html", {

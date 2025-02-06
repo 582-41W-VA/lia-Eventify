@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
-from django.contrib.auth.hashers import make_password
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password
 from accounts.models import User
@@ -122,13 +122,15 @@ def password_reset_verify(request, username):
         security_answer = request.POST.get("security_answer", "").strip().lower()
 
         if user.security_answer and user.security_answer.lower().strip() == security_answer:
-            return redirect("accounts:password_reset_confirm", username=user.username)
+            return render(request, "accounts/password_reset_confirm.html", {
+                "username": user.username,
+                "correct_answer": True,
+            })
         else:
-            return render(
-                request,
-                "accounts/password_reset_question.html",
-                {"user": user, "error": "Incorrect security answer."}
-            )
+            return render(request, "accounts/password_reset_question.html", {
+                "user": user,
+                "error": "Incorrect security answer. Please try again."
+            })
 
     return render(request, "accounts/password_reset_question.html", {"user": user})
 
@@ -142,19 +144,28 @@ def password_reset_confirm(request, username):
         confirm_password = request.POST.get("confirm_password").strip()
 
         if new_password != confirm_password:
-            return render(request, "accounts/password_reset_confirm.html", {"error": "Passwords do not match.", "username": username})
+            return render(request, "accounts/password_reset_confirm.html", {
+                "error": "Passwords do not match.", 
+                "username": username,
+                "correct_answer": True
+            })
 
-        user.password = make_password(new_password)
+        user.set_password(new_password)
         user.save()
+
+        messages.success(request, "Your password has been reset successfully. Please log in with your new password.")
 
         return redirect("accounts:login")
 
-    return render(request, "accounts/password_reset_confirm.html", {"username": username})
+    return render(request, "accounts/password_reset_confirm.html", {
+        "username": username,
+        "correct_answer": True
+    })
+
 
 @login_required
 def password_update(request):
-    """Allows a logged-in user to update their password."""
-    
+
     user = request.user
 
     if request.method == "POST":
@@ -162,7 +173,7 @@ def password_update(request):
         new_password = request.POST.get("new_password", "").strip()
         confirm_password = request.POST.get("confirm_password", "").strip()
 
-        if not check_password(current_password, user.password):
+        if not user.check_password(current_password):  
             return render(request, "accounts/password_update.html", {"error": "Current password is incorrect."})
 
         if new_password != confirm_password:
@@ -174,7 +185,9 @@ def password_update(request):
         user.set_password(new_password)
         user.save()
 
-        update_session_auth_hash(request, user)
+        update_session_auth_hash(request, user)  
+
+        messages.success(request, "Your password has been updated successfully!")
 
         return redirect("homepage")
 
