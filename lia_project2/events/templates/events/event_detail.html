@@ -32,7 +32,13 @@
             <p><strong>Location:</strong> {{ event.location }}</p>
         </div>
         <div class="map-info">
+             {% if event.latitude and event.longitude %}
           
+            </div>
+        {% else %}
+            <p>No location available for this event.</p>
+        {% endif %}
+
         </div>
     </section>
 
