@@ -42,12 +42,21 @@
         </nav>
         <form class="search-bar" method="GET" action="{% url 'homepage' %}">
             <input type="text" name="q" placeholder="Search events..." value="{{ query }}">
-            <select name="location" aria-label="Location">
-                <option>Quebec</option>
+            
+            <select name="province" onchange="this.form.submit()">
+                <option value="">Select Province</option>
+                {% for prov, cities in provinces.items %}
+                    <option value="{{ prov }}" {% if province == prov %}selected{% endif %}>{{ prov }}</option>
+                {% endfor %}
             </select>
-            <select name="location" aria-label="Location">
-                <option>Montreal</option>
+
+            <select name="city" {% if not province %}disabled{% endif %} onchange="this.form.submit()">
+                <option value="">Select City</option>
+                {% for city_option in cities %}
+                    <option value="{{ city_option }}" {% if city_option == city %}selected{% endif %}>{{ city_option }}</option>
+                {% endfor %}
             </select>
+        
             <button class="search">Search</button>
         </form>
     </div>
@@ -73,10 +82,3 @@
         © 2025, Eventify. All Rights Reserved
     </div>
   </footer>
-  
-<<<<<<< HEAD
-</body>
-=======
-</body>
-</html>
->>>>>>> 473bc745e4a7093a4b9475cc4054155c4840e510
