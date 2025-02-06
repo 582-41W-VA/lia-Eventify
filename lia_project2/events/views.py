@@ -39,22 +39,74 @@ def homepage(request):
     })
 
 
-def event_list(request):
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q, Count
+from .models import Event, Category
+
+def homepage(request):
+    query = request.GET.get("q", "").strip()
     province = request.GET.get("province", "")
     city = request.GET.get("city", "")
 
+    all_events = Event.objects.all().order_by("-start_datetime")
+
+    if query:
+        all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
+    if province:
+        all_events = all_events.filter(province=province)
+    if city:
+        all_events = all_events.filter(city=city)
+
+    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+
+    categories = Category.objects.all()
+
+    return render(request, "events/homepage.html", {
+        "featured_events": featured_events,
+        "all_events": all_events,
+        "query": query,
+        "selected_province": province,
+        "selected_city": city,
+        "categories": categories,
+    })
+
+
+def event_list(request):
+    query = request.GET.get("q", "").strip()
+    selected_category = request.GET.get("category", "").strip()
+    province = request.GET.get("province", "").strip()
+    city = request.GET.get("city", "").strip()
+
     events = Event.objects.all().order_by("-start_datetime")
 
+    if query:
+        events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
+    if selected_category:
+        events = events.filter(category__name=selected_category)
     if province:
         events = events.filter(province=province)
-
     if city:
         events = events.filter(city=city)
 
+    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+
+    categories = Category.objects.all()
+
+    provinces = {
+        "Ontario (ON)": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
+        "Quebec (QC)": ["Montreal", "Quebec City", "Laval", "Gatineau"],
+    }
+
     return render(request, "events/event_list.html", {
         "events": events,
+        "featured_events": featured_events,
+        "categories": categories,
+        "query": query,
+        "selected_category": selected_category,
         "province": province,
-        "city": city
+        "city": city,
+        "provinces": provinces,
     })
 
 def event_detail(request, event_id):

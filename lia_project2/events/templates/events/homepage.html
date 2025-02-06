@@ -11,25 +11,35 @@
     </section>
 
     <section class="categories">
-        <div><i class="fas fa-music"></i><br>Music</div>
-        <div><i class="fas fa-gamepad"></i><br>Game</div>
-        <div><i class="fas fa-basketball-ball"></i><br>Sports</div>
-        <div><i class="fas fa-code"></i><br>Developer</div>
-        <div><i class="fas fa-users"></i><br>Conference</div>
-        <div><i class="fas fa-plane"></i><br>Travel</div>
+        {% for category in categories %}
+            <a href="{% url 'event_list' %}?category={{ category.name }}">
+                <div>
+                    {% if category.name == "Music" %}
+                        <i class="fas fa-music"></i>
+                    {% elif category.name == "Game" %}
+                        <i class="fas fa-gamepad"></i>
+                    {% elif category.name == "Sports" %}
+                        <i class="fas fa-basketball-ball"></i>
+                    {% elif category.name == "Developer" %}
+                        <i class="fas fa-code"></i>
+                    {% elif category.name == "Conference" %}
+                        <i class="fas fa-users"></i>
+                    {% elif category.name == "Travel" %}
+                        <i class="fas fa-plane"></i>
+                    {% else %}
+                        <i class="fas fa-folder"></i>
+                    {% endif %}
+                    <br>{{ category.name }}
+                </div>
+            </a>
+        {% endfor %}
     </section>
-
+    
     <section class="subtitle">
         <h2 class="all">All</h2>
     </section>
 
     <section class="event-cards">
-        {% if query %}
-            <div>
-                <h2>Search Results for "{{ query }}"</h2>
-            </div>
-        {% endif %}
-    
         {% if all_events.exists %}
         {% for event in all_events %}
             <div class="event-card">
