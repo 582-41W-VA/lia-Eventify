@@ -24,12 +24,6 @@
     </section>
 
     <section class="event-cards">
-        {% if query %}
-            <div>
-                <h2>Search Results for "{{ query }}"</h2>
-            </div>
-        {% endif %}
-    
         {% if all_events.exists %}
         {% for event in all_events %}
             <div class="event-card">
