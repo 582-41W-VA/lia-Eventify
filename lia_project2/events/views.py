@@ -3,76 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from .models import Event, Category
 
-def homepage(request):
-    query = request.GET.get("q", "").strip()
-    province = request.GET.get("province", "")
-    city = request.GET.get("city", "")
+PROVINCES = {
+    "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
+    "QC": ["Montreal", "Quebec City", "Laval", "Gatineau"]
+}
 
-    provinces = {
-        "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
-        "QC": ["Montreal", "Quebec City", "Laval", "Gatineau"]
-    }
-    
-    cities = provinces.get(province, []) if province else []
-
-    all_events = Event.objects.all().order_by("-start_datetime")
-
-    if query:
-        all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
-
-    if province:
-        all_events = all_events.filter(province=province)
-
-    if city and city in cities:
-        all_events = all_events.filter(city=city)
-
-    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
-
-    return render(request, "events/homepage.html", {
-        "featured_events": featured_events,
-        "all_events": all_events,
-        "query": query,
-        "province": province,
-        "city": city,
-        "provinces": provinces,
-        "cities": cities
-    })
-
-
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.db.models import Q, Count
-from .models import Event, Category
-
-def homepage(request):
-    query = request.GET.get("q", "").strip()
-    province = request.GET.get("province", "")
-    city = request.GET.get("city", "")
-
-    all_events = Event.objects.all().order_by("-start_datetime")
-
-    if query:
-        all_events = all_events.filter(Q(title__icontains=query) | Q(description__icontains=query))
-    if province:
-        all_events = all_events.filter(province=province)
-    if city:
-        all_events = all_events.filter(city=city)
-
-    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
-
-    categories = Category.objects.all()
-
-    return render(request, "events/homepage.html", {
-        "featured_events": featured_events,
-        "all_events": all_events,
-        "query": query,
-        "selected_province": province,
-        "selected_city": city,
-        "categories": categories,
-    })
-
-
-def event_list(request):
+def get_filtered_events(request):
     query = request.GET.get("q", "").strip()
     selected_category = request.GET.get("category", "").strip()
     province = request.GET.get("province", "").strip()
@@ -86,27 +22,43 @@ def event_list(request):
         events = events.filter(category__name=selected_category)
     if province:
         events = events.filter(province=province)
-    if city:
+    if city and city in PROVINCES.get(province, []):
         events = events.filter(city=city)
 
-    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+    return events
 
+def homepage(request):
+    all_events = get_filtered_events(request)
+    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
     categories = Category.objects.all()
+    
+    return render(request, "events/homepage.html", {
+        "featured_events": featured_events,
+        "all_events": all_events,
+        "query": request.GET.get("q", "").strip(),
+        "selected_province": request.GET.get("province", ""),
+        "selected_city": request.GET.get("city", ""),
+        "categories": categories,
+        "provinces": PROVINCES,
+        "cities": PROVINCES.get(request.GET.get("province", ""), [])
+    })
 
-    provinces = {
-        "Ontario (ON)": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
-        "Quebec (QC)": ["Montreal", "Quebec City", "Laval", "Gatineau"],
-    }
+def event_list(request):
+    """ 이벤트 리스트 - 필터링된 이벤트 및 Featured Events """
+    events = get_filtered_events(request)
+    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+    categories = Category.objects.all()
 
     return render(request, "events/event_list.html", {
         "events": events,
         "featured_events": featured_events,
         "categories": categories,
-        "query": query,
-        "selected_category": selected_category,
-        "province": province,
-        "city": city,
-        "provinces": provinces,
+        "query": request.GET.get("q", "").strip(),
+        "selected_category": request.GET.get("category", ""),
+        "selected_province": request.GET.get("province", ""),
+        "selected_city": request.GET.get("city", ""),
+        "provinces": PROVINCES,
+        "cities": PROVINCES.get(request.GET.get("province", ""), [])
     })
 
 def event_detail(request, event_id):
@@ -133,7 +85,7 @@ def event_create(request):
         if not category:
             return render(request, "events/event_create.html", {"error": "Invalid category."})
 
-        event = Event.objects.create(
+        Event.objects.create(
             title=title,
             description=description,
             start_datetime=start_datetime,
@@ -151,4 +103,7 @@ def event_create(request):
         return redirect("event_list")
 
     categories = Category.objects.all()
-    return render(request, "events/event_create.html", {"categories": categories})
+    return render(request, "events/event_create.html", {
+        "categories": categories,
+        "provinces": PROVINCES,
+    })
