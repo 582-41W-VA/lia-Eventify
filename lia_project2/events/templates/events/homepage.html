@@ -54,7 +54,7 @@
                     <h3>{{ event.title }}</h3>
                     <p><span class="fa-solid fa-calendar-days"></span> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                     <p>Location: {{ event.location }}</p>
-                    {% comment %} <span class="favorite"><i class="fa-regular fa-heart"></i></span> {% endcomment %}
+
                     <form action="{% url 'toggle_like' event.id %}" method="POST">
                         {% csrf_token %}
                         <button type="submit" class="like-btn">
@@ -66,7 +66,7 @@
                             <span class="like-count">{{ event.likes.count }}</span>
                         </button>
                     </form>
-                    
+
                 </div>
             </div>
         {% endfor %}
