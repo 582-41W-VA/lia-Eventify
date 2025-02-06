@@ -29,7 +29,7 @@ def get_filtered_events(request):
     return events
 
 def homepage(request):
-    all_events = get_filtered_events(request)
+    all_events = get_filtered_events(request).order_by("-start_datetime")[:6]
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
     categories = Category.objects.all()
     
