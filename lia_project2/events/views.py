@@ -44,7 +44,6 @@ def homepage(request):
     })
 
 def event_list(request):
-    """ 이벤트 리스트 - 필터링된 이벤트 및 Featured Events """
     events = get_filtered_events(request)
     featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
     categories = Category.objects.all()
