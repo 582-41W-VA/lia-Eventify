@@ -33,12 +33,18 @@
         </div>
         <div class="map-info">
              {% if event.latitude and event.longitude %}
-          
-            </div>
+              <iframe
+                src="https://www.google.com/maps/embed/v1/place?key=KEY&q={{ event.location }}"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
         {% else %}
             <p>No location available for this event.</p>
         {% endif %}
-
         </div>
     </section>
 
