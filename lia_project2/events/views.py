@@ -44,6 +44,10 @@ def homepage(request):
         "cities": PROVINCES.get(request.GET.get("province", ""), [])
     })
 
+def toggle_like(request, event_id):
+    return redirect(request.META.get("HTTP_REFERER", "/"))
+
+
 def event_list(request):
     events = get_filtered_events(request)
     featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
