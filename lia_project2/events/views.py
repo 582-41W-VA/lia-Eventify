@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
-from .models import Event, Category
+from .models import Event, Category, FavoriteEvent, Like
 from django.conf import settings
+
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
     "QC": ["Montreal", "Quebec City", "Laval", "Gatineau"]
 }
+
 
 def get_filtered_events(request):
     query = request.GET.get("q", "").strip()
@@ -15,7 +17,9 @@ def get_filtered_events(request):
     province = request.GET.get("province", "").strip()
     city = request.GET.get("city", "").strip()
 
-    events = Event.objects.all().order_by("-start_datetime")
+
+    events = Event.objects.order_by("start_datetime")
+
 
     if query:
         events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
@@ -26,14 +30,27 @@ def get_filtered_events(request):
     if city and city in PROVINCES.get(province, []):
         events = events.filter(city=city)
 
+
     return events
 
+
+def get_featured_events():
+    return Event.objects.annotate(like_count=Count("likes")).order_by("-like_count")[:6]
+
+
 def homepage(request):
-    all_events = get_filtered_events(request).order_by("-start_datetime")
-    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
-    
-    all_events = all_events[:6]
+    all_events = get_filtered_events(request)[:6]
+    featured_events = get_featured_events()
+   
+    # all_events = all_events[:6]
     categories = Category.objects.all()
+
+
+    user_liked_events = (
+        Like.objects.filter(user=request.user).values_list("event_id", flat=True)
+        if request.user.is_authenticated else []
+    )
+
 
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
@@ -43,41 +60,102 @@ def homepage(request):
         "selected_city": request.GET.get("city", ""),
         "categories": categories,
         "provinces": PROVINCES,
-        "cities": PROVINCES.get(request.GET.get("province", ""), [])
+        "cities": PROVINCES.get(request.GET.get("province", ""), []),
+        "user_liked_events": list(user_liked_events),
     })
 
 
+@login_required
+def user_dashboard(request):
+    favorite_events = FavoriteEvent.objects.filter(user=request.user).select_related("event")
+
+
+    if request.method == "POST":
+        action = request.POST.get("action")
+        selected_events = request.POST.getlist("selected_events")
+
+
+        if action == "remove" and selected_events:
+            FavoriteEvent.objects.filter(user=request.user, event__id__in=selected_events).delete()
+            return redirect("user_dashboard")
+
+
+    return render(request, "events/user_dashboard.html", {"favorite_events": favorite_events})
+
+
+@login_required
 def toggle_like(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     user = request.user
-    if user in event.likes.all(): 
-        event.likes.remove(user) 
+
+
+    like, created = Like.objects.get_or_create(user=user, event=event)
+
+
+    if created:
+        event.likes.add(user)
     else:
-        event.likes.add(user) 
+        like.delete()
+        event.likes.remove(user)
+
+
     return redirect(request.META.get("HTTP_REFERER", "/"))
 
 
+@login_required
+def toggle_favorite(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    user = request.user
+
+
+    favorite_event, created = FavoriteEvent.objects.get_or_create(user=user, event=event)
+
+
+    if not created:
+        favorite_event.delete()
+
+
+    return redirect(request.META.get("HTTP_REFERER", request.path))
+
+
 def event_list(request):
-    events = get_filtered_events(request)
-    featured_events = events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
+    all_events = get_filtered_events(request)[:6]
+    featured_events = get_featured_events()
     categories = Category.objects.all()
 
+
+    user_liked_events = (
+        Like.objects.filter(user=request.user).values_list("event_id", flat=True)
+        if request.user.is_authenticated else []
+    )
+
+
     return render(request, "events/event_list.html", {
-        "events": events,
         "featured_events": featured_events,
-        "categories": categories,
+        "all_events": all_events,
         "query": request.GET.get("q", "").strip(),
-        "selected_category": request.GET.get("category", ""),
         "selected_province": request.GET.get("province", ""),
         "selected_city": request.GET.get("city", ""),
+        "categories": categories,
         "provinces": PROVINCES,
-        "cities": PROVINCES.get(request.GET.get("province", ""), [])
+        "cities": PROVINCES.get(request.GET.get("province", ""), []),
+        "user_liked_events": list(user_liked_events),
     })
+
 
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
+
+
+    favorite_events = (
+        FavoriteEvent.objects.filter(user=request.user).values_list("event_id", flat=True)
+        if request.user.is_authenticated else []
+    )
+
+
     return render(request, "events/event_detail.html", {
         "event": event,
+        "favorite_events": favorite_events,
         "GOOGLE_MAPS_API_KEY": settings.GOOGLE_MAPS_API_KEY
     })
 
