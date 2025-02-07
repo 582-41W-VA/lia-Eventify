@@ -28,12 +28,14 @@ class User(AbstractUser):
     username = models.CharField(unique=True, max_length=20)
     email = models.EmailField(unique=True)
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True)
-    bio = models.TextField(blank=True, max_length=100)
+    bio = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+    security_question = models.CharField(max_length=255, blank=True, null=True)
+    security_answer = models.CharField(max_length=255, blank=True, null=True)
 
     objects = UserManager()
 
@@ -45,8 +47,9 @@ class User(AbstractUser):
             self.is_superuser = True
 
         if self.pk is None or not self.password.startswith("pbkdf2_sha256$"):
-            self.validate_password(self.password)
-            self.set_password(self.password)
+            if not self.password.startswith("pbkdf2_sha256$"):
+                self.validate_password(self.password)
+                self.set_password(self.password)
 
         super().save(*args, **kwargs)
 
