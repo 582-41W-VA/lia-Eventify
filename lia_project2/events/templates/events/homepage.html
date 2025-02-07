@@ -40,37 +40,30 @@
  
     <section class="event-cards">
         {% if all_events.exists %}
-            {% for event in all_events %}
-                <div class="event-card">
-                    {% if event.image %}
-                        <a href="{% url 'event_detail' event.id %}">
-                            <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
-                        </a>
-                    {% else %}
-                        <p>No image available for this event.</p>
-                    {% endif %}
-                    <div class="event-card-content">
-                        <h3>{{ event.title }}</h3>
-                        <p><span class="fa-solid fa-calendar-days"></span> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
-                        <p>Location: {{ event.location }}</p>
-   
-                        {% if user.is_authenticated %}
-                            <form action="{% url 'toggle_like' event.id %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="like-btn">
-                                    {% if user in event.likes.all %}
-                                        <span class="favorite fas fa-heart"></span>
-                                    {% else %}
-                                        <span class="favorite fa-regular fa-heart"></span>
-                                    {% endif %}
-                                    <span class="like-count">{{ event.likes.count }}</span>
-                                </button>
-                            </form>
-                        {% else %}
-                            <span class="favorite fa-regular fa-heart disabled"></span>
-                            <span class="like-count">{{ event.likes.count }}</span>
-                        {% endif %}
-                    </div>
+        {% for event in all_events %}
+            <div class="event-card">
+                {% if event.image %}
+                    <a href="{% url 'event_detail' event.id %}">
+                        <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
+                    </a>
+                {% else %}
+                    <p>No image available for this event.</p>
+                {% endif %}
+                <div class="event-card-content">
+                    <h3>{{ event.title }}</h3>
+                    <p><span class="fa-solid fa-calendar-days"></span> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
+                    <p>Location: {{ event.location }}</p>
+                    <form action="{% url 'toggle_like' event.id %}" method="POST"> 
+                        {% csrf_token %}
+                        <button type="submit" class="like-btn">
+                            {% if user.is_authenticated and event.id in user_liked_events %}
+                                <span class="favorite fas fa-heart"></span>
+                            {% else %}
+                                <span class="favorite fa-regular fa-heart"></span>
+                            {% endif %}
+                            <span class="like-count">{{ event.total_likes }}</span>
+                        </button>
+                    </form>  
                 </div>
             {% endfor %}
         {% else %}
@@ -97,23 +90,17 @@
                         <h3>{{ event.title }}</h3>
                         <p><i class="fa-solid fa-calendar-days"></i> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                         <p>Location: {{ event.location }}</p>
-   
-                        {% if user.is_authenticated %}
-                            <form action="{% url 'toggle_like' event.id %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="like-btn">
-                                    {% if user in event.likes.all %}
-                                        <span class="favorite fas fa-heart"></span>
-                                    {% else %}
-                                        <span class="favorite fa-regular fa-heart"></span>
-                                    {% endif %}
-                                    <span class="like-count">{{ event.likes.count }}</span>
-                                </button>
-                            </form>
-                        {% else %}
-                            <span class="favorite fa-regular fa-heart disabled"></span>
-                            <span class="like-count">{{ event.likes.count }}</span>
-                        {% endif %}
+                        <form action="{% url 'toggle_like' event.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="like-btn">
+                                {% if user.is_authenticated and event.id in user_liked_events %}
+                                    <span class="favorite fas fa-heart"></span>
+                                {% else %}
+                                    <span class="favorite fa-regular fa-heart"></span>
+                                {% endif %}
+                                <span class="like-count">{{ event.total_likes }}</span>
+                            </button>
+                        </form>  
                     </div>
                 </div>
             {% endfor %}
