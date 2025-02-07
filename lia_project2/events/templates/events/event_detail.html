@@ -85,19 +85,19 @@
 
     <!-- Flag inappropriate content button -->
     {% if user.is_authenticated %}
-    <form action="{% url 'toggle_flag' event.id %}" method="POST">
+    <form action="{% url 'toggle_flag' event.id %}" method="POST" class="flag-form">
         {% csrf_token %}
 
         {% if is_flagged %}
-            <button type="submit" class="flag-btn">
+            <button type="submit" class="flag-btn cancel-flag">
                 <span class="fas fa-flag"></span> Cancel Flag
             </button>
         {% else %}
-            <button type="button" class="flag-btn" onclick="document.getElementById('report-form-{{ event.id }}').style.display='block'">
+            <button type="button" class="flag-btn" onclick="document.getElementById('flag-form-{{ event.id }}').style.display='block'">
                 <span class="far fa-flag"></span> Flag
             </button>
 
-            <div id="report-form-{{ event.id }}" class="report-form" style="display: none;">
+            <div id="flag-form-{{ event.id }}" class="flag-form-container">
                 <label for="reason-{{ event.id }}">Select a reason:</label>
                 <select name="reason" id="reason-{{ event.id }}" required>
                     <option value="spam">Spam or Misleading</option>
@@ -105,11 +105,12 @@
                     <option value="inappropriate">Inappropriate Content</option>
                     <option value="other">Other</option>
                 </select>
-                <button type="submit" class="submit-report">Submit</button>
+                <button type="submit" class="submit-flag">Submit</button>
             </div>
         {% endif %}
     </form>
     {% endif %}
+
 
     <div class="event-actions">
         <a href="{% url 'event_list' %}" class="btn">Back to Events</a>
