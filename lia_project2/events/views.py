@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from .models import Event, Category
 from django.conf import settings
+from django.utils.timezone import now
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
@@ -15,7 +16,7 @@ def get_filtered_events(request):
     province = request.GET.get("province", "").strip()
     city = request.GET.get("city", "").strip()
 
-    events = Event.objects.all().order_by("start_datetime")
+    events = Event.objects.filter(end_datetime__gte=now()).order_by("start_datetime") 
 
     if query:
         events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
@@ -31,7 +32,6 @@ def get_filtered_events(request):
 def homepage(request):
     all_events = get_filtered_events(request).order_by("start_datetime")
     featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
-    
     all_events = all_events[:6]
     categories = Category.objects.all()
 
