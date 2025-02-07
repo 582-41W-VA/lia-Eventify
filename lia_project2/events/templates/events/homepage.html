@@ -37,7 +37,7 @@
     <section class="subtitle">
         <h2 class="all">All</h2>
     </section>
- 
+
     <section class="event-cards">
         {% if all_events.exists %}
         {% for event in all_events %}
@@ -64,19 +64,25 @@
                             <span class="like-count">{{ event.total_likes }}</span>
                         </button>
                     </form>  
+
                 </div>
-            {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        {% if query %}
+            <p>No events found matching your search.</p>
         {% else %}
             <p>No events available at the moment.</p>
         {% endif %}
+    {% endif %}
+    
     </section>
-   
+
     <section class="subtitle">
         <h2 class="feature">Featured Events</h2>
     </section>
-   
+
     <section class="event-cards">
-        {% if featured_events.exists %}
             {% for event in featured_events %}
                 <div class="event-card">
                     {% if event.image %}
@@ -101,12 +107,12 @@
                                 <span class="like-count">{{ event.total_likes }}</span>
                             </button>
                         </form>  
+
                     </div>
                 </div>
+            {% empty %}
+                <p>No featured events available.</p>
             {% endfor %}
-        {% else %}
-            <p>No featured events available.</p>
-        {% endif %}
-    </section>  
+    </section>
 
 {% endblock %}

@@ -27,7 +27,6 @@
                 <h3>{{ event.title }}</h3>
                 <p><span class="fa-solid fa-calendar-days"></span> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                 <p>Location: {{ event.location }}</p>
-                <!-- #edit -->
                 <form action="{% url 'toggle_like' event.id %}" method="POST"> 
                     {% csrf_token %}
                     <button type="submit" class="like-btn">
