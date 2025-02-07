@@ -18,4 +18,6 @@ These are the links for the Wireframe for our Web Project Two:
 2. Removed the arrow function for the Hero banner section (No more Carousel)
 3. Added the Administrator page mockup on file last Sunday - February 2nd
 4. Removed "Other Events You may like" section in Event Details Page
-5. Removed 'directions' row from the User Dashboard page
+5. Removed 'directions' row from the User Dashboard page 
+6. Adjustments were made with the User Dashboard page
+7. Added 3 more sub pages for the User signup page
