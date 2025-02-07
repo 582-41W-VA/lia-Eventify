@@ -198,6 +198,14 @@ iframe {
     background-color: #e0a100;
 }
 
+#flag-form {
+    display: none;
+}
+
+#show-flag-form:focus + #flag-form {
+    display: block;
+}
+
 .comments {
     margin-top: 30px;
 }

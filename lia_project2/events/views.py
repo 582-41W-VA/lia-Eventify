@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
-from .models import Event, Category, FavoriteEvent, Like
+from .models import Event, Category, FavoriteEvent, Like, Flag
 from django.conf import settings
 from django.utils.timezone import now
 
@@ -114,6 +114,21 @@ def toggle_favorite(request, event_id):
 
     return redirect(request.META.get("HTTP_REFERER", request.path))
 
+@login_required
+def toggle_flag(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    user = request.user
+
+    existing_flag = Flag.objects.filter(user=user, event=event)
+
+    if existing_flag.exists():
+        existing_flag.delete()
+    else:
+        if request.method == "POST":
+            reason = request.POST.get("reason", "other")
+            Flag.objects.create(user=user, event=event, reason=reason)
+
+    return redirect(request.META.get("HTTP_REFERER", "/"))
 
 def event_list(request):
     all_events = get_filtered_events(request)[:6]
@@ -143,15 +158,18 @@ def event_list(request):
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
 
+    is_flagged = False
+    if request.user.is_authenticated:
+        is_flagged = Flag.objects.filter(user=request.user, event=event).exists()
 
     favorite_events = (
         FavoriteEvent.objects.filter(user=request.user).values_list("event_id", flat=True)
         if request.user.is_authenticated else []
     )
 
-
     return render(request, "events/event_detail.html", {
         "event": event,
+        "is_flagged": is_flagged,
         "favorite_events": favorite_events,
         "GOOGLE_MAPS_API_KEY": settings.GOOGLE_MAPS_API_KEY
     })
