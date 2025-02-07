@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like
 from django.conf import settings
+from django.utils.timezone import now
 
 
 PROVINCES = {
@@ -17,9 +18,7 @@ def get_filtered_events(request):
     province = request.GET.get("province", "").strip()
     city = request.GET.get("city", "").strip()
 
-
-    events = Event.objects.order_by("start_datetime")
-
+    events = Event.objects.filter(end_datetime__gte=now()).order_by("start_datetime") 
 
     if query:
         events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
@@ -39,10 +38,9 @@ def get_featured_events():
 
 
 def homepage(request):
-    all_events = get_filtered_events(request)[:6]
-    featured_events = get_featured_events()
-   
-    # all_events = all_events[:6]
+    all_events = get_filtered_events(request).order_by("start_datetime")
+    featured_events = all_events.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
+    all_events = all_events[:6]
     categories = Category.objects.all()
 
 
@@ -50,7 +48,6 @@ def homepage(request):
         Like.objects.filter(user=request.user).values_list("event_id", flat=True)
         if request.user.is_authenticated else []
     )
-
 
     return render(request, "events/homepage.html", {
         "featured_events": featured_events,
