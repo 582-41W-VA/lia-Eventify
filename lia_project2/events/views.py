@@ -63,7 +63,7 @@ def homepage(request):
 
 
 @login_required
-def user_dashboard(request):
+def saved_events_dashboard(request):
     favorite_events = FavoriteEvent.objects.filter(user=request.user).select_related("event")
 
 
@@ -74,10 +74,10 @@ def user_dashboard(request):
 
         if action == "remove" and selected_events:
             FavoriteEvent.objects.filter(user=request.user, event__id__in=selected_events).delete()
-            return redirect("user_dashboard")
+            return redirect("saved_events_dashboard")
 
 
-    return render(request, "events/user_dashboard.html", {"favorite_events": favorite_events})
+    return render(request, "events/saved_events_dashboard.html", {"favorite_events": favorite_events})
 
 
 @login_required
