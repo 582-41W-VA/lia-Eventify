@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import dashboard 
+from . import views 
 
 from accounts.views import (
     user_login, user_logout, user_signup,
@@ -18,6 +19,7 @@ urlpatterns = [
     path("password_reset_confirm/<str:username>/", password_reset_confirm, name="password_reset_confirm"),
     path("password_update/", password_update, name="password_update"),
 
-    path("dashboard/", dashboard, name="dashboard"),  
+    path('dashboard/', views.dashboard, name='dashboard'), 
+    path('edit-profile/', views.edit_profile, name='edit_profile'),
 
 ]

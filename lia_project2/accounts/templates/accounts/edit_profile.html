@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Profile</h2>
+
+{% if messages %}
+    {% for message in messages %}
+      <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <label>Email:</label>
+  <input type="email" name="email" value="{{ user.email }}" required><br><br>
+
+  <label>Bio:</label>
+  <textarea name="bio">{{ user.bio }}</textarea><br><br>
+
+  <label>Profile Picture:</label>
+  <input type="file" name="profile_picture"><br><br>
+
+  <button type="submit">Save Changes</button>
+</form>
+
+
+{% comment %} <a href="{% url 'dashboard' %}">Back to Dashboard</a> {% endcomment %}
+<a href="{% url 'accounts:dashboard' %}">Back to Dashboard</a>
+{% endblock %}
