@@ -131,11 +131,21 @@ main {
     border-radius: 8px;
 }
 
+.first {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 30px 0px;
+}
+
 .first h1 {
     font-size:50px;
     font-weight: bold;
     color: #1a1313;
-    padding: 30px 0px;
+}
+
+.first .btn {
+    margin-top: 20px;
 }
 
 h2{
@@ -249,7 +259,7 @@ h2{
 .category span {
     display: inline-block;
     margin: 5px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     background: #FFCB47;
     color: #F5F5F5;
     border-radius: 5px;
@@ -411,6 +421,7 @@ footer {
 
     .first h1 {
         font-size:40px;
+        text-align: left;
     }
     
     .event-details {
@@ -455,6 +466,10 @@ footer {
 
     img {
         height: 400px;
+    }
+
+    .first h1 {
+        font-size:35px;
     }
 
     .footer-nav a{
