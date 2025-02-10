@@ -198,6 +198,62 @@ iframe {
     background-color: #e0a100;
 }
 
+/* ===== Flag ===== */
+
+.flag-btn {
+    display: inline-block;
+}
+
+/* .cancel-flag {
+
+} */
+
+.flag-form-container {
+    display: none;
+    background-color: #f8f9fa;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 250px;
+}
+
+.flag-form-container label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.flag-form-container select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submit-flag {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.submit-flag:hover {
+    background-color: #c82333;
+}
+
+#show-flag-form:focus + #flag-form {
+    display: block;
+}
+
 .comments {
     margin-top: 30px;
 }

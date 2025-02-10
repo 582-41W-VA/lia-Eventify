@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.hashers import check_password
 from accounts.models import User
 from django.db.models import Q
 
@@ -47,7 +46,7 @@ def user_signup(request):
 
             authenticated_user = authenticate(request, username=username, password=password1)
             if authenticated_user:  
-                login(request, authenticated_user)  # ✅ Ensures session authentication
+                login(request, authenticated_user)
                 return redirect("homepage")
             else:
                 return render(request, "accounts/login.html", {"error": "Authentication failed after signup. Try logging in."})
@@ -84,10 +83,12 @@ def user_login(request):
 
     return render(request, "accounts/login.html")
 
+def user_logout(request):    
+    previous_page = request.META.get("HTTP_REFERER", "/")
 
-def user_logout(request):
     logout(request)
-    return redirect("homepage")
+
+    return redirect(previous_page)
 
 def password_reset_request(request):
     if request.method == "POST":

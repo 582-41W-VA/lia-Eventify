@@ -16,5 +16,8 @@ class LikeAdmin(admin.ModelAdmin):
     search_fields = ("user__username", "event__title")
     list_filter = ("event", "user")
 
-
-admin.site.register(Flag)
+@admin.register(Flag)
+class FlagAdmin(admin.ModelAdmin):
+    list_display = ("user", "event", "reason", "created_at")
+    search_fields = ("user__username", "event__title", "reason")
+    list_filter = ("reason", "created_at")
