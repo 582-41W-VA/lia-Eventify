@@ -22,6 +22,32 @@
 <main class="main">
     <section class="first">
         <h1>{{ event.title }}</h1>
+
+        <!-- Attend Event button -->
+        {% if user.is_authenticated %}
+        <form action="{% url 'toggle_attendance' event.id %}" method="POST">
+            {% csrf_token %}
+        
+            {% if event.attendee_count < event.max_attendees %}
+                {% if user in event.attendees.all %}
+                    <button type="submit" class="btn">
+                        <span class="fas fa-check"></span> Attending
+                        <br> {{ event.attendee_count }} / {{ event.max_attendees }}
+                    </button>
+                {% else %}
+                    <button type="submit" class="btn">
+                        <span class="fas fa-calendar-check"></span> Attend Event
+                        <br> {{ event.attendee_count }} / {{ event.max_attendees }}
+                    </button>
+                {% endif %}
+            {% else %}
+                <button type="button" class="btn" disabled>
+                    <span class="fas fa-exclamation-circle"></span> Event Full
+                    <br> {{ event.attendee_count }} / {{ event.max_attendees }}
+                </button>
+            {% endif %}
+        </form>
+        {% endif %}
     </section>
 
     <section class="event-details">
