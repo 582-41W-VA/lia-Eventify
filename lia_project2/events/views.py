@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
-from .models import Event, Category, FavoriteEvent, Like, Flag
+from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance
 from django.conf import settings
 from django.utils.timezone import now
 
@@ -171,6 +171,7 @@ def event_detail(request, event_id):
         "event": event,
         "is_flagged": is_flagged,
         "favorite_events": favorite_events,
+        "max_attendees": event.max_attendees,
         "GOOGLE_MAPS_API_KEY": settings.GOOGLE_MAPS_API_KEY
     })
 
@@ -215,4 +216,40 @@ def event_create(request):
     return render(request, "events/event_create.html", {
         "categories": categories,
         "provinces": PROVINCES,
+    })
+
+@login_required
+def toggle_attendance(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    user = request.user
+
+    existing_attendance = Attendance.objects.filter(user=user, event=event)
+    if existing_attendance.exists():
+        existing_attendance.delete()
+        return redirect(request.META.get("HTTP_REFERER", "/"))
+
+    if event.attendee_count() < event.max_attendees:
+        Attendance.objects.create(user=user, event=event)
+    else:
+        return render(request, "events/event_detail.html", {
+            "event": event,
+            "error_message": "This event is fully booked.",
+        })
+
+    return redirect(request.META.get("HTTP_REFERER", "/"))
+
+@login_required
+def my_events_dashboard(request):
+    attending_events = request.user.attending_events.all()
+
+    if request.method == "POST":
+        action = request.POST.get("action")
+        selected_events = request.POST.getlist("selected_events")
+
+        if action == "cancel" and selected_events:
+            Attendance.objects.filter(user=request.user, event__id__in=selected_events).delete()
+            return redirect("my_events_dashboard")
+
+    return render(request, "events/my_events_dashboard.html", {
+        "attending_events": attending_events,
     })

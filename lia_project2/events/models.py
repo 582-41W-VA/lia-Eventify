@@ -24,9 +24,13 @@ class Event(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="liked_events", blank=True)
-    # favorited_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="favorite_events", blank=True)
+    favorited_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="favorite_events", blank=True)
     flagged_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="flagged_events", blank=True)
     favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="saved_events", blank=True)
+    attendees = models.ManyToManyField(settings.AUTH_USER_MODEL, through="Attendance", related_name="attending_events")
+
+    def attendee_count(self):
+        return self.attendance_set.count()
     
     def total_likes(self):
         return self.likes.count() 
@@ -85,3 +89,14 @@ class Flag(models.Model):
 
     def __str__(self):
         return f"{self.user.username} flagged {self.event.title} for {self.get_reason_display()}"
+    
+class Attendance(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "event")
+
+    def __str__(self):
+        return f"{self.user.username} attending {self.event.title}"
