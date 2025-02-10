@@ -193,3 +193,8 @@ def password_update(request):
         return redirect("homepage")
 
     return render(request, "accounts/password_update.html")
+
+
+@login_required
+def dashboard(request):
+    return render(request, "accounts/dashboard.html", {"user": request.user})
