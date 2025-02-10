@@ -25,5 +25,6 @@
 </form>
 
 
-<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% comment %} <a href="{% url 'dashboard' %}">Back to Dashboard</a> {% endcomment %}
+<a href="{% url 'accounts:dashboard' %}">Back to Dashboard</a>
 {% endblock %}
