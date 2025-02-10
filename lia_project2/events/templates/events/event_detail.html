@@ -59,6 +59,22 @@
         <p>{{ event.description }}</p>
     </section>
 
+        <!-- #add -->
+        {% if user.is_authenticated %} 
+        <div class="save-btn-container">
+            <form action="{% url 'toggle_favorite' event.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="save-btn">
+                    {% if event.id in favorite_events %}
+                        <span class="fas fa-star"></span> Saved Event
+                    {% else %}
+                        <span class="far fa-star"></span> Save Event
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+        {% endif %}
+
     <!-- #edit -->
     <section class="category">
         <h3>
@@ -68,20 +84,6 @@
             </a>
         </h3>
     </section>
-
-    <!-- #add -->
-    {% if user.is_authenticated %} 
-    <form action="{% url 'toggle_favorite' event.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="favorite-btn">
-            {% if event.id in favorite_events %}
-                <span class="fas fa-star"></span> Saved Event
-            {% else %}
-                <span class="far fa-star"></span> Save Event
-            {% endif %}
-        </button>
-    </form>
-    {% endif %}
 
     <div class="event-actions">
         <a href="{% url 'event_list' %}" class="btn">Back to Events</a>

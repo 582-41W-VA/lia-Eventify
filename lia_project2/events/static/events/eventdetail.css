@@ -178,6 +178,22 @@ iframe {
     font-size: 20px;
 }
 
+.save-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.save-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    background: #FF5A5F;
+    color: #F5F5F5;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
 .category {
     padding: 50px 0px;
     font-size: 18px;
@@ -301,7 +317,6 @@ footer {
     .first h1 {
         font-size:45px;
     }
-    
 }
 
 @media (max-width: 774px) {
@@ -365,6 +380,10 @@ footer {
     
     .event-information p{
         font-size: 18px;
+    }
+
+    .save-btn-container {
+        justify-content: center;
     }
     
     .category {
