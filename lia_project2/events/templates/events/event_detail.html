@@ -32,19 +32,18 @@
             <p><strong>Max Attendees:</strong> {{ event.max_attendees }}</p>
         </div>
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.233701179471!2d-73.5673!3d45.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91b98bb10a0df%3A0x704cb42c9db1745f!2sMaison%20Symphonique%20de%20Montr%C3%A9al!5e0!3m2!1sen!2sca!4v1648623527104!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.233701179471!2d-73.5673!3d45.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91b98bb10a0df%3A0x704cb42c9db1745f!2sMaison%20Symphonique%20de%20Montr%C3%A9al!5e0!3m2!1sen!2sca!4v1648623527104!5m2!1sen!2sca" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         
         {% comment %} 
         Temporarily shutting down Maps API
-        <div class="map-info">
+        <div class="map-container">
              {% if event.latitude and event.longitude %}
-              <iframe
+            <iframe
                 src="https://www.google.com/maps/embed/v1/place?key={{ GOOGLE_MAPS_API_KEY }}&q={{ event.location }}"
-                width="600"
-                height="450"
-                style="border:0;"
+                class="event-map"
                 allowfullscreen=""
-                loading="lazy">
+                loading="lazy"
+                >
             </iframe>
             <p>{{ event.location }}</p>
         </div>
@@ -59,6 +58,53 @@
         <p>{{ event.description }}</p>
     </section>
 
+    <section>
+        <div class="btn-container">
+            <!-- Save event button -->
+            {% if user.is_authenticated %} 
+            <form action="{% url 'toggle_favorite' event.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn">
+                    {% if event.id in favorite_events %}
+                        <span class="fas fa-star"></span> Saved Event
+                    {% else %}
+                        <span class="far fa-star"></span> Save Event
+                    {% endif %}
+                </button>
+            </form>
+            {% endif %}
+    
+            <!-- Flag inappropriate content button -->
+            {% if user.is_authenticated %}
+            <form action="{% url 'toggle_flag' event.id %}" method="POST" class="flag-form">
+                {% csrf_token %}
+    
+                {% if is_flagged %}
+                    <button type="submit" class="btn cancel-flag">
+                        <span class="fas fa-flag"></span> Cancel Flag
+                    </button>
+                {% else %}
+                    <button type="button" class="btn" onclick="document.getElementById('flag-form-{{ event.id }}').style.display='block'">
+                        <span class="far fa-flag"></span> Flag
+                    </button>
+    
+                    <div id="flag-form-{{ event.id }}" class="flag-form-container">
+                        <label for="reason-{{ event.id }}">Select a reason:</label>
+                        <select name="reason" id="reason-{{ event.id }}" required>
+                            <option value="spam">Spam or Misleading</option>
+                            <option value="abuse">Harassment or Abuse</option>
+                            <option value="inappropriate">Inappropriate Content</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <button type="submit" class="submit-flag">Submit</button>
+                    </div>
+                {% endif %}
+            </form>
+            {% endif %}
+    
+        </div>
+    </section>
+    
     <!-- Category Click Button -->
     <section class="category">
         <h3>
@@ -69,51 +115,13 @@
         </h3>
     </section>
 
-    <!-- Save event button -->
-    {% if user.is_authenticated %} 
-    <form action="{% url 'toggle_favorite' event.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="favorite-btn">
-            {% if event.id in favorite_events %}
-                <span class="fas fa-star"></span> Saved Event
-            {% else %}
-                <span class="far fa-star"></span> Save Event
-            {% endif %}
-        </button>
-    </form>
-    {% endif %}
-
-    <!-- Flag inappropriate content button -->
-    {% if user.is_authenticated %}
-    <form action="{% url 'toggle_flag' event.id %}" method="POST" class="flag-form">
-        {% csrf_token %}
-
-        {% if is_flagged %}
-            <button type="submit" class="flag-btn cancel-flag">
-                <span class="fas fa-flag"></span> Cancel Flag
-            </button>
-        {% else %}
-            <button type="button" class="flag-btn" onclick="document.getElementById('flag-form-{{ event.id }}').style.display='block'">
-                <span class="far fa-flag"></span> Flag
-            </button>
-
-            <div id="flag-form-{{ event.id }}" class="flag-form-container">
-                <label for="reason-{{ event.id }}">Select a reason:</label>
-                <select name="reason" id="reason-{{ event.id }}" required>
-                    <option value="spam">Spam or Misleading</option>
-                    <option value="abuse">Harassment or Abuse</option>
-                    <option value="inappropriate">Inappropriate Content</option>
-                    <option value="other">Other</option>
-                </select>
-                <button type="submit" class="submit-flag">Submit</button>
-            </div>
-        {% endif %}
-    </form>
-    {% endif %}
-
+    <section class="comments">
+        <h2>Comments:</h2>
+        <!-- <p>{{ event.description }}</p> -->
+    </section>
 
     <div class="event-actions">
-        <a href="{% url 'event_list' %}" class="btn">Back to Events</a>
+        <a href="{% url 'event_list' %}" class="back-btn">Back to Events</a>
     </div>
     
 </main>
