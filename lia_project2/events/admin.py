@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Event, Comment, FavoriteEvent, Like, Flag
+from .models import Category, Event, Comment, FavoriteEvent, Like, Flag, Attendance
 
 
 admin.site.register(Category)
@@ -21,3 +21,5 @@ class FlagAdmin(admin.ModelAdmin):
     list_display = ("user", "event", "reason", "created_at")
     search_fields = ("user__username", "event__title", "reason")
     list_filter = ("reason", "created_at")
+
+admin.site.register(Attendance)
