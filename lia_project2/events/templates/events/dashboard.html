@@ -2,9 +2,14 @@
 
 {% block content %}
   <h2>Welcome, {{ user.username }}</h2>
-  <img src="{{ user.profile_picture.url }}" alt="Profile Picture" width="150">
-  <p><strong>Email:</strong> {{ user.email }}</p>
+  
+  {% if user.profile_picture %}
+    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" width="150">
+  {% else %}
+    <p>No profile picture uploaded.</p>
+  {% endif %}
 
+  <p><strong>Email:</strong> {{ user.email }}</p>
   <p><strong>Bio:</strong> {{ user.bio }}</p>
   <p><strong>Joined:</strong> {{ user.date_joined }}</p>
 
