@@ -214,16 +214,6 @@ iframe {
     background-color: #e0a100;
 }
 
-/* ===== Flag ===== */
-
-.flag-btn {
-    display: inline-block;
-}
-
-/* .cancel-flag {
-
-} */
-
 .flag-form-container {
     display: none;
     background-color: #f8f9fa;
