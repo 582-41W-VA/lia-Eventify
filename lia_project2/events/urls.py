@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import (
     homepage, event_list, event_detail, event_create,
-    toggle_like, toggle_favorite, toggle_flag, saved_events_dashboard
+    toggle_like, toggle_favorite, toggle_flag, saved_events_dashboard,
+    toggle_attendance, my_events_dashboard
 )
 
 urlpatterns = [
@@ -13,4 +14,6 @@ urlpatterns = [
     path("events/<int:event_id>/favorite/", toggle_favorite, name="toggle_favorite"),
     path("events/<int:event_id>/flag/", toggle_flag, name="toggle_flag"),
     path("saved_events_dashboard/", saved_events_dashboard, name="saved_events_dashboard"),
+    path("events/<int:event_id>/attend/", toggle_attendance, name="toggle_attendance"),
+    path("my_events_dashboard/", my_events_dashboard, name="my_events_dashboard"),
 ]
