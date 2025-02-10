@@ -202,4 +202,9 @@ def dashboard(request):
 
 @login_required
 def edit_profile(request):
+    user = request.user
+    if request.method == "POST":
+        new_email = request.POST.get("email", user.email)
+        new_bio = request.POST.get("bio", user.bio)
+        
     return render(request, "accounts/edit_profile.html", {"user": user})
