@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from accounts.models import User
 from django.db.models import Q
+from django.core.files.storage import default_storage
 
 def user_signup(request):
     if request.method == "POST":
@@ -198,3 +199,7 @@ def password_update(request):
 @login_required
 def dashboard(request):
     return render(request, "accounts/dashboard.html", {"user": request.user})
+
+@login_required
+def edit_profile(request):
+    return render(request, "accounts/edit_profile.html", {"user": user})
