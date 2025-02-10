@@ -90,5 +90,30 @@
         {% endfor %}
 </section>
 
+<section class="categories">
+    {% for category in categories %}
+        <a href="{% url 'event_list' %}?category={{ category.name }}">
+            <div>
+                {% if category.name == "Music" %}
+                    <span class="fas fa-music"></span>
+                {% elif category.name == "Game" %}
+                    <span class="fas fa-gamepad"></span>
+                {% elif category.name == "Sports" %}
+                    <span class="fas fa-basketball-ball"></span>
+                {% elif category.name == "Developer" %}
+                    <span class="fas fa-code"></span>
+                {% elif category.name == "Conference" %}
+                    <span class="fas fa-users"></span>
+                {% elif category.name == "Travel" %}
+                    <span class="fas fa-plane"></span>
+                {% else %}
+                    <span class="fas fa-folder"></span>
+                {% endif %}
+                <br>{{ category.name }}
+            </div>
+        </a>
+    {% endfor %}
+</section>
+
 
 {% endblock %}

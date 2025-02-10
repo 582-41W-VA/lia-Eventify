@@ -117,8 +117,26 @@ nav a {
 
 
 
+.categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px; 
+    margin: 50px 0;
+    flex-wrap: wrap;
+    text-align: center;
+}
 
+.categories div span {
+    font-size: 70px;
+    margin-bottom: 10px;
+    color: #FF5A5F;
+}
 
+.categories a {
+    text-decoration: none;
+    color: #1a1313;
+}
 
 footer {
     background-color: #FF5A5F;
