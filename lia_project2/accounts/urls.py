@@ -11,10 +11,11 @@ urlpatterns = [
     path("logout/", user_logout, name="logout"),
     path("signup/", user_signup, name="signup"),
 
-    path("dashboard/", dashboard, name="dashboard"),
-    
     path("password_reset/", password_reset_request, name="password_reset"),
     path("password_reset_verify/<str:username>/", password_reset_verify, name="password_reset_verify"),
     path("password_reset_confirm/<str:username>/", password_reset_confirm, name="password_reset_confirm"),
     path("password_update/", password_update, name="password_update"),
+
+    path("dashboard/", dashboard, name="dashboard"),
+
 ]
