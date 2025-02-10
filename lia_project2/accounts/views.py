@@ -206,5 +206,10 @@ def edit_profile(request):
     if request.method == "POST":
         new_email = request.POST.get("email", user.email)
         new_bio = request.POST.get("bio", user.bio)
-        
+
+        if "profile_picture" in request.FILES:
+            if user.profile_picture:
+                default_storage.delete(user.profile_picture.path)  
+            user.profile_picture = request.FILES["profile_picture"]
+
     return render(request, "accounts/edit_profile.html", {"user": user})
