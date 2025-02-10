@@ -197,13 +197,6 @@ def password_update(request):
     return render(request, "accounts/password_update.html")
 
 
-# @login_required
-# def dashboard(request):
-#     return render(request, "accounts/dashboard.html", {"user": request.user})
-# @login_required
-# def dashboard(request):
-#     return render(request, 'accounts/dashboard.html')
-
 @login_required
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
