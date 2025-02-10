@@ -8,4 +8,6 @@
   <p><strong>Bio:</strong> {{ user.bio }}</p>
   <p><strong>Joined:</strong> {{ user.date_joined }}</p>
 
+  <a href="{% url 'edit_profile' %}">Edit Profile</a>
+
 {% endblock %}
