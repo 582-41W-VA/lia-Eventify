@@ -212,4 +212,11 @@ def edit_profile(request):
                 default_storage.delete(user.profile_picture.path)  
             user.profile_picture = request.FILES["profile_picture"]
 
+        user.email = new_email
+        user.bio = new_bio
+        user.save()
+
+        messages.success(request, "Your profile has been updated!")
+        return redirect("dashboard")
+
     return render(request, "accounts/edit_profile.html", {"user": user})
