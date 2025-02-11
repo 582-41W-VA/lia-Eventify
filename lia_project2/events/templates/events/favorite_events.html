@@ -9,7 +9,7 @@
 <ul>
     
     {% for favorite in favorited_events %}
-
+    <a href="{% url 'event_detail' favorite.event.id %}">
     {% if favorite.event.image %}
     <div class="image-container">
         <img src="{{ favorite.event.image.url }}" alt="{{ favorite.event.title }}" class="event-image">
