@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
-from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance
+from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
 from django.utils.timezone import now
 
@@ -167,11 +167,23 @@ def event_detail(request, event_id):
         if request.user.is_authenticated else []
     )
 
+    comments = Comment.objects.filter(event=event).order_by('-created_at')
+
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            text = request.POST.get("text").strip()
+            if text:
+                Comment.objects.create(user=request.user, event=event, text=text)
+                return redirect("event_detail", event_id=event.id)
+        else:
+            return redirect("accounts:login")
+
     return render(request, "events/event_detail.html", {
         "event": event,
         "is_flagged": is_flagged,
         "favorite_events": favorite_events,
         "max_attendees": event.max_attendees,
+        "comments": comments,
         "GOOGLE_MAPS_API_KEY": settings.GOOGLE_MAPS_API_KEY
     })
 
