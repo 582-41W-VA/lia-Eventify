@@ -30,7 +30,7 @@
         
             {% if event.attendee_count < event.max_attendees %}
                 {% if user in event.attendees.all %}
-                    <button type="submit" class="btn">
+                    <button type="submit" class="btn {% if user in event.attendees.all %} attending {% endif %}">
                         <span class="fas fa-check"></span> Attending
                         <br> {{ event.attendee_count }} / {{ event.max_attendees }}
                     </button>
@@ -90,7 +90,7 @@
             {% if user.is_authenticated %} 
             <form action="{% url 'toggle_favorite' event.id %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="btn">
+                <button type="submit" class="btn {% if event.id in favorite_events %} saved {% endif %}">
                     {% if event.id in favorite_events %}
                         <span class="fas fa-star"></span> Saved Event
                     {% else %}
@@ -106,7 +106,7 @@
                 {% csrf_token %}
     
                 {% if is_flagged %}
-                    <button type="submit" class="btn cancel-flag">
+                    <button type="submit" class="btn {% if is_flagged %} flagged {% endif %}">
                         <span class="fas fa-flag"></span> Cancel Flag
                     </button>
                 {% else %}
