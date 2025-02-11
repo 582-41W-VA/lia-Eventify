@@ -205,7 +205,7 @@ h2{
 }
 
 .btn:hover {
-    background-color: #e04a4f;
+    background-color: #FF3A3F;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -294,6 +294,10 @@ h2{
     padding: 50px 0px;
 }
 
+.comments h2 {
+    margin-bottom: 10px;
+}
+
 .comments p{
     margin-top: 20px;
     font-size: 20px;
@@ -314,17 +318,21 @@ textarea:focus {
     outline: none;
 }
 
-.submit-comment {
+.comment-btn {
     background-color: #FF5A5F;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 8px 13px;
     cursor: pointer;
-    font-size: 16px; 
+    font-size: 14px; 
+    margin-bottom: 15px;
+    display: block; 
+    margin-left: auto; 
+
 }
 
-.submit-comment:hover {
+.comment-btn:hover {
     background-color: #FF3A3F;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -332,6 +340,12 @@ textarea:focus {
 .back-btn {
     text-decoration: none;
     color: #1a1313;
+    transition: color 0.3s ease, transform 0.2s ease; 
+}
+
+.back-btn:hover {
+    color: #FF5A5F; 
+    transform: scale(1.05); 
 }
 
 footer {
