@@ -218,4 +218,5 @@ def edit_profile(request):
 
 
 def favorite_events(request):
+     favorited_events = request.user.favorited_events.all()  
      return render(request, "accounts/favorite_events.html", {"favorited_events": favorited_events})
