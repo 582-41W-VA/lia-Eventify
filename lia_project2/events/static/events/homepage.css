@@ -208,7 +208,7 @@ nav a {
 }
 
 .event-card-content h3 {
-    font-size: 35px;
+    font-size: 32px;
     margin-bottom: 8px;
 }
 
@@ -223,13 +223,16 @@ nav a {
     font-size: 30px;
 }
 
+.event-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .like-btn {
     background: none;
     border: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    margin-top: 10px;
 }
 
 .like-btn:focus {

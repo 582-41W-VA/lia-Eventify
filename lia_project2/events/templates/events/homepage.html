@@ -50,21 +50,21 @@
                     <p>No image available for this event.</p>
                 {% endif %}
                 <div class="event-card-content">
-                    <h3>{{ event.title }}</h3>
-                    <p><span class="fa-solid fa-calendar-days"></span> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
+                    <div class="event-header">
+                        <h3>{{ event.title }}</h3>
+                        <form action="{% url 'toggle_like' event.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="like-btn">
+                                {% if user.is_authenticated and event.id in user_liked_events %}
+                                    <span class="favorite fas fa-heart"></span>
+                                {% else %}
+                                    <span class="favorite fa-regular fa-heart"></span>
+                                {% endif %}
+                            </button>
+                        </form>  
+                    </div>
+                    <p><i class="fa-solid fa-calendar-days"></i> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                     <p>Location: {{ event.location }}</p>
-                    <form action="{% url 'toggle_like' event.id %}" method="POST"> 
-                        {% csrf_token %}
-                        <button type="submit" class="like-btn">
-                            {% if user.is_authenticated and event.id in user_liked_events %}
-                                <span class="favorite fas fa-heart"></span>
-                            {% else %}
-                                <span class="favorite fa-regular fa-heart"></span>
-                            {% endif %}
-                            <span class="like-count">{{ event.total_likes }}</span>
-                        </button>
-                    </form>  
-
                 </div>
             </div>
         {% endfor %}
@@ -93,26 +93,25 @@
                         <p>No image available for this event.</p>
                     {% endif %}
                     <div class="event-card-content">
-                        <h3>{{ event.title }}</h3>
+                        <div class="event-header">
+                            <h3>{{ event.title }}</h3>
+                            <form action="{% url 'toggle_like' event.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="like-btn">
+                                    {% if user.is_authenticated and event.id in user_liked_events %}
+                                        <span class="favorite fas fa-heart"></span>
+                                    {% else %}
+                                        <span class="favorite fa-regular fa-heart"></span>
+                                    {% endif %}
+                                </button>
+                            </form>  
+                        </div>
                         <p><i class="fa-solid fa-calendar-days"></i> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
                         <p>Location: {{ event.location }}</p>
-                        <form action="{% url 'toggle_like' event.id %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="like-btn">
-                                {% if user.is_authenticated and event.id in user_liked_events %}
-                                    <span class="favorite fas fa-heart"></span>
-                                {% else %}
-                                    <span class="favorite fa-regular fa-heart"></span>
-                                {% endif %}
-                                <span class="like-count">{{ event.total_likes }}</span>
-                            </button>
-                        </form>  
-
                     </div>
                 </div>
             {% empty %}
                 <p>No featured events available.</p>
             {% endfor %}
-    </section>
-
+    </section>    
 {% endblock %}
