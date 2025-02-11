@@ -7,7 +7,7 @@ from accounts.models import User
 from django.db.models import Q
 from django.core.files.storage import default_storage
 from django.contrib import messages
-from .models import Event
+from events.models import Event
 
 def user_signup(request):
     if request.method == "POST":
