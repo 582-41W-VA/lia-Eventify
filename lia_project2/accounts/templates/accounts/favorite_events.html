@@ -4,5 +4,12 @@
 {% block content %}
 <h2>Favorite Events</h2>
 
+<ul>
+    {% for event in favorited_events %}
+      
+    {% empty %}
+       
+    {% endfor %}
+</ul>
 
 {% endblock %}
