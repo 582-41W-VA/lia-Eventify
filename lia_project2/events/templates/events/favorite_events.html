@@ -20,7 +20,9 @@
 
         <h3>{{ favorite.event.title }}</h3>
         <p>{{ favorite.event.description }}</p>
-        <p>{{ favorite.event.end_datetime }}</p>
+        <p><strong>Start Date:</strong> {{ favorite.event.start_datetime }}</p>
+        <p><strong>End Date:</strong> {{ favorite.event.end_datetime }}</p>
+        <p><strong>Max Attendees:</strong> {{ favorite.event.max_attendees }}</p>
     {% empty %}
         <p>No favorite events yet.</p>
     {% endfor %}
