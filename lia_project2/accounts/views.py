@@ -8,6 +8,9 @@ from django.db.models import Q
 from django.core.files.storage import default_storage
 from django.contrib import messages
 from events.models import Event
+from django.contrib.auth.models import User
+from events.models import FavoriteEvent
+
 
 def user_signup(request):
     if request.method == "POST":
@@ -219,5 +222,5 @@ def edit_profile(request):
 
 
 def favorite_events(request):
-     favorited_events = Event.objects.filter(favorited_by=request.user)
-     return render(request, 'events/favorite_events.html', {'favorited_events': favorited_events})
+    favorited_events = FavoriteEvent.objects.filter(user=request.user).select_related('event')
+    return render(request, 'events/favorite_events.html', {'favorited_events': favorited_events})
