@@ -49,45 +49,6 @@
         <p>No events available at the moment.</p>
     {% endif %}
 {% endif %}
-
-</section>
-
-<section class="subtitle">
-    <h2 class="feature">Featured Events</h2>
-</section>
-
-<section class="event-cards">
-        {% for event in featured_events %}
-            <div class="event-card">
-                {% if event.image %}
-                    <a href="{% url 'event_detail' event.id %}">
-                        <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
-                    </a>
-                {% else %}
-                    <p>No image available for this event.</p>
-                {% endif %}
-                <div class="event-card-content">
-                    <h3>{{ event.title }}</h3>
-                    <p><i class="fa-solid fa-calendar-days"></i> {{ event.start_datetime|date:"D, M j, g:i A" }}</p>
-                    <p>Location: {{ event.location }}</p>
-                    <!-- #edit -->
-                    <form action="{% url 'toggle_like' event.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="like-btn">
-                            {% if user.is_authenticated and event.id in user_liked_events %}
-                                <span class="favorite fas fa-heart"></span>
-                            {% else %}
-                                <span class="favorite fa-regular fa-heart"></span>
-                            {% endif %}
-                            <span class="like-count">{{ event.total_likes }}</span>
-                        </button>
-                    </form>  
-
-                </div>
-            </div>
-        {% empty %}
-            <p>No featured events available.</p>
-        {% endfor %}
 </section>
 
 <section class="categories">
