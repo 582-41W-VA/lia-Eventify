@@ -2,12 +2,10 @@
 {% load static %}
 
 {% block content %}
-
 <h2>Favorite Events</h2>
 <p>Number of favorited events: {{ favorited_events.count }}</p>
 
 <ul>
-    
     {% for favorite in favorited_events %}
     <a href="{% url 'event_detail' favorite.event.id %}">
     {% if favorite.event.image %}
