@@ -3,10 +3,11 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from accounts.models import User, Event 
+from accounts.models import User
 from django.db.models import Q
 from django.core.files.storage import default_storage
 from django.contrib import messages
+from .models import Event
 
 def user_signup(request):
     if request.method == "POST":
@@ -218,5 +219,5 @@ def edit_profile(request):
 
 
 def favorite_events(request):
-     favorited_events = request.user.favorited_events.all()  
-     return render(request, "accounts/favorite_events.html", {"favorited_events": favorited_events})
+     favorited_events = Event.objects.filter(favorited_by=request.user)
+     return render(request, 'events/favorite_events.html', {'favorited_events': favorited_events})
