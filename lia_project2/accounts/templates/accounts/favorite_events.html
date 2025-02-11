@@ -6,9 +6,12 @@
 
 <ul>
     {% for event in favorited_events %}
-      
+      <li>
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description }}</p>
+        </li>
     {% empty %}
-       
+        <p>No favorited events yet.</p>
     {% endfor %}
 </ul>
 
