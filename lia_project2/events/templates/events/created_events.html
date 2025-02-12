@@ -4,5 +4,15 @@
 {% block content %}
 <h1>Your Created Events</h1>
 
+  <ul>
+    {% for event in created_events %}
+        <li>
+            <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
+        
+        </li>
+    {% empty %}
+        <li>You have not created any events yet.</li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
