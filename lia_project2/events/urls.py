@@ -24,7 +24,9 @@ urlpatterns = [
 
     path('dashboard/favorited-events/', views.favorited_events, name='favorite-events'),
     path('dashboard/attended-events/', attended_events, name='attended-events'),
-    path('created-events/', views.created_events, name='created_events'),
+
+    path('my-events/', views.created_events, name='created_events'),
+
 
     path('event/<int:event_id>/', event_detail, name='event-detail'),
 ]

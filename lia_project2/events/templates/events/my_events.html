@@ -8,6 +8,7 @@
     {% for event in created_events %}
         <li>
             <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
+           
         
         </li>
     {% empty %}
