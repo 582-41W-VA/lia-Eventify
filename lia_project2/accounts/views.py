@@ -5,12 +5,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from accounts.models import User
 from django.db.models import Q
-from django.core.files.storage import default_storage
+# from django.core.files.storage import default_storage
 from django.contrib import messages
-from events.models import Event
+# from events.models import Event
 from django.contrib.auth.models import User
 from accounts.models import User
-from events.models import FavoriteEvent
 
 
 def user_signup(request):
@@ -222,6 +221,3 @@ def edit_profile(request):
     return render(request, 'accounts/edit_profile.html')
 
 
-def favorite_events(request):
-    favorited_events = FavoriteEvent.objects.filter(user=request.user).select_related('event')
-    return render(request, 'events/favorite_events.html', {'favorited_events': favorited_events})

@@ -4,7 +4,6 @@ from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
 from django.utils.timezone import now, timedelta
-from .models import Attendance
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
@@ -275,6 +274,11 @@ def my_events_dashboard(request):
         "attending_events": attending_events,
     })
 
+
+@login_required
+def favorited_events(request):
+    favorited_events = Event.objects.filter(favoriteevent__user=request.user)  
+    return render(request, 'events/favorited_events.html', {'favorited_events': favorited_events})
 
 
 @login_required

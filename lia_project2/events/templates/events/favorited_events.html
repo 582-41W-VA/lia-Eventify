@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Favorite Events</h2>
+<p>Number of favorited events: {{ favorited_events.count }}</p>
+
+{% if favorited_events %}
+        <ul>
+            {% for event in favorited_events %}
+            <a href="{% url 'event_detail' event.id %}">
+            {% if event.image %}
+            <div class="image-container">
+                <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-image">
+            </div>
+            {% else %}
+                <p>No image available for this event.</p>
+            {% endif %}
+                <li>
+                    <h2>{{ event.title }}</h2>
+                    <p>{{ event.description }}</p>
+                    <p><strong>Satrt Date:</strong> {{ event.start_datetime }}</p>
+                    <p><strong>End Date:</strong> {{ event.start_datetime }}</p>
+                    <p><strong>Location:</strong> {{ event.location }}</p>
+                    <a href="{% url 'event_detail' event.id %}">View Event</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no favorited events.</p>
+    {% endif %} 
+
+
+{% endblock %}
