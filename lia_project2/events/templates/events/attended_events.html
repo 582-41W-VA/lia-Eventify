@@ -16,7 +16,10 @@
                 {% endif %}
             </a>
         </div>
-       
+        <h3><a href="{% url 'event-detail' attendance.event.id %}">{{ attendance.event.title }}</a></h3>
+        <p><a href="{% url 'event-detail' attendance.event.id %}">{{ attendance.event.description }}</a></p>
+        <p>{{ attendance.event.start_datetime }}</p>
+        <p>{{ attendance.event.end_datetime }}</p>
     {% empty %}
         <p>No attended events yet.</p>
     {% endfor %}
