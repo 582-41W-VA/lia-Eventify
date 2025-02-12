@@ -21,4 +21,5 @@ urlpatterns = [
     path("events/<int:event_id>/attend/", toggle_attendance, name="toggle_attendance"),
     path("my_events_dashboard/", my_events_dashboard, name="my_events_dashboard"),
     path('dashboard/attended-events/', attended_events, name='attended-events'),
+    path('event/<int:event_id>/', event_detail, name='event-detail'),
 ]
