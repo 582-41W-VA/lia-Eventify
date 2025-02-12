@@ -10,7 +10,7 @@
     <aside class="sidebar">
         <ul>
           <li><a href="#">My Event</a></li>
-          <li><a href="{% url 'accounts:favorite_events' %}">Favorite Event</a></li>
+          {% comment %} <li><a href="{% url 'favorite_events' %}">Favorite Event</a></li> {% endcomment %}
           <li><a href="{% url 'attended-events' %}">Attended Events</a></li>
 
         </ul>
