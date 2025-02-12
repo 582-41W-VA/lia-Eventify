@@ -4,7 +4,6 @@ from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
 from django.utils.timezone import now, timedelta
-from .models import Attendance
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
