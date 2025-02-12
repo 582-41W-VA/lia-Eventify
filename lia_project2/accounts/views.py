@@ -9,6 +9,7 @@ from django.core.files.storage import default_storage
 from django.contrib import messages
 from events.models import Event
 from django.contrib.auth.models import User
+from accounts.models import User
 from events.models import FavoriteEvent
 
 
