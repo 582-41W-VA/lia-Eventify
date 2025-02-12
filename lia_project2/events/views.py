@@ -279,7 +279,7 @@ def my_events_dashboard(request):
 
 @login_required
 def attended_events(request):
- 
+    attended_events = Attendance.objects.filter(user=request.user)
     return render(request, 'events/attended_events.html', {
         'attended_events': attended_events
     })
