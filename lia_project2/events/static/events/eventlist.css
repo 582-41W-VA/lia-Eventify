@@ -105,17 +105,6 @@ nav a {
     cursor: pointer;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-
-
-
-
 .categories {
     display: flex;
     justify-content: center;
