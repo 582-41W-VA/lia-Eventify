@@ -1,9 +1,12 @@
 from django.urls import path
+from .views import attended_events
+
+
 from .views import (
     homepage, event_list, event_detail, event_create,
     toggle_like, toggle_favorite, toggle_flag, saved_events_dashboard,
     toggle_attendance, my_events_dashboard
-    from .views import attended_events
+    
 )
 
 urlpatterns = [
