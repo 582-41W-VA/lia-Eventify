@@ -6,11 +6,19 @@
 
   <ul>
     {% for event in created_events %}
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="{{ event.title }} image" width="200">
+      {% else %}
+        <p>No image available</p>
+      {% endif %}
         <li>
             <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
-           
-        
         </li>
+        <p><strong>Description:</strong> {{ event.description|truncatewords:20 }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Start Date:</strong> {{ event.start_datetime }}</p>
+        <p><strong>End Date:</strong> {{ event.end_datetime }}</p>
+        
     {% empty %}
         <li>You have not created any events yet.</li>
     {% endfor %}
