@@ -5,7 +5,22 @@
 
 <h2>Attended Events</h2>
 <p>Number of attended events: {{ attended_events.count }}</p>
-
+<ul>
+  {% for attendance in attended_events %}
+        <div class="image-container">
+            <a href="{% url 'event-detail' attendance.event.id %}">
+                {% if attendance.event.image %}
+                    <img src="{{ attendance.event.image.url }}" alt="{{ attendance.event.title }}" class="event-image">
+                {% else %}
+                    <p>No image available.</p>
+                {% endif %}
+            </a>
+        </div>
+       
+    {% empty %}
+        <p>No attended events yet.</p>
+    {% endfor %}
+</ul>
 
 
 {% endblock %}
