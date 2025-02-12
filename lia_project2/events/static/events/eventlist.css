@@ -105,6 +105,52 @@ nav a {
     cursor: pointer;
 }
 
+.main-banner {
+    padding: 130px 0px;
+    background: rgba(119, 115, 115, 0.5);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.music-banner {
+    background-image: url('https://png.pngtree.com/background/20230528/original/pngtree-music-pattern-with-music-notes-on-a-dark-background-picture-image_2780367.jpg');
+}
+
+.game-banner {
+    background-image: url('https://devimages-cdn.apple.com/wwdc-services/articles/images/3D5F5DD3-14F7-4384-94C0-798D15EE7CD7/2048.jpeg');
+}
+
+.sports-banner {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/036/115/062/non_2x/ai-generated-sports-equipment-on-a-black-background-sports-equipment-sports-equipment-ai-generated-free-photo.jpg');
+}
+
+.dev-banner {
+    background-image: url('https://wallpapers.com/images/hd/professional-web-developer-working-on-a-code-setup-j8ljvi05wloqs3ii.jpg');
+}
+
+.conf-banner {
+    background-image: url('https://png.pngtree.com/background/20230525/original/pngtree-black-and-white-meeting-room-picture-image_2732129.jpg');
+}
+
+.travel-banner {
+    background-image: url('https://images.squarespace-cdn.com/content/v1/5a9190f22714e5c4a3fde093/1519536443696-PZYFC1NQV0SLA0PGF9DP/black-earth-wallpaper-10-cool-wallpaper.jpg?format=1500w');
+}
+
+.filter-container {
+    margin: 30px 35px;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 4px 8px;
+    border-color: #FF5A5F;
+}
+
 .categories {
     display: flex;
     justify-content: center;
@@ -158,4 +204,194 @@ footer {
 .copyright {
     color: #F5F5F5;
     font-size: 21px;
+}
+
+@media only screen and (max-width: 876px) {
+
+    nav {
+        gap: 13px;
+    }
+    
+    nav a {
+        margin-right: 13px;
+    }
+    
+    .auth-buttons {
+        gap: 13px;
+    }
+    
+    .auth-buttons a {
+        padding: 5px 13px;
+    }
+
+    .search-bar input {
+        width: 100px;
+        padding: 6px 10px;
+    }
+    
+    .search-bar select {
+        padding: 6px 10px;
+    }
+    
+    .search {
+        padding: 6px 10px;
+    }
+    
+    .main {
+        padding: 120px 0px;
+    }
+
+    .subtitle h2 {
+        font-size: 25px;
+    }
+
+    .event-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding: 35px;
+    }
+
+    .event-card img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .event-card-content h3 {
+        font-size: 28px;
+    }
+    
+    .event-card-content p {
+        font-size: 18px;
+    }
+    
+    .event-card-content .favorite {
+        font-size: 28px;
+    }
+
+    .categories {
+        gap: 60px; 
+    } 
+
+    .categories div span {
+        font-size: 55px;
+    }
+}
+
+@media only screen and (max-width: 774px) {
+
+    .logo {
+        font-size: 25px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    .bottom-bar a {
+        font-size: 15px;
+    }
+
+    .search-bar input {
+        width: 80px;
+        font-size: 15px;
+    }
+    
+    .search-bar select {
+        font-size: 15px;
+    }
+    
+    .search {
+        font-size: 15px;
+    }
+
+    .main {
+        padding: 100px 0px;
+    }
+
+	.main h1 {
+		font-size: 25px;
+	}
+
+    .event-card img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .event-card-content h3 {
+        font-size: 25px;
+    }
+    
+    .event-card-content p {
+        font-size: 17px;
+    }
+    
+    .event-card-content .favorite {
+        font-size: 25px;
+    }
+
+    .categories {
+        gap: 50px; 
+    }
+
+    .categories div span {
+        font-size: 40px;
+    }    
+
+    footer {
+        padding: 25px 0;
+    }
+}
+
+@media only screen and (max-width: 674px) {
+
+    nav {
+        gap: 1px;
+    }
+
+    .search-bar input {
+        width: 60px;
+    }
+
+    .main {
+        padding: 80px 0px;
+    }
+
+    .subtitle h2 {
+        font-size: 23px;
+    }
+
+    .event-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .categories {
+        gap: 40px; 
+    }
+
+    .categories div span {
+        font-size: 30px;
+    }  
+
+    .footer-nav a{
+        font-size: 18px;
+    }
+
+    .social-links span{
+        font-size: 20px;
+    }
+
+    .copyright {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 574px) {
+
+    .categories {
+        gap: 30px; 
+    }
+
+    .categories div span {
+        font-size: 25px;
+    }  
 }
