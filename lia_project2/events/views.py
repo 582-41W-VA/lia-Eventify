@@ -4,7 +4,7 @@ from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
 from django.utils.timezone import now, timedelta
-
+from .models import Attendance
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
@@ -273,4 +273,13 @@ def my_events_dashboard(request):
 
     return render(request, "events/my_events_dashboard.html", {
         "attending_events": attending_events,
+    })
+
+
+
+@login_required
+def attended_events(request):
+    attended_events = Attendance.objects.filter(user=request.user)
+    return render(request, 'events/attended_events.html', {
+        'attended_events': attended_events
     })
