@@ -274,3 +274,12 @@ def my_events_dashboard(request):
     return render(request, "events/my_events_dashboard.html", {
         "attending_events": attending_events,
     })
+
+
+
+@login_required
+def attended_events(request):
+ 
+    return render(request, 'events/attended_events.html', {
+        'attended_events': attended_events
+    })
