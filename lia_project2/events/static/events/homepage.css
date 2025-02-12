@@ -435,6 +435,10 @@ footer {
     .event-card-content .favorite {
         font-size: 25px;
     }
+
+    footer {
+        padding: 25px 0;
+    }
 }
 
 @media only screen and (max-width: 674px) {
