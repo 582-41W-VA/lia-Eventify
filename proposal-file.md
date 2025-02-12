@@ -126,7 +126,7 @@ Eventify will be developed using the following technologies:
   The login page will allow users to securely access their accounts. Users can log in with their email and password, or reset their password if necessary.
 
 - **User Dashboard**  
-  The user dashboard will create new event and display all of a user’s Favorate events, liked events, and a history of events they’ve attended.
+  The user dashboard will create new event and display all of a user’s Favorate events, and a history of events they’ve attended.
 
 - **Admin Panel**  
   The admin panel will allow administrators to manage users, events, comments, and flagged content. It will also provide statistical insights into event activity and user engagement.
