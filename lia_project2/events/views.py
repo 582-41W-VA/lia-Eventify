@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
-from django.utils.timezone import now
+from django.utils.timezone import now, timedelta
 
 
 PROVINCES = {
@@ -17,6 +17,7 @@ def get_filtered_events(request):
     selected_category = request.GET.get("category", "").strip()
     province = request.GET.get("province", "").strip()
     city = request.GET.get("city", "").strip()
+    date_filter = request.GET.get("date", "any").strip()
 
     events = Event.objects.filter(end_datetime__gte=now()).order_by("start_datetime") 
 
@@ -24,18 +25,29 @@ def get_filtered_events(request):
         events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
     if selected_category:
         events = events.filter(category__name=selected_category)
+    if selected_category:
+        events = events.filter(category__name=selected_category)
+
+    today = now().date()
+    if date_filter == "this_week":
+        start_of_week = today - timedelta(days=today.weekday())
+        end_of_week = start_of_week + timedelta(days=6)
+        events = events.filter(start_datetime__date__gte=start_of_week, start_datetime__date__lte=end_of_week)
+
+    elif date_filter == "next_week":
+        start_of_next_week = today + timedelta(days=7 - today.weekday())
+        end_of_next_week = start_of_next_week + timedelta(days=6)
+        events = events.filter(start_datetime__date__gte=start_of_next_week, start_datetime__date__lte=end_of_next_week)
+
     if province:
         events = events.filter(province=province)
     if city and city in PROVINCES.get(province, []):
         events = events.filter(city=city)
 
-
     return events
-
 
 def get_featured_events():
     return Event.objects.annotate(like_count=Count("likes")).order_by("-like_count")[:6]
-
 
 def homepage(request):
     all_events = get_filtered_events(request).order_by("start_datetime")
@@ -131,24 +143,21 @@ def toggle_flag(request, event_id):
     return redirect(request.META.get("HTTP_REFERER", "/"))
 
 def event_list(request):
-    all_events = get_filtered_events(request)[:6]
-    featured_events = get_featured_events()
+    all_events = get_filtered_events(request)
     categories = Category.objects.all()
-
 
     user_liked_events = (
         Like.objects.filter(user=request.user).values_list("event_id", flat=True)
         if request.user.is_authenticated else []
     )
 
-
     return render(request, "events/event_list.html", {
-        "featured_events": featured_events,
         "all_events": all_events,
-        "query": request.GET.get("q", "").strip(),
         "selected_province": request.GET.get("province", ""),
         "selected_city": request.GET.get("city", ""),
         "categories": categories,
+        "selected_category": request.GET.get("category", "").strip(),
+        "selected_date": request.GET.get("date", "any").strip(),
         "provinces": PROVINCES,
         "cities": PROVINCES.get(request.GET.get("province", ""), []),
         "user_liked_events": list(user_liked_events),
