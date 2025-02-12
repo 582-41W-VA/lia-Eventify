@@ -275,6 +275,9 @@ def my_events_dashboard(request):
     })
 
 
+@login_required
+def favorited_events(request):
+     return render(request, 'events/favorited_events.html', {'favorited_events': favorited_events})
 
 @login_required
 def attended_events(request):
