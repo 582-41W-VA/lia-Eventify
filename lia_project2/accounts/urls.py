@@ -21,5 +21,5 @@ urlpatterns = [
 
     path('dashboard/', views.dashboard, name='dashboard'), 
     path('edit-profile/', views.edit_profile, name='edit_profile'),
-
+    path("dashboard/favorites/", views.favorite_events, name="favorite_events"),
 ]
