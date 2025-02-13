@@ -1,9 +1,7 @@
 from django.contrib import admin
 from .models import Category, Event, Comment, FavoriteEvent, Like, Flag, Attendance
 
-
 admin.site.register(Category)
-
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
