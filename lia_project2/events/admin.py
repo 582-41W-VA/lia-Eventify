@@ -95,6 +95,7 @@ class AttendanceAdmin(admin.ModelAdmin):
         'event_city',
         'event_province',
     )
+    
     search_fields = ('user__username', 'event__title')
     list_filter = ('created_at', 'event__category', 'event__province', 'event__city')
     
