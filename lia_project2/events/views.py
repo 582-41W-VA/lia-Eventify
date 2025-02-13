@@ -152,7 +152,7 @@ def event_list(request):
         if request.user.is_authenticated else []
     )
 
-    paginator = Paginator(all_events, 4) 
+    paginator = Paginator(all_events, 6) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
