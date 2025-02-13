@@ -3,17 +3,14 @@ from .models import Category, Event, Comment, FavoriteEvent, Like, Flag, Attenda
 
 
 admin.site.register(Category)
-# admin.site.register(Event)
+admin.site.register(Event)
 admin.site.register(Comment)
 
-@admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
-    list_display = ("title", "created_by", "is_flagged")
-    list_filter = ("is_flagged", "category", "created_by")
-    search_fields = ("title", "created_by__username", "category__name")
-    actions = ["approve_events", "remove_flagged_events"]
-
-
+# @admin.register(Event)
+# class EventAdmin(admin.ModelAdmin):
+#     list_display = ("title", "created_by", "start_datetime", "end_datetime")
+#     list_filter = ("title", "category", "description", "created_by")
+#     search_fields = ("title", "created_by__username", "category__name")
 
 @admin.register(FavoriteEvent) #edit
 class FavoriteEventAdmin(admin.ModelAdmin):
@@ -43,7 +40,7 @@ class FlagAdmin(admin.ModelAdmin):
             flag.event.save()
         count = queryset.count()
         self.message_user(request, f"{count} flagged events have been approved.")
-        queryset.delete()  # Remove the flags after approval
+        queryset.delete()  
 
     approve_flagged_event.short_description = "Approve flagged events"
 
@@ -51,8 +48,8 @@ class FlagAdmin(admin.ModelAdmin):
         """ Remove flagged events from the database. """
         count = queryset.count()
         for flag in queryset:
-            flag.event.delete()  # Delete the associated event
-        queryset.delete()  # Delete the flags
+            flag.event.delete() 
+        queryset.delete() 
         self.message_user(request, f"{count} flagged events have been removed.")
 
     remove_flagged_event.short_description = "Remove flagged events"

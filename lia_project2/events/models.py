@@ -28,9 +28,6 @@ class Event(models.Model):
     flagged_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="flagged_events", blank=True)
     favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="saved_events", blank=True)
     attendees = models.ManyToManyField(settings.AUTH_USER_MODEL, through="Attendance", related_name="attending_events")
-    
-    is_flagged = models.BooleanField(default=False) 
-    is_approved = models.BooleanField(default=False) 
 
     def attendee_count(self):
         return self.attendance_set.count()
