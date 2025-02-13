@@ -40,6 +40,10 @@ class LikeAdmin(admin.ModelAdmin):
     search_fields = ("user__username", "event__title", "event__category__name", "event__created_by__username")
     list_filter = ("event", "user", "event__category", "event__created_by")
 
+    def event_category(self, obj):
+        return obj.event.category.name if obj.event.category else "No Category"
+    event_category.short_description = "Event Category"
+
 
 @admin.register(Flag)
 class FlagAdmin(admin.ModelAdmin):
