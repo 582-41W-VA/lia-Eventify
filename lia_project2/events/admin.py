@@ -50,7 +50,6 @@ class LikeAdmin(admin.ModelAdmin):
 
     def liked_on(self, obj):
         return obj.event.start_datetime
-    
     liked_on.short_description = "Liked On"
 
 
