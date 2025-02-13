@@ -1,0 +1,128 @@
+@import url("userdashboard.css");
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+}
+
+/* Banner */
+.banner {
+    width: 100%;
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.banner h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.banner ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    list-style: none;
+}
+
+.banner ul li a {
+    font-family: 'Jost', sans-serif;
+    color: #1a1313;
+    text-decoration: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Action Bar */
+.actionbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.actionbar h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.actionbar select {
+    padding: 5px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.actionbar button {
+    background: #ff5a5f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.actionbar button:hover {
+    background: #c0392b;
+}
+
+
+/* Table Layout Fix */
+.table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+th:first-child,
+td:first-child {
+    width: 75px; 
+    text-align: center;
+}
+
+thead th {
+    background-color: #ffcb47;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e5e5e5; 
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff; 
+}
+
+td input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0 auto; 
+    display: block;
+}
+
+

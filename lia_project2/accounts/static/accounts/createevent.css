@@ -1,0 +1,224 @@
+@import url("userdashboard.css");
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+}
+
+/* Action Bar */
+.actionbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 900px;
+    padding: 5px 0;
+    margin-top: 40px;
+}
+
+.actionbar h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* MIDDLECARD */
+.middlecard {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Banner */
+.banner {
+    width: 100%;
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.banner h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Event Information Form */
+.form-item, .form-item-title {
+    font-size: 24px;
+    background-color: #f5f5f5;
+}
+
+.form-item input {
+    border: none;
+    font-size: 20px;
+    text-decoration: underline;
+    width: 200px;
+    border: 1px solid #141313;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.form-item-title input {
+    border: none;
+    font-size: 20px;
+    text-decoration: underline;
+    width: 350px;
+    border: 1px solid #141313;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* User Image */
+input[type="file"] {
+    display: none;
+}
+
+
+/* Layout container */
+.upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Upload Button */
+.custom-file-upload {
+    background-color: #ffcb47;
+    color: #1a1313;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #1a1313;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #e5b73c;
+}
+
+/* Image Preview Box */
+.image-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.image-preview-container label {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+.image-preview {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #000;
+    resize: none;
+    background-color: #f9f9f9;
+}
+
+/* Event Information Form */
+.event-description-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Label */
+.event-description label {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Textarea */
+.event-description textarea {
+    width: 100%;
+    max-width: 800px;
+    min-height: 150px;
+    border: 1px solid #000;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    font-family: 'Jost', sans-serif;
+}
+
+
+/* Submit Button */
+.event-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.event-submit input[type="submit"] {
+    font-family: 'Jost', sans-serif;
+    background-color: #ff5a5f;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    right: 150px;
+}
+
+.event-submit input[type="submit"]:hover {
+    background-color: #c0392b;
+}
+
+/* RESPONSIVE STYLING FOR MOBILE */
+@media (max-width: 680px) {
+    .middlecard {
+        padding: 10px;
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .middlecard > * {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-item-title input, .form-item input {
+        width: 280px;
+        border: 1px solid #141313;
+        border-radius: 5px;
+        background-color: #fff;
+    } 
+
+    .upload-container {
+        margin-bottom: 20px;
+    }
+
+    .event-submit {
+        position: absolute;
+        left: 220px;
+    }
+}
