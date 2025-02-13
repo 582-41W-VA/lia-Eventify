@@ -103,6 +103,12 @@
 {% endif %}
 </section>
 
+<section class="pagination">
+    <div class="pagination-container">
+       
+    </div>
+</section>
+
 <section class="categories">
     {% for category in categories %}
         <a href="{% url 'event_list' %}?category={{ category.name }}">
