@@ -65,7 +65,8 @@
 
 <section class="event-cards">
     {% if all_events.exists %}
-    {% for event in all_events %}
+    {% comment %} {% for event in all_events %} {% endcomment %}
+    {% for event in page_obj %}
     <div class="event-card">
         {% if event.image %}
             <a href="{% url 'event_detail' event.id %}">
