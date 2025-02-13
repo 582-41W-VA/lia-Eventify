@@ -150,6 +150,10 @@ def event_list(request):
         if request.user.is_authenticated else []
     )
 
+    paginator = Paginator(all_events, 36) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(request, "events/event_list.html", {
         "all_events": all_events,
         "selected_province": request.GET.get("province", ""),
