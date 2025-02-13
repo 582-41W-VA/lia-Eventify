@@ -85,3 +85,4 @@ class FlagAdmin(admin.ModelAdmin):
 @admin.register(Attendance)
 class AttendanceAdmin(admin.ModelAdmin):
     list_display = ('user', 'event', 'created_at')
+    search_fields = ('user__username', 'event__title')
