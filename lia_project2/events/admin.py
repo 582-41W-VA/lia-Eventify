@@ -43,6 +43,10 @@ class LikeAdmin(admin.ModelAdmin):
     def event_category(self, obj):
         return obj.event.category.name if obj.event.category else "No Category"
     event_category.short_description = "Event Category"
+    
+    def event_created_by(self, obj):
+        return obj.event.created_by.username
+    event_created_by.short_description = "Created By"
 
 
 @admin.register(Flag)
