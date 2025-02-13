@@ -242,7 +242,7 @@ def toggle_attendance(request, event_id):
 @login_required
 def created_events(request):
     events = Event.objects.filter(created_by=request.user)
-    return render(request, 'events/my_events.html', {'events': events})
+    return render(request, 'events/my_events.html', {'created_events': events})
 
 
 @login_required
