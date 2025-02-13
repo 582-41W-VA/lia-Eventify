@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from .views_admin import admin_statistics
 
 from .views import (
     homepage, event_list, event_detail, event_creation,
@@ -10,6 +10,7 @@ from .views import (
 
 urlpatterns = [
     path("", homepage, name="homepage"),
+    path('admin/statistics/', admin_statistics, name='admin_statistics'),
 
     path("list/", event_list, name="event_list"),
     path("<int:event_id>/", event_detail, name="event_detail"),
