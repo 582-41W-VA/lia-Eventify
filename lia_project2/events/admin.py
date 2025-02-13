@@ -5,11 +5,11 @@ from .models import Category, Event, Comment, FavoriteEvent, Like, Flag, Attenda
 admin.site.register(Category)
 admin.site.register(Comment)
 
-# @admin.register(Event)
-# class EventAdmin(admin.ModelAdmin):
-#     list_display = ("title", "created_by", "start_datetime", "end_datetime")
-#     list_filter = ("title", "category", "description", "created_by")
-#     search_fields = ("title", "created_by__username", "category__name")
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ("title", "created_by", "start_datetime", "end_datetime")
+    list_filter = ("title", "category", "description", "created_by")
+    search_fields = ("title", "created_by__username", "category__name")
 
 @admin.register(FavoriteEvent) #edit
 class FavoriteEventAdmin(admin.ModelAdmin):
