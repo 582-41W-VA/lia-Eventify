@@ -87,17 +87,37 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_display = (
         'user',
         'event',
+        'event_category',
         'event_created_by',
+        'created_at',
         'event_start_datetime',
         'event_end_datetime',
-        'event_province',
         'event_city',
-        'event_category',
-        'created_at',
+        'event_province',
     )
     search_fields = ('user__username', 'event__title')
     list_filter = ('created_at', 'event__category', 'event__province', 'event__city')
-
+    
     def event_created_by(self, obj):
         return obj.event.created_by.username if obj.event.created_by else "-"
     event_created_by.short_description = 'Created By'
+
+    def event_start_datetime(self, obj):
+        return obj.event.start_datetime
+    event_start_datetime.short_description = 'Start Datetime'
+
+    def event_end_datetime(self, obj):
+        return obj.event.end_datetime
+    event_end_datetime.short_description = 'End Datetime'
+
+    def event_province(self, obj):
+        return obj.event.province if obj.event.province else "-"
+    event_province.short_description = 'Province'
+
+    def event_city(self, obj):
+        return obj.event.city if obj.event.city else "-"
+    event_city.short_description = 'City'
+
+    def event_category(self, obj):
+        return obj.event.category.name if obj.event.category else "-"
+    event_category.short_description = 'Category'
