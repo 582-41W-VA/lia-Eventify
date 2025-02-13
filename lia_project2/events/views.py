@@ -24,19 +24,17 @@ def get_filtered_events(request):
         events = events.filter(Q(title__icontains=query) | Q(description__icontains=query))
     if selected_category:
         events = events.filter(category__name=selected_category)
-    if selected_category:
-        events = events.filter(category__name=selected_category)
 
     today = now().date()
     if date_filter == "this_week":
         start_of_week = today - timedelta(days=today.weekday())
         end_of_week = start_of_week + timedelta(days=6)
-        events = events.filter(start_datetime__date__gte=start_of_week, start_datetime__date__lte=end_of_week)
-
+        events = events.filter(start_datetime__date__range=[start_of_week, end_of_week])
+        
     elif date_filter == "next_week":
         start_of_next_week = today + timedelta(days=7 - today.weekday())
         end_of_next_week = start_of_next_week + timedelta(days=6)
-        events = events.filter(start_datetime__date__gte=start_of_next_week, start_datetime__date__lte=end_of_next_week)
+        events = events.filter(start_datetime__date__range=[start_of_next_week, end_of_next_week])
 
     if province:
         events = events.filter(province=province)
@@ -71,25 +69,6 @@ def homepage(request):
         "cities": PROVINCES.get(request.GET.get("province", ""), []),
         "user_liked_events": list(user_liked_events),
     })
-
-
-@login_required
-def saved_events_dashboard(request):
-    favorite_events = FavoriteEvent.objects.filter(user=request.user).select_related("event")
-
-
-    if request.method == "POST":
-        action = request.POST.get("action")
-        selected_events = request.POST.getlist("selected_events")
-
-
-        if action == "remove" and selected_events:
-            FavoriteEvent.objects.filter(user=request.user, event__id__in=selected_events).delete()
-            return redirect("saved_events_dashboard")
-
-
-    return render(request, "events/saved_events_dashboard.html", {"favorite_events": favorite_events})
-
 
 @login_required
 def toggle_like(request, event_id):
@@ -259,23 +238,6 @@ def toggle_attendance(request, event_id):
         })
 
     return redirect(request.META.get("HTTP_REFERER", "/"))
-
-@login_required
-def my_events_dashboard(request):
-    attending_events = request.user.attending_events.all()
-
-    if request.method == "POST":
-        action = request.POST.get("action")
-        selected_events = request.POST.getlist("selected_events")
-
-        if action == "cancel" and selected_events:
-            Attendance.objects.filter(user=request.user, event__id__in=selected_events).delete()
-            return redirect("my_events_dashboard")
-
-    return render(request, "events/my_events_dashboard.html", {
-        "attending_events": attending_events,
-    })
-
 
 @login_required
 def created_events(request):
