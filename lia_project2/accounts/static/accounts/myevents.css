@@ -1,0 +1,172 @@
+@import url("userdashboard.css");
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+}
+
+/* MIDDLECARD */
+.middlecard {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Banner */
+.banner {
+    width: 100%;
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.banner h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.banner ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    list-style: none;
+}
+
+.banner ul li a {
+    font-family: 'Jost', sans-serif;
+    color: #1a1313;
+    text-decoration: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Search Bar */
+.search-container {
+    background-color: #ffcb47;
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Action Bar */
+.actionbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 15px;
+}
+
+.actionbar h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.actionbar select {
+    padding: 5px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.actionbar button {
+    background: #ff5a5f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.actionbar button:hover {
+    background: #c0392b;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+}
+
+table thead {
+    background: #ffcb47;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* RESPONSIVE STYLING FOR MOBILE */
+@media (max-width: 680px) {
+    .middlecard {
+        padding: 10px;
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .middlecard > * {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+
