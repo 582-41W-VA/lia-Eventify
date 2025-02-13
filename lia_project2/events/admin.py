@@ -3,7 +3,7 @@ from .models import Category, Event, Comment, FavoriteEvent, Like, Flag, Attenda
 
 
 admin.site.register(Category)
-admin.site.register(Comment)
+
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
