@@ -19,10 +19,10 @@ from django.urls import path, include
 from events.views import homepage
 from django.conf.urls.static import static
 from django.conf import settings
-from events.views_admin import admin_statistics
+
 
 urlpatterns = [
-    path('admin/ad/', admin_statistics, name='admin_statistics'),
+    path('', include('events.urls')), 
     path('admin/', admin.site.urls),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("events/", include("events.urls")),  
