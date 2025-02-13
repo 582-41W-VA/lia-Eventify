@@ -4,6 +4,8 @@ from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
 from django.utils.timezone import now, timedelta
+from django.core.paginator import Paginator
+
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
