@@ -40,7 +40,10 @@ class User(AbstractUser):
     objects = UserManager()
 
     def save(self, *args, **kwargs):
-        self.validate_email(self.email)
+        if kwargs.get('using', 'default') == 'default':
+            self.full_clean(exclude=['email'])
+        else:
+            self.validate_email(self.email)
 
         if self.is_admin:
             self.is_staff = True
