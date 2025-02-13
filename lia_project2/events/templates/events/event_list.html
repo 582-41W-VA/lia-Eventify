@@ -105,7 +105,13 @@
 
 <section class="pagination">
     <div class="pagination-container">
-       
+        {% if page_obj.has_previous %}
+
+        {% endif %}
+
+        {% if page_obj.has_next %}
+
+         {% endif %}
     </div>
 </section>
 
