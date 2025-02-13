@@ -34,7 +34,7 @@ class FavoriteEventAdmin(admin.ModelAdmin):
     event_created_by.short_description = "Created By"
 
 
-@admin.register(Like) #edit
+@admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
     list_display = ("user", "event", "event_category", "event_created_by", "liked_on")
     search_fields = ("user__username", "event__title", "event__category__name", "event__created_by__username")
@@ -43,10 +43,15 @@ class LikeAdmin(admin.ModelAdmin):
     def event_category(self, obj):
         return obj.event.category.name if obj.event.category else "No Category"
     event_category.short_description = "Event Category"
-    
+
     def event_created_by(self, obj):
         return obj.event.created_by.username
     event_created_by.short_description = "Created By"
+
+    def liked_on(self, obj):
+        return obj.event.start_datetime
+    
+    liked_on.short_description = "Liked On"
 
 
 @admin.register(Flag)
