@@ -86,3 +86,4 @@ class FlagAdmin(admin.ModelAdmin):
 class AttendanceAdmin(admin.ModelAdmin):
     list_display = ('user', 'event', 'created_at')
     search_fields = ('user__username', 'event__title')
+    list_filter = ('created_at',)
