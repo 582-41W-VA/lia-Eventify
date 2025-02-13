@@ -8,25 +8,10 @@ admin.site.register(Comment)
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ("title", "created_by", "is_flagged", "is_approved")
-    list_filter = ("is_flagged", "is_approved", "category", "created_by")
+    list_display = ("title", "created_by", "is_flagged")
+    list_filter = ("is_flagged", "category", "created_by")
     search_fields = ("title", "created_by__username", "category__name")
     actions = ["approve_events", "remove_flagged_events"]
-   
-    def approve_events(self, request, queryset):
-        """ Approve flagged events and remove flag status. """
-        queryset.update(is_approved=True, is_flagged=False)
-        self.message_user(request, "Selected events have been approved.")
-
-    approve_events.short_description = "Approve selected flagged events"
-
-    def remove_flagged_events(self, request, queryset):
-        """ Remove flagged events from the database. """
-        count = queryset.count()
-        queryset.delete()
-        self.message_user(request, f"{count} flagged events have been removed.")
-
-    remove_flagged_events.short_description = "Remove selected flagged events"
 
 
 
