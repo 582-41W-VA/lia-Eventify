@@ -155,6 +155,7 @@ def event_list(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, "events/event_list.html", {
+        "page_obj": page_obj,
         "all_events": all_events,
         "selected_province": request.GET.get("province", ""),
         "selected_city": request.GET.get("city", ""),
