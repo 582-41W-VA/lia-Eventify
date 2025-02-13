@@ -30,11 +30,12 @@ header {
     align-items: center;
 }
 
-.logo {
+.logo a {
+    text-decoration: none;
+    color: #FF5A5F;
     font-size: 35px;
     font-family: "Playfair Display", serif;
     font-weight: bold;
-    color: #FF5A5F;
 }
 
 nav {
