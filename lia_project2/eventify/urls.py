@@ -22,7 +22,7 @@ from django.conf import settings
 from events.views_admin import admin_statistics
 
 urlpatterns = [
-    path('admin/statistics/', admin_statistics, name='admin_statistics'),
+    path('admin/ad/', admin_statistics, name='admin_statistics'),
     path('admin/', admin.site.urls),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("events/", include("events.urls")),  
