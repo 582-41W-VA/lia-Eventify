@@ -21,48 +21,51 @@
 
 
 <body>
-  
-  <header>
-    <div class="top-bar">
-        <div class="logo">Eventify</div>
-        <div class="auth-buttons">
-            {% if user.is_authenticated %}
-                <a href="{% url 'accounts:dashboard' %}" class="dashboard">Dashboard</a>
-                <a href="{% url 'accounts:logout' %}" class="logout">Logout</a>
-            {% else %}
-                <a href="{% url 'accounts:login' %}" class="login">Log in</a>
-                <a href="{% url 'accounts:signup' %}" class="signup">Sign Up</a>
-            {% endif %}
-        </div>
-    </div>
+    {% block header %}
+        <header>
+            <div class="top-bar">
+                <div class="logo">
+                    <a href="{% url 'homepage' %}">Eventify</a>
+                </div>
+                <div class="auth-buttons">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'accounts:dashboard' %}" class="dashboard">Dashboard</a>
+                        <a href="{% url 'accounts:logout' %}" class="logout">Logout</a>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}" class="login">Log in</a>
+                        <a href="{% url 'accounts:signup' %}" class="signup">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
 
-    <div class="bottom-bar">
-        <nav>
-            <a href="{% url 'homepage' %}">Home</a>
-            <a href="{% url 'event_list' %}">Listings</a>
-        </nav>
-        <form class="search-bar" method="GET" action="{{ request.path }}">
-            <input type="text" name="q" placeholder="Events..." value="{{ query }}">
-        
-            <select name="province" onchange="this.form.submit()">
-                <option value="">Province</option>
-                {% for prov, cities in provinces.items %}
-                    <option value="{{ prov }}" {% if selected_province == prov %}selected{% endif %}>{{ prov }}</option>
-                {% endfor %}
-            </select>
+            <div class="bottom-bar">
+                <nav>
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'event_list' %}">Listings</a>
+                </nav>
+                <form class="search-bar" method="GET" action="{{ request.path }}">
+                    <input type="text" name="q" placeholder="Events..." value="{{ query }}">
+                
+                    <select name="province" onchange="this.form.submit()">
+                        <option value="">Province</option>
+                        {% for prov, cities in provinces.items %}
+                            <option value="{{ prov }}" {% if selected_province == prov %}selected{% endif %}>{{ prov }}</option>
+                        {% endfor %}
+                    </select>
 
-            <select name="city" {% if not selected_province %}disabled{% endif %} onchange="this.form.submit()">
-                <option value="">City</option>
-                {% for city_option in cities %}
-                    <option value="{{ city_option }}" {% if selected_city == city_option %}selected{% endif %}>{{ city_option }}</option>
-                {% endfor %}
-            </select>            
-        
-            <button class="search">Search</button>
-        </form>
-    </div>
-  </header>
-  
+                    <select name="city" {% if not selected_province %}disabled{% endif %} onchange="this.form.submit()">
+                        <option value="">City</option>
+                        {% for city_option in cities %}
+                            <option value="{{ city_option }}" {% if selected_city == city_option %}selected{% endif %}>{{ city_option }}</option>
+                        {% endfor %}
+                    </select>            
+                
+                    <button class="search">Search</button>
+                </form>
+            </div>
+        </header>
+    {% endblock %}
+
   <div class="container">
     {% block content %}
     {% endblock %}
