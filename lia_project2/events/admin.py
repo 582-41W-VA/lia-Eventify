@@ -81,4 +81,6 @@ class FlagAdmin(admin.ModelAdmin):
 
     remove_flagged_event.short_description = "Remove flagged events"
 
-admin.site.register(Attendance)
+
+@admin.register(Attendance)
+class AttendanceAdmin(admin.ModelAdmin):
