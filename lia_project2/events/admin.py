@@ -84,6 +84,10 @@ class FlagAdmin(admin.ModelAdmin):
 
 @admin.register(Attendance)
 class AttendanceAdmin(admin.ModelAdmin):
-    list_display = ('user', 'event', 'created_at')
+    list_display = ('user', 'event', 'event_created_by', 'created_at', )
     search_fields = ('user__username', 'event__title')
     list_filter = ('created_at',)
+
+    def event_created_by(self, obj):
+        return obj.event.created_by.username if obj.event.created_by else "-"
+    event_created_by.short_description = 'Created By'
