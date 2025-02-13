@@ -96,7 +96,7 @@ class AttendanceAdmin(admin.ModelAdmin):
         'created_at',
     )
     search_fields = ('user__username', 'event__title')
-    list_filter = ('created_at',)
+    list_filter = ('created_at', 'event__category', 'event__province', 'event__city')
 
     def event_created_by(self, obj):
         return obj.event.created_by.username if obj.event.created_by else "-"
