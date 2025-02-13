@@ -4,7 +4,7 @@ from . import views
 
 
 from .views import (
-    homepage, event_list, event_detail, event_create,
+    homepage, event_list, event_detail, event_creation,
     toggle_like, toggle_favorite, toggle_flag, saved_events_dashboard,
     toggle_attendance, my_events_dashboard
     
@@ -14,7 +14,7 @@ urlpatterns = [
     path("", homepage, name="homepage"),
     path("list/", event_list, name="event_list"),
     path("<int:event_id>/", event_detail, name="event_detail"),
-    path("create/", event_create, name="event_create"),
+    path("event_creation/", event_creation, name="event_creation"),
     path("events/<int:event_id>/like/", toggle_like, name="toggle_like"),
     path("events/<int:event_id>/favorite/", toggle_favorite, name="toggle_favorite"),
     path("events/<int:event_id>/flag/", toggle_flag, name="toggle_flag"),

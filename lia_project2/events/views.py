@@ -196,7 +196,9 @@ def event_detail(request, event_id):
     })
 
 @login_required
-def event_create(request):
+def event_creation(request):
+    categories = Category.objects.all()
+
     if request.method == "POST":
         title = request.POST.get("title")
         description = request.POST.get("description")
@@ -213,7 +215,9 @@ def event_create(request):
 
         category = Category.objects.filter(name=category_name).first()
         if not category:
-            return render(request, "events/event_create.html", {"error": "Invalid category."})
+            return render(request, "events/event_creation.html", {
+                "error": "Invalid category.", "categories": categories
+            })
 
         Event.objects.create(
             title=title,
@@ -232,10 +236,8 @@ def event_create(request):
         )
         return redirect("event_list")
 
-    categories = Category.objects.all()
-    return render(request, "events/event_create.html", {
+    return render(request, "events/event_creation.html", {
         "categories": categories,
-        "provinces": PROVINCES,
     })
 
 @login_required
