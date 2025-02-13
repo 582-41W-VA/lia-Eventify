@@ -38,7 +38,7 @@ class FavoriteEventAdmin(admin.ModelAdmin):
 class LikeAdmin(admin.ModelAdmin):
     list_display = ("user", "event", "event_category", "event_created_by", "liked_on")
     search_fields = ("user__username", "event__title", "event__category__name", "event__created_by__username")
-    list_filter = ("event", "user")
+    list_filter = ("event", "user", "event__category", "event__created_by")
 
 
 @admin.register(Flag)
