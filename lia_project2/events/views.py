@@ -4,6 +4,8 @@ from django.db.models import Q, Count
 from .models import Event, Category, FavoriteEvent, Like, Flag, Attendance, Comment
 from django.conf import settings
 from django.utils.timezone import now, timedelta
+from django.core.paginator import Paginator
+
 
 PROVINCES = {
     "ON": ["Toronto", "Ottawa", "Mississauga", "Hamilton"],
@@ -129,7 +131,12 @@ def event_list(request):
         if request.user.is_authenticated else []
     )
 
+    paginator = Paginator(all_events, 6) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(request, "events/event_list.html", {
+        "page_obj": page_obj,
         "all_events": all_events,
         "selected_province": request.GET.get("province", ""),
         "selected_city": request.GET.get("city", ""),
