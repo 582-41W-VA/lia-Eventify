@@ -276,6 +276,12 @@ def my_events_dashboard(request):
 
 
 @login_required
+def created_events(request):
+    events = Event.objects.filter(created_by=request.user)
+    return render(request, 'events/my_events.html', {'events': events})
+
+
+@login_required
 def favorited_events(request):
     favorited_events = Event.objects.filter(favoriteevent__user=request.user)  
     return render(request, 'events/favorited_events.html', {'favorited_events': favorited_events})

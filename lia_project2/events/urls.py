@@ -23,8 +23,10 @@ urlpatterns = [
     path("my_events_dashboard/", my_events_dashboard, name="my_events_dashboard"),
 
     path('dashboard/favorited-events/', views.favorited_events, name='favorite-events'),
-
-    
     path('dashboard/attended-events/', attended_events, name='attended-events'),
+
+    path('my-events/', views.created_events, name='created_events'),
+
+
     path('event/<int:event_id>/', event_detail, name='event-detail'),
 ]
