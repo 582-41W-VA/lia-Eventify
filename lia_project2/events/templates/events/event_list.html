@@ -43,12 +43,12 @@
 <!-- Date and Category's Sort and Filter Tab -->
 <section class="filter-container">
     <form method="GET" action="{% url 'event_list' %}">
-        <select class="btn" id="date-filter" onchange="this.form.submit()">
+        <select class="btn" name="date" onchange="this.form.submit()">
             <option value="any" {% if selected_date == "any" %}selected{% endif %}>Any Day</option>
             <option value="this_week" {% if selected_date == "this_week" %}selected{% endif %}>This Week</option>
             <option value="next_week" {% if selected_date == "next_week" %}selected{% endif %}>Next Week</option>
         </select>
-        <select class="btn" id="category-filter" onchange="this.form.submit()">
+        <select class="btn" name="category" onchange="this.form.submit()">
             <option value="" {% if not selected_category %}selected{% endif %}>All</option>
             {% for category in categories %}
                 <option value="{{ category.name }}" {% if category.name == selected_category %}selected{% endif %}>
