@@ -1,27 +1,103 @@
 {% extends "base.html" %}
+
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/dashboard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/favorite_events.css' %}">
+{% endblock %}
+
+{% block header %}
+
+<header class="navbar">
+    <div class="container">
+        <a href="{% url 'homepage' %}" class="logo">Eventify</a>
+        <nav>
+            <a>{{ user.username }}</a>
+            <a href="{% url 'homepage' %}">Homepage</a>
+            <a href="{% url 'accounts:password_update' %}">Update Password</a>
+            <a href="{% url 'accounts:logout' %}" class="logout">Logout</a>
+        </nav>
+    </div>
+    
+    <!-- <div class="hamburger" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div> -->
+</header>
+{% endblock %}
+
 {% block content %}
-<h1>Your Created Events</h1>
+<main class="dashboard-layout">
+    <section class="userdashboard">
+        <div class="user-list">
+            <div class="user-id">
+                {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="{% static 'accounts/images/default-profile.png' %}" alt="Default Profile Picture">
+                {% endif %}
+                <h1>{{ user.username }}</h1>
+                <h3>{{ user.email }}</h3>
+                <p><strong>Bio:</strong> {{ user.bio }}</p>
+                <p><strong>Joined:</strong> {{ user.date_joined }}</p>
+            </div>
+            
+            <ul class="user-events">
+                <p><a href="{% url 'accounts:dashboard' %}" class="dashboard">Dashboard</a></p>
+                <li><a href="{% url 'created_events' %}">My Events</a></li>
+                <li><a href="{% url 'event_creation' %}">Create Events</a></li>
+                <li><a href="{% url 'favorite-events' %}">Favorite Events</a></li>
+                <li><a href="{% url 'attended-events' %}">Attended Events</a></li>    
+            </ul>
+            <ul class="user-preferences">
+                <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+            </ul>
+        </div>            
+    </section>
 
-  <ul>
-    {% for event in created_events %}
-    {% if event.image %}
-        <img src="{{ event.image.url }}" alt="{{ event.title }} image" width="200">
+    <section class="middlecard">
+      <div class="banner">
+        <h1>Your Created Events</h1>
+      </div>
+    
+      {% if created_events %}
+      <div class="actionbar">
+          <h3>Select An Event</h3>
+          <select name="action" id="action">
+              <option value="---------" selected>---------</option>
+              <option value="remove">Remove Event</option>
+          </select>
+          <button type="submit">Go</button>
+      </div>
+      <div class="table">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Select Event</th>
+                      <th>Title</th>
+                      <th>Date and Time</th>
+                      <th>Location</th>
+                      <th>Description</th>
+                      <th>Max Attendees</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for event in created_events %}
+                  <tr>
+                      <td><input type="checkbox" name="select-event"></td>
+                      <td><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
+                      <td>{{ event.start_datetime }}</td>
+                      <td>{{ event.location }}</td>
+                      <td>{{ event.description|truncatewords:20 }}</td>
+                      <td>{{ event.max_attendees }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
       {% else %}
-        <p>No image available</p>
+      <p>You have not created any events yet.</p>
       {% endif %}
-        <li>
-            <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
-        </li>
-        <p><strong>Description:</strong> {{ event.description|truncatewords:20 }}</p>
-        <p><strong>Location:</strong> {{ event.location }}</p>
-        <p><strong>Start Date:</strong> {{ event.start_datetime }}</p>
-        <p><strong>End Date:</strong> {{ event.end_datetime }}</p>
-        
-    {% empty %}
-        <li>You have not created any events yet.</li>
-    {% endfor %}
-</ul>
-
+    </section>
+</main>
 {% endblock %}
