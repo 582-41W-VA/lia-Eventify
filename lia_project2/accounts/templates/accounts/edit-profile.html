@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="css/edit-profile.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<section class="middlecard">
+    <div class="banner">
+        <h1>Edit Your Profile</h1>
+    </div>
+
+    <form id="imageUploadForm">
+        <div class="image-preview-container">
+            <label for="file-upload">User Image</label>
+            <textarea class="image-preview" id="image-preview" readonly></textarea>
+        </div>
+    
+        <div class="upload-container">
+            <label for="file-upload" class="custom-file-upload">Change Image:</label>
+            <input type="file" id="file-upload" name="image" accept="image/*" onchange="previewImage(event)">
+        </div>
+    </form>
+
+    <div class="actionbar">
+        <h2>User Information</h2>
+    </div>
+    
+    <div class="table">
+        <form action="">
+            <div class="form-item-title">
+                <label for="">User Name:</label>
+                <input type="text" id="text" placeholder="">
+            </div>
+    
+            <div class="form-item">
+                <label for="">Contact Information:</label>
+            </div>
+
+            <div class="form-item">
+                <label for="">First Name:</label>
+                <input type="text" id="text" placeholder="">
+            </div>
+
+            <div class="form-item">
+                <label for="">Last Name:</label>
+                <input type="text" id="text" placeholder="">
+            </div>
+
+            <div class="form-item">
+                <label for="">Email Address:</label>
+                <input type="email" id="email" placeholder="">
+            </div>
+    
+            <div class="form-item">
+                <label for="">Phone Number:</label>
+                <input type="tel" id="tel" placeholder="">
+            </div>
+
+            <div class="form-item">
+                <label for="gender">Gender (Optional):</label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer Not to Say</option>
+                </select>
+            </div>
+    
+            <div class="form-item">
+                <label for="">User Website:</label>                
+                <a href="#"><input type="text" id="text" placeholder=""></a>
+            </div>
+    
+            <div class="form-item">
+                <label for="">My Social Media Links:</label>
+                <div>
+                    <label for="facebook"><i class="fa-brands fa-square-facebook"></i></label>
+                    <input type="url" id="facebook" placeholder="https://www.facebook.com/yourprofile">
+                </div>
+                <div>
+                    <label for="twitter"><i class="fa-brands fa-square-x-twitter"></i></label>
+                    <input type="url" id="twitter" placeholder="https://www.twitter.com/yourprofile">
+                </div>
+                <div>
+                    <label for="linkedin"><i class="fa-brands fa-linkedin"></i></label>
+                    <input type="url" id="linkedin" placeholder="https://www.linkedin.com/yourprofile">
+                </div>
+                <div>
+                    <label for="instagram"><i class="fa-brands fa-square-instagram"></i></label>
+                    <input type="url" id="instagram" placeholder="https://www.instagram.com/yourprofile">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label for="location">Location:</label>
+                <input type="text" id="location-input" placeholder="Enter your city">
+                <select id="location">
+                    <option value="">Select a Province</option>
+                    <option value="on">Ontario</option>
+                    <option value="qc">Quebec</option>
+                    <option value="al">Alberta</option>
+                    <option value="bc">British Columbia</option>
+                </select>
+            </div>
+
+            <div class="form-item">
+                <label for="">Language:</label>
+                <select id="language">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+            
+            <div class="form-item">
+                <label for="">Security and Authentication:</label>
+            </div>
+
+            <div class="form-item">
+                <label for="">Change Password:</label>
+                <input type="password" id="password" placeholder="New Password">
+            </div>
+
+            <div class="form-item">
+                <label for="">Confirm New Password:</label>
+                <input type="password" id="confirm-password" placeholder="Confirm New Password">
+            </div>
+
+            <div class="form-item">
+                <label for="">Two-Factor Authentication:</label>
+                <select id="2fa">
+                    <option value="enabled">Enabled</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+    
+            <div class="form-actions">
+                <button type="submit" class="save-button">Save Changes</button>
+                <button type="reset" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+
