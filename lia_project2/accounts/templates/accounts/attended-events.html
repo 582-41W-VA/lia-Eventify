@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="css/attended-events.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+ 
+<section class="middlecard">
+    <div class="banner">
+        <img src="#" alt="User Image" class="user-image">
+        <h1>Attended Events</h1>
+        <ul>        
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Listings</a></li>
+        </ul>
+    </div>   
+    <div class="actionbar">
+        <h3>Filter Events By Date</h3>
+        <select name="action" id="action">
+            <option value="---------" selected>---------</option>
+            <option value="past-7-days">Past 7 Days</option>
+            <option value="past-30-days">Past 30 Days</option>
+            <option value="last-6-months">Last 6 Months</option>
+            <option value="this-year">This Year</option>
+            <option value="all-events">All Events</option>
+            <option value="custom">Custom Date Range</option>
+        </select>
+        <input type="date" id="start-date" name="start-date" disabled>
+        <input type="date" id="end-date" name="end-date" disabled>
+        <button type="submit">Go</button>
+    </div>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Title</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Event Type</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tech Conference 2024</td>
+                    <td>Jan 12, 2024</td>
+                    <td>New York, NY</td>
+                    <td>Conference</td>
+                    <td>✅ Attended</td>
+                    <td>Great speakers!</td>
+                </tr>
+                <tr>
+                    <td>Music Festival</td>
+                    <td>Feb 3, 2024</td>
+                    <td>Los Angeles, CA</td>
+                    <td>Concert</td>
+                    <td>❌ Skipped</td>
+                    <td>Too busy</td>
+                </tr>
+                <tr>
+                    <td>Business Summit</td>
+                    <td>Dec 5, 2023</td>
+                    <td>Chicago, IL</td>
+                    <td>Networking</td>
+                    <td>✅ Attended</td>
+                    <td>Met potential clients</td>
+                </tr>
+                <tr>
+                    <td>Developer Meetup</td>
+                    <td>Aug 20, 2023</td>
+                    <td>Online</td>
+                    <td>Webinar</td>
+                    <td>❌ Canceled</td>
+                    <td>Event got postponed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
