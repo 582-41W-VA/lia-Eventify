@@ -43,7 +43,7 @@
             </div>
             
             <ul class="user-events">
-                <p>Dashboard</p>
+                <p><a href="{% url 'accounts:dashboard' %}" class="dashboard">Dashboard</a></p>
                 <li><a href="{% url 'created_events' %}">My Events</a></li>
                 <li><a href="{% url 'event_creation' %}">Create Events</a></li>
                 <li><a href="{% url 'favorite-events' %}">Favorite Events</a></li>
@@ -56,13 +56,9 @@
     </section>
 
     <section class="middlecard">
-        <div class="banner">
-            <h1>Create Events</h1>
-        </div>
+        <h1>Create Events</h1>
 
-        <div class="actionbar">
-            <h2>Event Information</h2>
-        </div>
+        <h2>Event Information</h2>
 
         <div class="table">
             <form method="POST" enctype="multipart/form-data">
@@ -126,27 +122,33 @@
                 </div>
 
         
-                <form id="imageUploadForm">
-                    <div class="image-preview-container">
-                        <label for="file-upload">Event Image</label>
-                        <textarea class="image-preview" id="image-preview" readonly></textarea>
-                    </div>
-                
-                    <div class="upload-container">
-                        <label for="file-upload" class="custom-file-upload">Upload Image:</label>
-                        <input type="file" id="file-upload" name="image" accept="image/*" onchange="previewImage(event)">
-                    </div>
-                </form>
-
-
-                <form action="eventInformationForm">
-                    <div class="event-description">
-                        <label for="event-info">Event Description:</label>
-                        <textarea name="event-info" id="event-info" cols="30" rows="8" placeholder="Tell Eventify about the Event"></textarea>
+                <div class="form">
+                    <div class="left">
+                        <form id="imageUploadForm">
+                            <div class="image-preview-container">
+                                <label for="file-upload">Event Image</label>
+                                <textarea class="image-preview" id="image-preview" readonly></textarea>
+                            </div>
+                        
+                            <div class="upload-container">
+                                <label for="file-upload" class="custom-file-upload">Upload Image:</label>
+                                <input type="file" id="file-upload" name="image" accept="image/*" onchange="previewImage(event)">
+                            </div>
+                        </form>
                     </div>
 
-                    <button type="submit" class="event-submit">Create Event</button>
-                </form>
+    
+                    <div class="right">
+                        <form action="eventInformationForm">
+                            <div class="event-description">
+                                <label for="event-info">Event Description:</label>
+                                <textarea name="event-info" id="event-info" cols="30" rows="8" placeholder="Tell Eventify about the Event"></textarea>
+                            </div>
+        
+                            <button type="submit" class="event-submit">Create Event</button>
+                        </form>
+                    </div>
+                </div>
             </form>
         </div>
         <br>
