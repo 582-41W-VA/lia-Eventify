@@ -43,25 +43,25 @@
                     <a href="{% url 'homepage' %}">Home</a>
                     <a href="{% url 'event_list' %}">Listings</a>
                 </nav>
-                <form class="search-bar" method="GET" action="{{ request.path }}">
+                <form class="search-bar" method="get" action="{% if request.path == '/' %}{% url 'homepage' %}{% else %}{% url 'event_list' %}{% endif %}">
                     <input type="text" name="q" placeholder="Events..." value="{{ query }}">
                 
-                    <select name="province" onchange="this.form.submit()">
-                        <option value="">Province</option>
-                        {% for prov, cities in provinces.items %}
-                            <option value="{{ prov }}" {% if selected_province == prov %}selected{% endif %}>{{ prov }}</option>
-                        {% endfor %}
+                    <select name="province">
+                      <option value="">Province</option>
+                      {% for prov, cities in provinces.items %}
+                        <option value="{{ prov }}" {% if selected_province == prov %}selected{% endif %}>{{ prov }}</option>
+                      {% endfor %}
                     </select>
-
-                    <select name="city" {% if not selected_province %}disabled{% endif %} onchange="this.form.submit()">
-                        <option value="">City</option>
-                        {% for city_option in cities %}
-                            <option value="{{ city_option }}" {% if selected_city == city_option %}selected{% endif %}>{{ city_option }}</option>
-                        {% endfor %}
-                    </select>            
                 
-                    <button class="search">Search</button>
-                </form>
+                    <select name="city" {% if not selected_province %}disabled{% endif %}>
+                      <option value="">City</option>
+                      {% for city_option in cities %}
+                        <option value="{{ city_option }}" {% if selected_city == city_option %}selected{% endif %}>{{ city_option }}</option>
+                      {% endfor %}
+                    </select>
+                
+                    <button type="submit" class="search">Search</button>
+                  </form>
             </div>
         </header>
     {% endblock %}
