@@ -184,6 +184,11 @@ def event_detail(request, event_id):
 @login_required
 def event_creation(request):
     categories = Category.objects.all()
+    event = None
+    
+    event_id = request.GET.get('edit')
+    if event_id:
+        event = get_object_or_404(Event, id=event_id, created_by=request.user)
 
     if request.method == "POST":
         title = request.POST.get("title")
@@ -201,30 +206,53 @@ def event_creation(request):
 
         category = Category.objects.filter(name=category_name).first()
         if not category:
-            return render(request, "events/event_creation.html", {
-                "error": "Invalid category.", "categories": categories
-            })
+            return render(request, "events/event_creation.html", {"error": "Invalid category.", "categories": categories})
 
-        Event.objects.create(
-            title=title,
-            description=description,
-            start_datetime=start_datetime,
-            end_datetime=end_datetime,
-            max_attendees=max_attendees,
-            location=location,
-            province=province,
-            city=city,
-            latitude=latitude,
-            longitude=longitude,
-            category=category,
-            image=image,
-            created_by=request.user,
-        )
-        return redirect("event_list")
+        if event:
+            event.title = title
+            event.description = description
+            event.start_datetime = start_datetime
+            event.end_datetime = end_datetime
+            event.max_attendees = max_attendees
+            event.location = location
+            event.province = province
+            event.city = city
+            event.latitude = latitude
+            event.longitude = longitude
+            event.category = category
+            if image:
+                event.image = image
+            event.save()
+        else:
+            Event.objects.create(
+                title=title,
+                description=description,
+                start_datetime=start_datetime,
+                end_datetime=end_datetime,
+                max_attendees=max_attendees,
+                location=location,
+                province=province,
+                city=city,
+                latitude=latitude,
+                longitude=longitude,
+                category=category,
+                image=image,
+                created_by=request.user,
+            )
+
+        return redirect("created_events")
 
     return render(request, "events/event_creation.html", {
         "categories": categories,
+        "event": event,
     })
+
+@login_required
+def delete_event(request, event_id):
+    event = get_object_or_404(Event, id=event_id, created_by=request.user)
+    if request.method == 'POST':
+        event.delete()
+        return redirect('created_events')
 
 @login_required
 def toggle_attendance(request, event_id):
