@@ -18,6 +18,11 @@
         <p><strong>Location:</strong> {{ event.location }}</p>
         <p><strong>Start Date:</strong> {{ event.start_datetime }}</p>
         <p><strong>End Date:</strong> {{ event.end_datetime }}</p>
+        <a href="{% url 'event_creation' %}?edit={{ event.id }}" class="btn btn-primary">Edit</a>
+        <form action="{% url 'delete_event' event.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
+        </form>
         
     {% empty %}
         <li>You have not created any events yet.</li>
