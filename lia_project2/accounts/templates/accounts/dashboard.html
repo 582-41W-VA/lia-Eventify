@@ -42,7 +42,7 @@
             </div>
             
             <ul class="user-events">
-                <p>Dashboard</p>
+                <p><a href="{% url 'accounts:dashboard' %}" class="dashboard">Dashboard</a></p>
                 <li><a href="{% url 'created_events' %}">My Events</a></li>
                 <li><a href="{% url 'event_creation' %}">Create Events</a></li>
                 <li><a href="{% url 'favorite-events' %}">Favorite Events</a></li>
