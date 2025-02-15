@@ -385,7 +385,7 @@ footer {
 @media only screen and (max-width: 574px) {
 
     .categories {
-        gap: 30px; 
+        gap: 25px; 
     }
 
     .categories div span {
