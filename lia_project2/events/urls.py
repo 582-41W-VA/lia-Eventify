@@ -5,7 +5,7 @@ from .views_admin import admin_statistics
 from .views import (
     homepage, event_list, event_detail, event_creation,
     toggle_like, toggle_favorite, toggle_flag, toggle_attendance,
-    attended_events,
+    attended_events, delete_event,
 )
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
     path("list/", event_list, name="event_list"),
     path("<int:event_id>/", event_detail, name="event_detail"),
     path("event_creation/", event_creation, name="event_creation"),
+    path("events/<int:event_id>/delete/", delete_event, name="delete_event"),
 
     path("events/<int:event_id>/like/", toggle_like, name="toggle_like"),
     path("events/<int:event_id>/favorite/", toggle_favorite, name="toggle_favorite"),
