@@ -1,12 +1,10 @@
 h1 {
     font-size: 40px;
-    font-weight: bold;
     margin-bottom: 10px;
 }
 
 h2 {
     font-size: 28px;
-    font-weight: bold;
 }
 
 /* MIDDLECARD */
@@ -16,7 +14,6 @@ h2 {
     flex-direction: column;
     justify-content: flex-start;
     padding: 15px 50px;
-    width: 100%;
 }
 
 /* Event Information Form */
