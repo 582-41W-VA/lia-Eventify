@@ -185,28 +185,56 @@ def event_detail(request, event_id):
 def event_creation(request):
     categories = Category.objects.all()
     event = None
-    
-    event_id = request.GET.get('edit')
+    event_id = request.GET.get("edit")
+    error_messages = []
+
     if event_id:
         event = get_object_or_404(Event, id=event_id, created_by=request.user)
+        selected_province = event.province
+        selected_city = event.city
+    else:
+        selected_province = request.GET.get("province", "")
+        selected_city = request.GET.get("city", "")
+
+    selected_cities = PROVINCES.get(selected_province, [])
 
     if request.method == "POST":
         title = request.POST.get("title")
-        description = request.POST.get("description")
+        description = request.POST.get("description", "").strip()
         start_datetime = request.POST.get("start_datetime")
         end_datetime = request.POST.get("end_datetime")
         max_attendees = request.POST.get("max_attendees")
         location = request.POST.get("location")
-        province = request.POST.get("province")
-        city = request.POST.get("city")
+        province = request.POST.get("province").strip()
+        city = request.POST.get("city").strip()
         latitude = request.POST.get("latitude") or None
         longitude = request.POST.get("longitude") or None
         category_name = request.POST.get("category")
         image = request.FILES.get("image")
 
+        if province not in PROVINCES.keys():
+            error_messages.append(f"❌ Invalid Province: '{province}'. Please select a valid province.")
+
+        if city and city not in PROVINCES.get(province, []):
+            error_messages.append(f"❌ Invalid City: '{city}' does not belong to {province}.")
+
+        if error_messages:
+            return render(request, "events/event_creation.html", {
+                "error_messages": error_messages,
+                "categories": categories,
+                "event": event,
+                "provinces": PROVINCES,
+                "selected_province": province,
+                "selected_city": city,
+                "cities": PROVINCES.get(province, []),
+            })
+
         category = Category.objects.filter(name=category_name).first()
         if not category:
-            return render(request, "events/event_creation.html", {"error": "Invalid category.", "categories": categories})
+            return render(request, "events/event_creation.html", {
+                "error_messages": ["❌ Invalid category selection."],
+                "categories": categories,
+            })
 
         if event:
             event.title = title
@@ -223,8 +251,10 @@ def event_creation(request):
             if image:
                 event.image = image
             event.save()
+
+            return redirect("event_detail", event_id=event.id)
         else:
-            Event.objects.create(
+            new_event = Event.objects.create(
                 title=title,
                 description=description,
                 start_datetime=start_datetime,
@@ -240,11 +270,15 @@ def event_creation(request):
                 created_by=request.user,
             )
 
-        return redirect("created_events")
+            return redirect("event_detail", event_id=new_event.id)
 
     return render(request, "events/event_creation.html", {
         "categories": categories,
         "event": event,
+        "provinces": PROVINCES,
+        "selected_province": selected_province,
+        "selected_city": selected_city,
+        "cities": selected_cities,
     })
 
 @login_required
