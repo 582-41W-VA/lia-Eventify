@@ -75,6 +75,8 @@
                       <th>Location</th>
                       <th>Description</th>
                       <th>Max Attendees</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
                   </tr>
               </thead>
               <tbody>
@@ -86,6 +88,17 @@
                       <td>{{ event.location }}</td>
                       <td>{{ event.description|truncatewords:20 }}</td>
                       <td>{{ event.max_attendees }}</td>
+                      <td>
+                        <a href="{% url 'event_creation' %}?edit={{ event.id }}">Edit</a>
+                      </td>
+                      <td>
+                        <form action="{% url 'delete_event' event.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">
+                                Delete
+                            </button>
+                        </form>
+                      </td>
                   </tr>
                   {% endfor %}
               </tbody>
