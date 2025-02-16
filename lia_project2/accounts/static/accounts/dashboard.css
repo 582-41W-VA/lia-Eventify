@@ -44,20 +44,6 @@ nav a {
     font-size: 18px;
 }
 
-/* Hamburger Icon - hidden by default */
-/* .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    position: absolute;
-    right: 15px;
-    top: 20px;
-    z-index: 1002;
-} */
-
 /* DASHBOARD LAYOUT */
 .dashboard-layout {
   display: flex;

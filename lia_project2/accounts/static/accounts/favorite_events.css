@@ -4,13 +4,11 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 15px 50px;
-    width: 100%;
 }
 
 /* Banner */
 .banner h1 {
     font-size: 40px;
-    font-weight: 700;
     color: #1a1313;
 }
 

@@ -151,6 +151,11 @@ nav a {
     border-color: #FF5A5F;
 }
 
+.pagination {
+    margin: 30px 35px;
+    font-size: 14px;
+}
+
 .categories {
     display: flex;
     justify-content: center;
@@ -380,7 +385,7 @@ footer {
 @media only screen and (max-width: 574px) {
 
     .categories {
-        gap: 30px; 
+        gap: 25px; 
     }
 
     .categories div span {
