@@ -14,10 +14,17 @@ def admin_statistics(request):
     User = get_user_model()
     total_users = User.objects.count()
 
+    most_commented_events = Event.objects.annotate(comment_count=Count('comments')).order_by('-comment_count')[:5]
+    most_commented_users = User.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:5]
+    
     context = {
         'total_events': total_events,
         'total_likes': total_likes.get('total') or 0,
         'total_flagged': total_flagged,
         'total_users': total_users,
+        'most_commented_events': most_commented_events,
+        'most_commented_users': most_commented_users,
     }
     return render(request, 'events/admin/statistics.html', context)
+
+
