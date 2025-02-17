@@ -9,6 +9,5 @@
 3. Slide 3: Team Roles & Responsibilities
 4. Slide 4: Key Milestones
 5. Slide 5: Development Process Stages
-6. Slide 6: Challenges Encountered
-7. Slide 7: Solutions Implemented
-8. Slide 8: Testing & Quality Assurance
+6. Slide 6: Challenges Encountered & Solutions Implemented
+7. Slide 7: Testing & Quality Assurance
