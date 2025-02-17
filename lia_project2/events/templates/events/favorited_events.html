@@ -56,33 +56,40 @@
             <h1>Favorites</h1>
             <h3>Number of favorited events: {{ favorited_events.count }}</h3>
         </div>     
-        <div class="actionbar">
+        <!-- <div class="actionbar">
             <h3>Select An Event</h3>
             <select name="action" id="action">
                 <option value="---------" selected>---------</option>
                 <option value="remove">Remove Event</option>
             </select>
             <button type="submit">Go</button>
-        </div>
+        </div> -->
         <div class="table">
             <table>
                 <thead>
                     <tr>
-                        <th>Select Event</th>
+                        <!-- <th>Select Event</th> -->
                         <th>Title</th>
                         <th>Date and Time</th>
                         <th>Location</th>
                         <th>Max Attendees</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for event in favorited_events %}
                     <tr>
-                        <td><input type="checkbox" name="select-event"></td>
+                        <!-- <td><input type="checkbox" name="select-event"></td> -->
                         <td><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
                         <td>{{ event.start_datetime }}</td>
                         <td>{{ event.location }}</td>
                         <td>{{ event.max_attendees }}</td>
+                        <td>
+                            <form action="{% url 'toggle_favorite' event.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
