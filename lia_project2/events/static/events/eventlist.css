@@ -152,7 +152,7 @@ nav a {
 }
 
 .pagination {
-    margin: 30px 35px;
+    text-align: center; 
     font-size: 14px;
 }
 
