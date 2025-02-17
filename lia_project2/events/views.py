@@ -116,9 +116,7 @@ def toggle_flag(request, event_id):
     if existing_flag.exists():
         existing_flag.delete()
     else:
-        if request.method == "POST":
-            reason = request.POST.get("reason", "other")
-            Flag.objects.create(user=user, event=event, reason=reason)
+        Flag.objects.create(user=user, event=event, reason="No reason provided")
 
     return redirect(request.META.get("HTTP_REFERER", "/"))
 
