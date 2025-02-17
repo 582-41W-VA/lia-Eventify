@@ -89,6 +89,17 @@
     color: #FF5A5F;
 }
 
+.table button {
+    padding: 5px 8px;
+    border-radius: 5px;
+    border-color: #FF5A5F;
+    cursor: pointer;
+}
+
+.table button:hover {
+    background-color: #FF3A3F;
+}
+
 th, td {
     padding: 15px 20px;
     text-align: left;
