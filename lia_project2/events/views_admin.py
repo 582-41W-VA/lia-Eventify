@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 @staff_member_required
 def admin_statistics(request):
     total_events = Event.objects.count()
-    total_likes = Event.objects.aggregate(total=Count('likes'))  # ✅ FIXED
+    total_likes = Event.objects.aggregate(total=Count('likes')) 
     total_flagged = Event.objects.filter(flagged_by__isnull=False).distinct().count()
     User = get_user_model()
     total_users = User.objects.count()
