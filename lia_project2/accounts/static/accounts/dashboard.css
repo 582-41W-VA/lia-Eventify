@@ -53,7 +53,7 @@ nav a {
 /* SIDEBAR */
 .userdashboard {
   width: 300px;
-  height: 950px;
+  height: 800px;
   background-color: #FFCB47;
   display: flex;
   flex-direction: column;
@@ -63,11 +63,6 @@ nav a {
 
 .dashboard {
 	color: #1a1313;
-  transition: color 0.3s ease, transform 0.2s ease; 
-}
-
-.dashboard:hover {
-    color: #FF5A5F; 
 }
 
 .user-id {
@@ -135,14 +130,12 @@ nav a {
     background-color: #fff;
     color: #1a1313;
     border-radius: 10px;
-    font-weight: 900;
 }
 
 .user-events li a:active, .user-preferences li a:active {
     background-color: #fff;
     color: #1a1313;
     border-radius: 10px;
-    font-weight: 900;
 }
 
 /* CONTENT AREA */
@@ -168,7 +161,7 @@ iframe {
 }
 
 /* RESPONSIVE */
-@media only screen and (max-width: 774px) {
+@media only screen and (max-width: 876px) {
 
   .dashboard-layout {
     flex-direction: column;
@@ -177,11 +170,28 @@ iframe {
   
   .userdashboard {
       width: 100%;
+      padding: 50px;
   }
   
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 674px) {
+
+  .logo {
+    font-size: 25px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 15px;
+    position: relative;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
 
   .userdashboard {
     padding: 50px;
@@ -197,55 +207,5 @@ iframe {
     bottom: 20px;
   }
 
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    padding: 15px;
-    position: relative;
-  }
 
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    background-color: #ff5a5f;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-menu.active {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    left: auto;
-    width: 32%;
-    max-width: none;
-    display: flex;
-  }
-
-  /* .hamburger {
-    display: flex;
-    position: absolute;
-    right: 25px;
-    top: 25px;
-    z-index: 1002;
-    font-size: 32px;
-  } */
-}
-
-@media only screen and (max-width: 580px) {    
-  .logo {
-    font-size: 32px;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1002;
-  }
 }

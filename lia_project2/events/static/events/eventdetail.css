@@ -292,6 +292,7 @@ h2{
 
 .comments {
     padding: 50px 0px;
+    text-align: left;
 }
 
 .comments h2 {
@@ -300,7 +301,7 @@ h2{
 
 .comments p{
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 textarea {
