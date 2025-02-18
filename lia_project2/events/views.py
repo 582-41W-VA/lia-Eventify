@@ -16,8 +16,8 @@ PROVINCES = {
 def get_filtered_events(request):
     query = request.GET.get("q", "").strip()
     selected_category = request.GET.get("category", "").strip()
-    province = request.GET.get("province", "").strip()
-    city = request.GET.get("city", "").strip()
+    province = request.GET.get("province", "").strip().upper()
+    city = request.GET.get("city", "").strip().title()
     date_filter = request.GET.get("date", "any").strip()
 
     events = Event.objects.filter(end_datetime__gte=now()).order_by("start_datetime") 
@@ -41,7 +41,7 @@ def get_filtered_events(request):
     if province:
         events = events.filter(province=province)
     if city and city in PROVINCES.get(province, []):
-        events = events.filter(city=city)
+        events = events.filter(city__iexact=city)
 
     return events
 
@@ -149,6 +149,7 @@ def event_list(request):
 
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
+    filtered_events = get_filtered_events(request)
 
     is_flagged = False
     if request.user.is_authenticated:
@@ -176,7 +177,12 @@ def event_detail(request, event_id):
         "favorite_events": favorite_events,
         "max_attendees": event.max_attendees,
         "comments": comments,
-        "GOOGLE_MAPS_API_KEY": settings.GOOGLE_MAPS_API_KEY
+        "GOOGLE_MAPS_API_KEY": settings.GOOGLE_MAPS_API_KEY,
+        "filtered_events": filtered_events,
+        "provinces": PROVINCES,
+        "selected_province": request.GET.get("province", "").strip().upper(),
+        "selected_city": request.GET.get("city", "").strip().title(),
+        "cities": PROVINCES.get(request.GET.get("province", ""), []),
     })
 
 @login_required
@@ -203,8 +209,8 @@ def event_creation(request):
         end_datetime = request.POST.get("end_datetime")
         max_attendees = request.POST.get("max_attendees")
         location = request.POST.get("location")
-        province = request.POST.get("province").strip()
-        city = request.POST.get("city").strip()
+        province = request.POST.get("province").upper()
+        city = request.POST.get("city").title()
         latitude = request.POST.get("latitude") or None
         longitude = request.POST.get("longitude") or None
         category_name = request.POST.get("category")
