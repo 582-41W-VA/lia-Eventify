@@ -29,7 +29,7 @@
                 </div>
                 <div class="auth-buttons">
                     {% if user.is_authenticated %}
-                        <a href="{% url 'accounts:dashboard' %}" class="dashboard">Dashboard</a>
+                        <a href="{% url 'created_events' %}" class="dashboard">Dashboard</a>
                         <a href="{% url 'accounts:logout' %}" class="logout">Logout</a>
                     {% else %}
                         <a href="{% url 'accounts:login' %}" class="login">Log in</a>

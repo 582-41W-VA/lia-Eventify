@@ -107,12 +107,10 @@ td input[type="checkbox"] {
     }
 }
 
-@media (max-width: 774px) {
+@media (max-width: 876px) {
     .middlecard {
         padding: 10px 20px;
     }
-
-    
 
     .banner h1 {
         font-size: 30px;
@@ -136,7 +134,7 @@ td input[type="checkbox"] {
     }
 }
 
-@media (max-width: 574px) {
+@media (max-width: 674px) {
     .banner h1 {
         font-size: 24px;
     }
