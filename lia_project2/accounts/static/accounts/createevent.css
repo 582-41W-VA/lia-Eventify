@@ -3,10 +3,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-h2 {
-    font-size: 28px;
-}
-
 /* MIDDLECARD */
 .middlecard {
     height: auto;
@@ -46,7 +42,6 @@ input[type="file"] {
     border-radius: 5px;
     border: 1px solid #1a1313;
     padding: 5px 10px;
-    text-align: center;
 }
 
 .custom-file-upload:hover {
@@ -62,36 +57,20 @@ input[type="file"] {
     width: 300px;
 }
 
-/* Event Information Form */
-.form {
-    display: flex;
-    gap: 50px;
-    align-items: flex-start; 
-    margin-bottom: 20px;
-}
-
-.left, .right {
-    display: flex;
-    flex-direction: column;
-}
-
 /* Label */
-.event-description label {
-    font-weight: bold;
+.form-item-description label {
     font-size: 24px;
-    margin-bottom: 5px;
-    display: block;
 }
 
 /* Textarea */
-.event-description textarea {
-    width: 150%;
-    height: 200px;
+.form-item-description textarea {
+    width: 500px;
+    height: 150px;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
     font-size: 16px; 
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 textarea:focus {
@@ -102,10 +81,10 @@ textarea:focus {
 /* Submit Button */
 .event-submit {
     background-color: #FF5A5F;
-    color: white;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
-    padding: 8px 13px;
+    padding: 8px 16px;
     cursor: pointer;
     font-size: 14px; 
     display: block; 
@@ -116,21 +95,11 @@ textarea:focus {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn {
-    text-decoration: none;
-    color: #1a1313;
-    transition: color 0.3s ease, transform 0.2s ease; 
-}
-
-.btn:hover {
-    color: #FF5A5F; 
-}
-
 /* RESPONSIVE STYLING FOR MOBILE */
 @media only screen and (max-width: 774px) {
 
     h1{
-        font-size: 35px;
+        font-size: 30px;
     }
 
     .middlecard {
@@ -140,12 +109,14 @@ textarea:focus {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
     }
 
     .middlecard > * {
         width: 100%;
+    }
+
+    .form {
+        flex-direction: column;
     }
 
     .form-item input {
@@ -155,13 +126,8 @@ textarea:focus {
         background-color: #fff;
     } 
 
-    .event-description textarea {
+    .form-item-description textarea {
         width: 100%;
     }
-
-    .form {
-        flex-direction: column;
-        gap: 10px;
-    }
-
+    
 }
