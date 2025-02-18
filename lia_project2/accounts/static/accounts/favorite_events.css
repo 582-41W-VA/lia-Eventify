@@ -1,8 +1,5 @@
 .middlecard {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    max-width: 1300px;
     padding: 15px 50px;
 }
 
@@ -18,65 +15,15 @@
     color: #565151;
 }
 
-/* Action Bar */
-.actionbar {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 50px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.actionbar h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: #1a1313;
-}
-
-.actionbar select {
-    padding: 8px 12px;
-    border-radius: 12px;
-    background-color: #fff;
-    font-size: 18px;
-    color: #1a1313;
-    transition: all 0.3s ease;
-}
-
-.actionbar select:focus {
-    border-color: #ff5a5f;
-    outline: none;
-}
-
-.actionbar button {
-    background: #ff5a5f;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.actionbar button:hover {
-    background: #c0392b;
-}
-
 /* Table */
 .table {
-    width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     border-collapse: collapse;
     margin-top: 15px;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
-
 
 .table a {
     text-decoration: none;
@@ -101,15 +48,16 @@
 }
 
 th, td {
-    padding: 15px 20px;
+    padding: 15px 30px;
     text-align: left;
     font-size: 16px;
 }
 
 th:first-child,
 td:first-child {
-    width: 80px;
-    text-align: center;
+    width: 200px;
+    word-wrap: break-word; 
+    white-space: normal; 
 }
 
 thead th {
@@ -164,8 +112,10 @@ td input[type="checkbox"] {
         padding: 10px 20px;
     }
 
+    
+
     .banner h1 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .banner h3 {
