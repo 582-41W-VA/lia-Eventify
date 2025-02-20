@@ -5,20 +5,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('events', '0001_initial'),
+        ("events", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='event',
-            name='favorited_by',
+            model_name="event",
+            name="favorited_by",
         ),
         migrations.AddField(
-            model_name='event',
-            name='favorites',
-            field=models.ManyToManyField(blank=True, related_name='saved_events', to=settings.AUTH_USER_MODEL),
+            model_name="event",
+            name="favorites",
+            field=models.ManyToManyField(
+                blank=True, related_name="saved_events", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

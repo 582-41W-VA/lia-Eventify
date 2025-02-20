@@ -6,33 +6,57 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('events', '0002_remove_event_favorited_by_event_favorites'),
+        ("events", "0002_remove_event_favorited_by_event_favorites"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='favorited_by',
-            field=models.ManyToManyField(blank=True, related_name='favorite_events', to=settings.AUTH_USER_MODEL),
+            model_name="event",
+            name="favorited_by",
+            field=models.ManyToManyField(
+                blank=True, related_name="favorite_events", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.CreateModel(
-            name='Attendance',
+            name="Attendance",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.event')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="events.event"
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'unique_together': {('user', 'event')},
+                "unique_together": {("user", "event")},
             },
         ),
         migrations.AddField(
-            model_name='event',
-            name='attendees',
-            field=models.ManyToManyField(related_name='attending_events', through='events.Attendance', to=settings.AUTH_USER_MODEL),
+            model_name="event",
+            name="attendees",
+            field=models.ManyToManyField(
+                related_name="attending_events",
+                through="events.Attendance",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

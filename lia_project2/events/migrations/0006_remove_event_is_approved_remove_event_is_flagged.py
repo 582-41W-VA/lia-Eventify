@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('events', '0005_alter_event_is_approved'),
+        ("events", "0005_alter_event_is_approved"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='event',
-            name='is_approved',
+            model_name="event",
+            name="is_approved",
         ),
         migrations.RemoveField(
-            model_name='event',
-            name='is_flagged',
+            model_name="event",
+            name="is_flagged",
         ),
     ]

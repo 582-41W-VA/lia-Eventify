@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('events', '0004_event_is_approved_event_is_flagged'),
+        ("events", "0004_event_is_approved_event_is_flagged"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='event',
-            name='is_approved',
+            model_name="event",
+            name="is_approved",
             field=models.BooleanField(default=False),
         ),
     ]
