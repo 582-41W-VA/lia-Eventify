@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 import re
 
+
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
@@ -40,8 +41,8 @@ class User(AbstractUser):
     objects = UserManager()
 
     def save(self, *args, **kwargs):
-        if kwargs.get('using', 'default') == 'default':
-            self.full_clean(exclude=['email'])
+        if kwargs.get("using", "default") == "default":
+            self.full_clean(exclude=["email"])
         else:
             self.validate_email(self.email)
 
@@ -64,7 +65,7 @@ class User(AbstractUser):
 
     @staticmethod
     def validate_password(password):
-        if not re.search(r'[A-Za-z]', password) or not re.search(r'\d', password):
+        if not re.search(r"[A-Za-z]", password) or not re.search(r"\d", password):
             raise ValidationError("Password must contain both letters and numbers.")
         if len(password) < 8:
             raise ValidationError("Password must be at least 8 characters long.")

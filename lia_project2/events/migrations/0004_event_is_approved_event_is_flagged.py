@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('events', '0003_event_favorited_by_attendance_event_attendees'),
+        ("events", "0003_event_favorited_by_attendance_event_attendees"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='is_approved',
+            model_name="event",
+            name="is_approved",
             field=models.BooleanField(default=True),
         ),
         migrations.AddField(
-            model_name='event',
-            name='is_flagged',
+            model_name="event",
+            name="is_flagged",
             field=models.BooleanField(default=False),
         ),
     ]
